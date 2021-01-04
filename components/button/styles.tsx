@@ -17,8 +17,7 @@ export default StyleSheet.create({
     },
     shadowRadius: 4,
     shadowOpacity: 0.35,
-    alignSelf: 'center',
-    marginTop: 8,
+    marginVertical: 8,
   },
   secondaryButton: {
     backgroundColor: 'transparent',
@@ -53,8 +52,8 @@ export default StyleSheet.create({
   },
   quaternaryButton: {
     flex: 0,
+    width: 150,
     backgroundColor: '#fff',
-    width: undefined,
     shadowOpacity: 0,
     elevation: 0,
     borderWidth: 1,

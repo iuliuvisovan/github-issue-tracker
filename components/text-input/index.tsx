@@ -11,7 +11,7 @@ export default function styledTextInput(props: StyledTextInputProps) {
   const { halfWidth, name, style } = props;
 
   return (
-    <View style={[styles.wrapper, halfWidth ? { width: (Dimensions.get('screen').width - (32 + 8)) / 2 } : {}]}>
+    <View style={[styles.wrapper, halfWidth ? { width: (Dimensions.get('screen').width - (32 + 8 + 32)) / 2 } : {}]}>
       <View pointerEvents="none" style={[styles.row, { zIndex: 1 }]}>
         <View style={styles.overlappingWrapper}>
           <Text style={styles.overlappingText}>{name}</Text>

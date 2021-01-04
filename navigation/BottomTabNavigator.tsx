@@ -1,10 +1,10 @@
+import * as React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
 
-import { Color } from '../components';
-import Issues from '../screens/IssuesScreen';
+import { Color, Text } from '../components';
+import IssuesScreen from '../screens/IssuesScreen';
 import Bookmarks from '../screens/BookmarksScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -18,6 +18,7 @@ export default function BottomTabNavigator() {
         component={IssuesNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="check-square" color={color} />,
+          tabBarLabel: ({ color }) => <Text style={{ fontSize: 11, fontFamily: 'muli', color }}>Issues</Text>,
         }}
       />
       <BottomTab.Screen
@@ -25,34 +26,31 @@ export default function BottomTabNavigator() {
         component={BookmarksNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="star" color={color} />,
+          tabBarLabel: ({ color }) => <Text style={{ fontSize: 11, fontFamily: 'muli', color }}>Bookmarks</Text>,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Feather size={25} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: { name: any; color: string }) {
+  return <Feather size={25} style={{ marginBottom: -10 }} {...props} />;
 }
 
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const IssuesStack = createStackNavigator<TabOneParamList>();
 
 function IssuesNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
+    <IssuesStack.Navigator>
+      <IssuesStack.Screen
         name="Issues"
-        component={Issues}
+        component={IssuesScreen}
         options={{
           headerTitle: 'Browse Issues',
           headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
         }}
       />
-    </TabOneStack.Navigator>
+    </IssuesStack.Navigator>
   );
 }
 

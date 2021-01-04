@@ -51,7 +51,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   overlappingWrapper: {
-    backgroundColor: Color.pageBackground,
+    backgroundColor: Color.white,
     position: 'absolute',
     top: -8,
     left: 0,

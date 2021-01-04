@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, GestureResponderEvent, Image, TextStyle, TouchableOpacity, View } from 'react-native';
+import { GestureResponderEvent, TextStyle, TouchableOpacity, View } from 'react-native';
 import Text from '../text';
 import styles from './styles';
 
@@ -36,7 +36,6 @@ export default class Button extends React.Component<ButtonProps> {
       bulletCount,
       noSpacing,
       autoWidth,
-      nT,
     } = this.props;
 
     const incomingButtonStyle = Array.isArray(style) ? style : [style];

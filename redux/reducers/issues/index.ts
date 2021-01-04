@@ -5,6 +5,10 @@ import { IIssueAction, IIssueState } from './types';
 const initialState: IIssueState = {
   list: [],
   loading: false,
+  filters: [
+    { id: 'open', label: 'Open', isActive: true },
+    { id: 'closed', label: 'Closed', isActive: true },
+  ],
 };
 
 export default (state: IIssueState = initialState, action: IIssueAction): IIssueState => {
@@ -19,6 +23,23 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
         ...state,
         list: action.payload as IGithubIssue[],
         loading: false,
+      };
+
+    case IssueActionType.TOGGLE_FILTER:
+      console.log('action', action);
+
+      const newFilters = [...state.filters];
+
+      const targetFilter = newFilters.find((x) => x.id === action.payload);
+      if (targetFilter) {
+        targetFilter.isActive = !targetFilter.isActive;
+      }
+
+      console.log('newFilters', newFilters);
+
+      return {
+        ...state,
+        filters: newFilters,
       };
 
     // ---ERRORS---

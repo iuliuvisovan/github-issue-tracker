@@ -7,10 +7,11 @@ export enum IssueActionType {
   GET_ISSUES_PENDING,
   GET_ISSUES_SUCCESS,
   GET_ISSUES_ERROR,
+  TOGGLE_FILTER,
 }
 
 export const getIssues = (organizationSlug: string, repoSlug: string) => async (dispatch: Dispatch<IIssueAction>) => {
-  dispatch({ type: IssueActionType.GET_ISSUES_ERROR });
+  dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
 
   try {
     const issues = await get(organizationSlug, repoSlug);
@@ -19,4 +20,8 @@ export const getIssues = (organizationSlug: string, repoSlug: string) => async (
   } catch (error) {
     dispatch({ type: IssueActionType.GET_ISSUES_ERROR, payload: error });
   }
+};
+
+export const toggleFilter = (filterId: string) => async (dispatch: Dispatch<IIssueAction>) => {
+  dispatch({ type: IssueActionType.TOGGLE_FILTER, payload: filterId });
 };

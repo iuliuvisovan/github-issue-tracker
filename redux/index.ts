@@ -1,5 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import issues from './reducers/issues';
+import issuesReducer from './reducers/issues';
 
-export default createStore(combineReducers({ issues }), applyMiddleware(thunk));
+const rootReducer = combineReducers({ issuesReducer });
+
+export type IApplicationState = ReturnType<typeof rootReducer>;
+
+export default createStore(rootReducer, applyMiddleware(thunk));
