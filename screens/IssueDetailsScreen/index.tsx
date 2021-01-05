@@ -12,6 +12,7 @@ import { Feather } from '@expo/vector-icons';
 import { IApplicationState } from '../../redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../redux/actions/comments';
+import * as issueActions from '../../redux/actions/issues';
 import Comment from './Comment';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -24,6 +25,10 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   useEffect(() => {
     dispatch(commentActions.getComments(issue.comments_url));
   }, []);
+
+  const bookmark = () => {
+    dispatch(issueActions.bookmark(issue));
+  };
 
   return (
     <ScrollView>
@@ -58,6 +63,7 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
         text="Bookmark"
         style={{ alignSelf: 'flex-end', marginRight: 16 }}
         leftIcon={<Feather size={20} color={Color.blue} name="star" style={{ marginRight: 4 }} />}
+        onPress={bookmark}
       />
       <Text style={styles.subtitle}>COMMENTS</Text>
       {comments.map((comment) => (

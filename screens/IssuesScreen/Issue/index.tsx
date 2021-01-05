@@ -5,12 +5,12 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import { Color, Text } from '../../../components';
 import { IIssueItemProps } from '../../../types/issues';
 import styles from './styles';
+import { Feather } from '@expo/vector-icons';
 
 export default function Issue(props: IIssueItemProps) {
   const { issue } = props;
 
   const goToDetails = () => {
-    console.log('Going to details: ', issue.state);
     props.navigation.push('IssueDetails', { issue });
   };
 
@@ -27,6 +27,11 @@ export default function Issue(props: IIssueItemProps) {
       <View style={[styles.state, { backgroundColor: issue.state == 'open' ? Color.green : Color.border }]}>
         <Text style={styles.stateText}>{issue.state[0].toUpperCase() + issue.state.slice(1)}</Text>
       </View>
+      {issue.isBookmarked && (
+        <View style={styles.star}>
+          <Feather size={20} color={Color.yellow} name="star" style={{ marginRight: 4 }} />
+        </View>
+      )}
       <Text style={styles.title}>{issue.title}</Text>
       <View style={styles.labels}>
         {issue.labels.map((label) => (

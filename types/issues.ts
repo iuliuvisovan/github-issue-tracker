@@ -36,7 +36,8 @@ export interface IGithubIssue {
   created_at: string;
   state: 'open' | 'closed';
   comments_url: string;
-  pull_request?: any;
+  pull_request?: object;
+  isBookmarked?: boolean;
 }
 
 export interface IIssueItemProps {

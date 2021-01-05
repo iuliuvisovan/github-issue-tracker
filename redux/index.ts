@@ -2,8 +2,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import issuesReducer from './reducers/issues';
 import commentsReducer from './reducers/comments';
+import bookmarksReducer from './reducers/bookmarks';
 
-const rootReducer = combineReducers({ issuesReducer, commentsReducer });
+const rootReducer = combineReducers({ issuesReducer, commentsReducer, bookmarksReducer });
 
 export type IApplicationState = ReturnType<typeof rootReducer>;
 

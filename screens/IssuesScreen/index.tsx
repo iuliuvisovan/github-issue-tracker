@@ -12,12 +12,22 @@ import { Button, Color, TextInput, Text } from '../../components';
 import Issue from './Issue';
 import styles from './styles';
 import { IIssuesScreenProps } from '../../types/navigation';
+import { getBookmarks } from '../../redux/actions/bookmarks';
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
-  const { list: issues, loading, filters, sortCriteria, organizationSlug, repoSlug } = useSelector(
+  const { list: issues, loading: loadingIssues, filters, sortCriteria, organizationSlug, repoSlug } = useSelector(
     (state: IApplicationState) => state.issuesReducer
   );
-  console.log('Object.keys(issues[0])', Object.keys(issues[0] || {}));
+  const { list: bookmarks, loading: loadingBookmarks } = useSelector(
+    (state: IApplicationState) => state.bookmarksReducer
+  );
+
+  issues.forEach((issue) => {
+    if (bookmarks.find((bookmark) => bookmark.id === issue.id)) {
+      issue.isBookmarked = true;
+    }
+  });
+
   const dispatch = useDispatch();
   const setOrganizationSlug = (slug: string): void => {
     dispatch(issueActions.setOrganizationSlug(slug));
@@ -51,7 +61,10 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     );
   };
 
-  useEffect(getIssues, []);
+  useEffect(() => {
+    getIssues();
+    getBookmarks();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -63,7 +76,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
         </View>
         <Button style={{ alignSelf: 'center' }} type="quaternary" text="View issues" onPress={getIssues} />
 
-        {loading && (
+        {loadingIssues || loadingBookmarks && (
           <View style={styles.loading}>
             <ActivityIndicator color={Color.blue} />
           </View>
