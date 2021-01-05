@@ -8,4 +8,5 @@ export default {
   pageBackground: '#f4f6f6',
   blue: '#00aaff',
   white: '#fff',
+  red: '#ea1f59'
 };

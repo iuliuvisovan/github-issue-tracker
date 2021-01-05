@@ -51,14 +51,6 @@ function IssuesNavigator() {
           headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
         }}
       />
-      <IssuesStack.Screen
-        name="IssueDetails"
-        component={IssuesDetailsScreen}
-        options={{
-          headerTitle: 'Issue details',
-          headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
-        }}
-      />
     </IssuesStack.Navigator>
   );
 }
@@ -68,7 +60,14 @@ const BookmarksStack = createStackNavigator<IBookmarksStackParamList>();
 function BookmarksNavigator() {
   return (
     <BookmarksStack.Navigator>
-      <BookmarksStack.Screen name="Bookmarks" component={BookmarksScreen} options={{ headerTitle: 'Tab Two Title' }} />
+      <BookmarksStack.Screen
+        name="Bookmarks"
+        component={BookmarksScreen}
+        options={{
+          headerTitle: 'Bookmarks',
+          headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
+        }}
+      />
     </BookmarksStack.Navigator>
   );
 }

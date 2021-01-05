@@ -25,7 +25,7 @@ export default class Button extends React.Component<ButtonProps> {
   };
 
   render() {
-    const { style, textStyle, type = 'default', text = '', leftIcon, noSpacing, autoWidth } = this.props;
+    const { style, textStyle, type = 'default', text = '', leftIcon, rightIcon } = this.props;
 
     const incomingButtonStyle = Array.isArray(style) ? style : [style];
     const incomingTextStyle = Array.isArray(textStyle) ? textStyle : [textStyle];
@@ -34,18 +34,13 @@ export default class Button extends React.Component<ButtonProps> {
       <TouchableOpacity
         {...this.props}
         onPress={this.onPress}
-        style={[
-          styles.defaultButton,
-          styles[type + 'Button'],
-          noSpacing ? styles.noSpacing : undefined,
-          autoWidth ? styles.autoWidth : undefined,
-          ...incomingButtonStyle,
-        ]}
+        style={[styles.defaultButton, styles[type + 'Button'], ...incomingButtonStyle]}
       >
         {leftIcon}
         <Text nT style={[styles.defaultText, styles[type + 'Text'], ...incomingTextStyle]}>
           {text.toUpperCase()}
         </Text>
+        {rightIcon}
       </TouchableOpacity>
     );
   }

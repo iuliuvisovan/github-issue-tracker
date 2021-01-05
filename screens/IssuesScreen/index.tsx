@@ -15,9 +15,15 @@ import styles from './styles';
 import { IIssuesScreenProps } from '../../types/navigation';
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
-  const { list: issues, loading: loadingIssues, filters, sortCriteria, organizationSlug, repoSlug } = useSelector(
-    (state: IApplicationState) => state.issuesReducer
-  );
+  const {
+    list: issues,
+    loading: loadingIssues,
+    filters,
+    sortCriteria,
+    organizationSlug,
+    repoSlug,
+    error,
+  } = useSelector((state: IApplicationState) => state.issuesReducer);
   const { list: bookmarks, loading: loadingBookmarks } = useSelector(
     (state: IApplicationState) => state.bookmarksReducer
   );
@@ -140,10 +146,27 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
         )}
       </View>
 
+      {error && <Text style={styles.error}>An error occurred: {error.message}</Text>}
+
       <View style={styles.issues}>
         <FlatList
           data={issues}
           keyExtractor={(item) => item.id + ''}
+          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 150 }}
+          ListFooterComponent={() => (
+            <View style={styles.paginationButtons}>
+              <Button
+                type="quaternary"
+                text="Previous"
+                leftIcon={<Feather size={20} name="chevron-left" color={Color.blue} />}
+              />
+              <Button
+                type="quaternary"
+                text="Next"
+                rightIcon={<Feather size={20} name="chevron-right" color={Color.blue} />}
+              />
+            </View>
+          )}
           renderItem={({ item }) => (
             <Issue
               issue={{ ...item, isBookmarked: bookmarks.some((x) => x.id === item.id) }}

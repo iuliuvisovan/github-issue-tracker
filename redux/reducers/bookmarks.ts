@@ -41,11 +41,11 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
 
     // ---ERRORS---
     case BookmarkActionType.GET_BOOKMARKS_ERROR:
-      return { ...state, loading: false, error: action.payload as Error };
+      return { ...state, loading: false, error: action.payload as Error, list: [] };
     case BookmarkActionType.ADD_BOOKMARK_ERROR:
-      return { ...state, loading: false, error: action.payload as Error };
+      return { ...state, loading: false, error: action.payload as Error, list: [] };
     case BookmarkActionType.REMOVE_BOOKMARK_ERROR:
-      return { ...state, loading: false, error: action.payload as Error };
+      return { ...state, loading: false, error: action.payload as Error, list: [] };
 
     default:
       return state;

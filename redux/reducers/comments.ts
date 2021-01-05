@@ -1,7 +1,7 @@
 import { CommentActionType, ICommentAction, ICommentState, IGithubComment } from '../../types/comments';
 
 const initialState: ICommentState = {
-  commentList: [],
+  list: [],
   loading: false,
 };
 
@@ -15,14 +15,14 @@ export default (state: ICommentState = initialState, action: ICommentAction): IC
     case CommentActionType.GET_COMMENTS_SUCCESS:
       return {
         ...state,
-        commentList: action.payload as IGithubComment[],
+        list: action.payload as IGithubComment[],
         loading: false,
         error: undefined,
       };
 
     // -- ERRORS --
     case CommentActionType.GET_COMMENTS_ERROR:
-      return { ...state, loading: false, error: action.payload as Error };
+      return { ...state, loading: false, error: action.payload as Error, list: [] };
 
     default:
       return state;

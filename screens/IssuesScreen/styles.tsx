@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   issues: {
     marginTop: 16,
+    marginHorizontal: -16,
   },
   label: {
     color: Color.steel,
@@ -131,5 +132,29 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
+  },
+  error: {
+    color: Color.red,
+    alignSelf: 'center',
+    marginTop: 16,
+  },
+  paginationButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  paginationButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Color.blue + '22',
+    borderRadius: 8,
+    paddingVertical: 8,
+    width: 150,
+    justifyContent: 'center',
+  },
+  paginationButtonText: {
+    color: Color.blue,
+    marginTop: 4,
+    fontSize: 16,
+    marginHorizontal: 8
   },
 });

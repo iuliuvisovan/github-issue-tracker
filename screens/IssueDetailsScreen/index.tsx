@@ -20,7 +20,7 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   const { issue } = props.route.params;
 
   const { list: bookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);
-  const { commentList: comments } = useSelector((state: IApplicationState) => state.commentsReducer);
+  const { list: comments } = useSelector((state: IApplicationState) => state.commentsReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {

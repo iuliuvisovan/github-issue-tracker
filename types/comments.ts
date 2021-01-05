@@ -13,7 +13,7 @@ export interface ICommentAction {
 }
 
 export interface ICommentState {
-  commentList: IGithubComment[];
+  list: IGithubComment[];
   loading: Boolean;
   error?: Error;
 }

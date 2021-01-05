@@ -18,7 +18,7 @@ const defaultSortCriteria = [
   },
   {
     id: 'comments',
-    label: 'Number of comments',
+    label: 'Number Of Comments',
     isActive: false,
   },
 ];
@@ -87,7 +87,7 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
 
     // ---ERRORS---
     case IssueActionType.GET_ISSUES_ERROR:
-      return { ...state, loading: false, error: action.payload as Error };
+      return { ...state, loading: false, error: action.payload as Error, list: [] };
 
     default:
       return state;

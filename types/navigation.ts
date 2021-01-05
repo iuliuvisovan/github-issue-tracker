@@ -4,6 +4,9 @@ import { IGithubIssue } from './issues';
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
+  IssueDetails: {
+    issue: IGithubIssue;
+  };
 };
 
 export type IBottomTabParamList = {
@@ -13,14 +16,13 @@ export type IBottomTabParamList = {
 
 export type IIssuesStackParamList = {
   Issues: undefined;
-  IssueDetails: {
-    issue: IGithubIssue;
-  };
 };
 
 export type IBookmarksStackParamList = {
-  BookmarksScreen: undefined;
+  Bookmarks: undefined;
 };
 
 export type IIssuesScreenProps = StackScreenProps<IIssuesStackParamList, 'Issues'>;
 export type IIssueDetailsScreenProps = StackScreenProps<IIssuesStackParamList, 'IssueDetails'>;
+
+export type IBookmarksScreenProps = StackScreenProps<IBookmarksStackParamList, 'Bookmarks'>;
