@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { View, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, Image } from 'react-native';
 import isDarkColor from 'is-dark-color';
 import moment from 'moment';
 
@@ -12,9 +12,10 @@ import { Feather } from '@expo/vector-icons';
 import { IApplicationState } from '../../redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../redux/actions/comments';
-import * as issueActions from '../../redux/actions/issues';
+import * as bookmarkActions from '../../redux/actions/bookmarks';
 import Comment from './Comment';
 import { ScrollView } from 'react-native-gesture-handler';
+import { WebView } from 'react-native-webview';
 
 export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   const { issue } = props.route.params;
@@ -27,7 +28,7 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   }, []);
 
   const bookmark = () => {
-    dispatch(issueActions.bookmark(issue));
+    dispatch(bookmarkActions.addBookmark(issue));
   };
 
   return (
@@ -48,7 +49,9 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
 
         <Text style={styles.title}>{issue.title}</Text>
         <View style={styles.separator}></View>
-        <Text style={styles.body}>{issue.body}</Text>
+        {/* <Text style={styles.body}>{issue.body.slice(0, 12050)}</Text> */}
+        {/* Apparently <Text> crashes above 10k characters.  */}
+        <WebView source={{ html: getHtmlFromBody(issue.body) }} style={{ height: 250 }} />
         <View style={styles.labels}>
           {issue.labels.map((label) => (
             <View key={label.id} style={[styles.label, { backgroundColor: '#' + label.color }]}>
@@ -72,3 +75,19 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
     </ScrollView>
   );
 }
+
+const getHtmlFromBody = (rawBody: string): string => {
+  const formattedBody = rawBody
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/##([^\r]+)/g, '<h3>$1</h3>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    ;
+
+  const html = `<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><p>${formattedBody}</p></body></html>`;
+
+  console.log('html', html);
+
+  return html;
+};
