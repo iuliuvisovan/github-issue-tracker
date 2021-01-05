@@ -30,18 +30,13 @@ export interface IGithubIssue {
   id: string;
   number: string;
   title: string;
+  body: string;
   user: IGithubUser;
   labels: IGithubIssueLabel[];
   created_at: string;
   state: 'open' | 'closed';
   comments_url: string;
   pull_request?: any;
-}
-
-export interface IGithubIssueComment {
-  user: IGithubUser;
-  body: string;
-  created_at: string;
 }
 
 export interface IIssueItemProps {
@@ -52,4 +47,41 @@ export interface IIssueItemProps {
 export interface IIssueDetailsProps {
   issue: IGithubIssue;
   navigation: StackNavigationProp<IIssuesStackParamList, 'IssueDetails'>;
+}
+
+export interface IIssueState {
+  list: IGithubIssue[];
+  loading: Boolean;
+  error?: Error;
+  organizationSlug: string;
+  repoSlug: string;
+  filters: IIsueFilter[];
+  sortCriteria: IIssueSortCriteria[];
+}
+
+export interface IIssueAction {
+  type: IssueActionType;
+  payload?: IGithubIssue[] | IGithubComment[] | string | Error;
+}
+
+export interface IIsueFilter {
+  id: string;
+  label: string;
+  isActive: boolean;
+}
+
+export interface IIssueSortCriteria {
+  id: string;
+  label: string;
+  isActive: boolean;
+}
+
+export enum IssueActionType {
+  GET_ISSUES_PENDING = 'GET_ISSUES_PENDING',
+  GET_ISSUES_SUCCESS = 'GET_ISSUES_SUCCESS',
+  GET_ISSUES_ERROR = 'GET_ISSUES_ERROR',
+  SET_ORGANIZATION_SLUG = 'SET_ORGANIZATION_SLUG',
+  SET_REPO_SLUG = 'SET_REPO_SLUG',
+  TOGGLE_FILTER = 'TOGGLE_FILTER',
+  SET_SORT_CRITERION = 'SET_SORT_CRITERION',
 }

@@ -1,8 +1,8 @@
-import { IGithubIssueComment } from '../types/issues';
+import { IGithubComment } from '../types/comments';
 import methods from './methods';
 
-export async function get(url: string): Promise<IGithubIssueComment[]> {
-  const comments: IGithubIssueComment[] = await methods.get(url);
+export async function get(url: string): Promise<IGithubComment[]> {
+  const comments: IGithubComment[] = await methods.get(url);
 
   return comments;
 }

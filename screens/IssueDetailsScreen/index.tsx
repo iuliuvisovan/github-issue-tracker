@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, FlatList } from 'react-native';
 import isDarkColor from 'is-dark-color';
 import moment from 'moment';
 
@@ -11,21 +11,23 @@ import styles from './styles';
 import { Feather } from '@expo/vector-icons';
 import { IApplicationState } from '../../redux';
 import { useDispatch, useSelector } from 'react-redux';
-import * as issueActions from '../../redux/actions/issues';
+import * as commentActions from '../../redux/actions/comments';
+import Comment from './Comment';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   const { issue } = props.route.params;
 
-  const { comments } = useSelector((state: IApplicationState) => state.issuesReducer);
+  const { commentList: comments } = useSelector((state: IApplicationState) => state.commentsReducer);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
-    dispatch(issueActions.getComments(issue.commentsUrl));
-  }, [])
+    dispatch(commentActions.getComments(issue.comments_url));
+  }, []);
 
   return (
-    <View>
-      <TouchableOpacity activeOpacity={0.8} onPress={props.navigation.goBack} style={styles.card}>
+    <ScrollView>
+      <View style={styles.card}>
         <View style={styles.user}>
           <Image style={styles.profileImage} source={{ uri: issue.user.avatar_url }} />
           <Text style={styles.username}>{issue.user.login}</Text>
@@ -40,6 +42,8 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
         </View>
 
         <Text style={styles.title}>{issue.title}</Text>
+        <View style={styles.separator}></View>
+        <Text style={styles.body}>{issue.body}</Text>
         <View style={styles.labels}>
           {issue.labels.map((label) => (
             <View key={label.id} style={[styles.label, { backgroundColor: '#' + label.color }]}>
@@ -49,12 +53,16 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
             </View>
           ))}
         </View>
-      </TouchableOpacity>
+      </View>
       <Button
         text="Bookmark"
         style={{ alignSelf: 'flex-end', marginRight: 16 }}
         leftIcon={<Feather size={20} color={Color.blue} name="star" style={{ marginRight: 4 }} />}
       />
-    </View>
+      <Text style={styles.subtitle}>COMMENTS</Text>
+      {comments.map((comment) => (
+        <Comment key={comment.id + ''} comment={comment} />
+      ))}
+    </ScrollView>
   );
 }

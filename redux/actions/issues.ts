@@ -1,22 +1,7 @@
 import { Dispatch } from 'redux';
-import * as issueEndpoints from '../../api/issues';
-import * as issueEndpoints from '../../api/issues';
-import { IIssueAction } from '../reducers/issues/types';
-import store from '../index';
-
-// #get issues
-export enum IssueActionType {
-  GET_ISSUES_PENDING,
-  GET_ISSUES_SUCCESS,
-  GET_ISSUES_ERROR,
-  SET_ORGANIZATION_SLUG,
-  SET_REPO_SLUG,
-  TOGGLE_FILTER,
-  SET_SORT_CRITERION,
-  GET_COMMENTS_PENDING,
-  GET_COMMENTS_SUCCESS,
-  GET_COMMENTS_ERROR,
-}
+import * as issuesApi from '../../api/issues';
+import { IssueActionType, IIssueAction } from '../../types/issues';
+import store from '..';
 
 export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
   dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
@@ -29,24 +14,12 @@ export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
   }
 
   try {
-    const issues = await get({
+    const issues = await issuesApi.get({
       organizationSlug,
       repoSlug,
       filter: filterCriterion,
       sort: sortCriteria.find((x) => x.isActive)?.id || 'created',
     });
-
-    dispatch({ type: IssueActionType.GET_ISSUES_SUCCESS, payload: issues });
-  } catch (error) {
-    dispatch({ type: IssueActionType.GET_ISSUES_ERROR, payload: error });
-  }
-};
-
-export const getComments = (commentsUrl: string) => async (dispatch: Dispatch<IIssueAction>) => {
-  dispatch({ type: IssueActionType.GET_COMMENTS_PENDING });
-
-  try {
-    const issues = await get( );
 
     dispatch({ type: IssueActionType.GET_ISSUES_SUCCESS, payload: issues });
   } catch (error) {

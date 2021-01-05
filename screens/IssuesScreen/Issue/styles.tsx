@@ -7,7 +7,7 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     borderRadius: 8,
-    marginVertical: 8,
+    marginBottom: 16,
     elevation: 4,
     shadowColor: '#414d5b',
     shadowOffset: {
@@ -67,11 +67,12 @@ export default StyleSheet.create({
   state: {
     position: 'absolute',
     right: 0,
-    top: 14,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderTopLeftRadius: 8,
-    borderBottomLeftRadius: 8,
+    top: 13,
+    paddingRight: 14,
+    paddingLeft: 12,
+    paddingVertical: 4,
+    borderTopLeftRadius: 16,
+    borderBottomLeftRadius: 16,
   },
   stateText: {
     color: Color.white,

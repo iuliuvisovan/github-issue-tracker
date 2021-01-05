@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Feather, FontAwesome } from '@expo/vector-icons';
 
 import { ActionSheetIOS, ActivityIndicator, LayoutAnimation, View } from 'react-native';
@@ -17,6 +17,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
   const { list: issues, loading, filters, sortCriteria, organizationSlug, repoSlug } = useSelector(
     (state: IApplicationState) => state.issuesReducer
   );
+  console.log('Object.keys(issues[0])', Object.keys(issues[0] || {}));
   const dispatch = useDispatch();
   const setOrganizationSlug = (slug: string): void => {
     dispatch(issueActions.setOrganizationSlug(slug));
@@ -49,6 +50,8 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
       }
     );
   };
+
+  useEffect(getIssues, []);
 
   return (
     <View style={styles.container}>
@@ -97,7 +100,11 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
       </View>
 
       <View style={styles.issues}>
-        <FlatList data={issues} renderItem={({ item }) => <Issue issue={item} navigation={props.navigation} />} />
+        <FlatList
+          data={issues}
+          keyExtractor={(item) => item.id + ''}
+          renderItem={({ item }) => <Issue issue={item} navigation={props.navigation} />}
+        />
       </View>
     </View>
   );

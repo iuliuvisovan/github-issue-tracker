@@ -1,33 +1,35 @@
-import { IGithubIssue } from '../../../api/issues';
-import { IssueActionType } from '../../actions/issues';
-import { IIssueAction, IIssueState } from './types';
+import { IGithubIssue, IssueActionType, IIssueState, IIssueAction } from '../../types/issues';
+
+const defaultFilters = [
+  { id: 'open', label: 'Open', isActive: true },
+  { id: 'closed', label: 'Closed', isActive: true },
+];
+
+const defaultSortCriteria = [
+  {
+    id: 'created',
+    label: 'Created Date',
+    isActive: true,
+  },
+  {
+    id: 'updated',
+    label: 'Updated Date',
+    isActive: false,
+  },
+  {
+    id: 'comments',
+    label: 'Number of comments',
+    isActive: false,
+  },
+];
 
 const initialState: IIssueState = {
   list: [],
   loading: false,
   organizationSlug: 'facebook',
   repoSlug: 'react-native',
-  filters: [
-    { id: 'open', label: 'Open', isActive: true },
-    { id: 'closed', label: 'Closed', isActive: true },
-  ],
-  sortCriteria: [
-    {
-      id: 'created',
-      label: 'Created Date',
-      isActive: true,
-    },
-    {
-      id: 'updated',
-      label: 'Updated Date',
-      isActive: false,
-    },
-    {
-      id: 'comments',
-      label: 'Number of comments',
-      isActive: false,
-    },
-  ],
+  filters: defaultFilters,
+  sortCriteria: defaultSortCriteria,
 };
 
 export default (state: IIssueState = initialState, action: IIssueAction): IIssueState => {

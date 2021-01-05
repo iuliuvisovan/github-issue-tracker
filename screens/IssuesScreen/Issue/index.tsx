@@ -10,6 +10,7 @@ export default function Issue(props: IIssueItemProps) {
   const { issue } = props;
 
   const goToDetails = () => {
+    console.log('Going to details: ', issue.state);
     props.navigation.push('IssueDetails', { issue });
   };
 
