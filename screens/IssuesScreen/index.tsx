@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
+import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
 import { ActionSheetIOS, ActivityIndicator, LayoutAnimation, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
@@ -22,8 +22,6 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     (state: IApplicationState) => state.bookmarksReducer
   );
 
-  console.log('main page rendered');
-
   const dispatch = useDispatch();
   const setOrganizationSlug = (slug: string): void => {
     dispatch(issueActions.setOrganizationSlug(slug));
@@ -33,6 +31,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
   };
   const getIssues = (): void => {
     dispatch(issueActions.getIssues());
+    collapseRepoPicker();
   };
 
   const toggleFilter = (filterId: string): void => {
@@ -62,25 +61,57 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     dispatch(bookmarkActions.getBookmarks());
   }, []);
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const expandRepoPicker = () => {
+    LayoutAnimation.easeInEaseOut();
+    setIsExpanded(true);
+  };
+
+  const collapseRepoPicker = () => {
+    LayoutAnimation.easeInEaseOut();
+    setIsExpanded(false);
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
-        <View style={styles.repositoryPicker}>
-          <TextInput halfWidth name="Organization" value={organizationSlug} onChangeText={setOrganizationSlug} />
-          <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
-          <TextInput halfWidth name="Repository" value={repoSlug} onChangeText={setRepoSlug} />
+      {isExpanded ? (
+        <View style={styles.card}>
+          <View style={styles.repositoryPicker}>
+            <TextInput halfWidth name="Organization" value={organizationSlug} onChangeText={setOrganizationSlug} />
+            <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
+            <TextInput halfWidth name="Repository" value={repoSlug} onChangeText={setRepoSlug} />
+          </View>
+          <View style={styles.buttonsWrapper}>
+            <Button type="secondary" text="Cancel" onPress={collapseRepoPicker} style={{ width: 130 }} />
+            <Button
+              type="quaternary"
+              text="View issues"
+              leftIcon={<AntDesign size={20} color={Color.blue} name="github" style={{ marginRight: 6 }} />}
+              onPress={getIssues}
+            />
+          </View>
+
+          {loadingIssues ||
+            (loadingBookmarks && (
+              <View style={styles.loading}>
+                <ActivityIndicator color={Color.blue} />
+              </View>
+            ))}
         </View>
-        <Button style={{ alignSelf: 'center' }} type="quaternary" text="View issues" onPress={getIssues} />
+      ) : (
+        <View style={[styles.spacedRow, { marginTop: 0 }]}>
+          <Feather size={20} name="git-branch" color={Color.border} style={styles.filterIcon} />
+          <Text style={styles.repoText}>
+            {organizationSlug} / {repoSlug}
+          </Text>
+          <TouchableOpacity onPress={expandRepoPicker} style={styles.editRepoButton}>
+            <Feather size={14} name="edit-2" color={Color.blue} />
+          </TouchableOpacity>
+        </View>
+      )}
 
-        {loadingIssues ||
-          (loadingBookmarks && (
-            <View style={styles.loading}>
-              <ActivityIndicator color={Color.blue} />
-            </View>
-          ))}
-      </View>
-
-      <View style={styles.filters}>
+      <View style={styles.spacedRow}>
         <Feather size={20} name="sliders" color={Color.border} style={styles.filterIcon} />
         {filters.map(({ id, label, isActive }) => (
           <TouchableOpacity
@@ -96,17 +127,17 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
           </TouchableOpacity>
         ))}
       </View>
-      <View style={styles.filters}>
+      <View style={styles.spacedRow}>
         <Feather size={20} name="arrow-up" color={Color.border} style={styles.filterIcon} />
         <TouchableOpacity onPress={showSortOptions} style={styles.sortButton}>
-          <FontAwesome
-            size={17}
-            name="caret-down"
-            color={Color.blue}
-            style={{ marginRight: 8, marginLeft: -2, marginTop: -2 }}
-          />
+          <FontAwesome size={17} name="caret-down" color={Color.blue} style={styles.caretIcon} />
           <Text style={{ color: Color.blue }}>Sort By {sortCriteria.find((x) => x.isActive)?.label}</Text>
         </TouchableOpacity>
+        {(loadingIssues || loadingBookmarks) && (
+          <View style={styles.loading}>
+            <ActivityIndicator color={Color.blue} />
+          </View>
+        )}
       </View>
 
       <View style={styles.issues}>

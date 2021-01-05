@@ -15,11 +15,12 @@ export default StyleSheet.create({
   loading: {
     position: 'absolute',
     right: 16,
-    bottom: 15,
+    top: 8,
   },
-  filters: {
+  spacedRow: {
     flexDirection: 'row',
     marginTop: 16,
+    alignItems: 'center',
   },
   activeFilter: {
     backgroundColor: Color.white,
@@ -47,6 +48,21 @@ export default StyleSheet.create({
     borderWidth: 1,
 
     paddingTop: 2,
+    backgroundColor: Color.white,
+    borderColor: Color.blue,
+  },
+  editRepoButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 30,
+    width: 30,
+    paddingTop: 0,
+    paddingLeft: 1,
+
+    borderRadius: 16,
+    marginLeft: 12,
+    borderWidth: 1,
+
     backgroundColor: Color.white,
     borderColor: Color.blue,
   },
@@ -92,7 +108,28 @@ export default StyleSheet.create({
   },
   filterIcon: {
     marginLeft: 8,
-    marginTop: 4,
+    marginTop: 2,
     marginRight: 8,
+  },
+  caretIcon: {
+    marginRight: 8,
+    marginLeft: -2,
+    marginTop: -1,
+  },
+  collapsedRepoPicker: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  repoText: {
+    marginTop: 6,
+    marginLeft: 8,
+    color: Color.steel,
+    fontSize: 16,
+  },
+  buttonsWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
   },
 });
