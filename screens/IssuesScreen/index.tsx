@@ -13,6 +13,7 @@ import { Button, Color, TextInput, Text } from '../../components';
 import Issue from './Issue';
 import styles from './styles';
 import { IIssuesScreenProps } from '../../types/navigation';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
   const {
@@ -22,6 +23,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     sortCriteria,
     organizationSlug,
     repoSlug,
+    page,
     error,
   } = useSelector((state: IApplicationState) => state.issuesReducer);
   const { list: bookmarks, loading: loadingBookmarks } = useSelector(
@@ -34,6 +36,14 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
   };
   const setRepoSlug = (slug: string): void => {
     dispatch(issueActions.setRepoSlug(slug));
+  };
+  const goToNextPage = (): void => {
+    dispatch(issueActions.setPage(page + 1));
+    getIssues();
+  };
+  const goToPreviousPage = (): void => {
+    dispatch(issueActions.setPage(page - 1));
+    getIssues();
   };
   const getIssues = (): void => {
     dispatch(issueActions.getIssues());
@@ -153,26 +163,35 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
           data={issues}
           keyExtractor={(item) => item.id + ''}
           contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 150 }}
-          ListFooterComponent={() => (
-            <View style={styles.paginationButtons}>
-              <Button
-                type="quaternary"
-                text="Previous"
-                leftIcon={<Feather size={20} name="chevron-left" color={Color.blue} />}
-              />
-              <Button
-                type="quaternary"
-                text="Next"
-                rightIcon={<Feather size={20} name="chevron-right" color={Color.blue} />}
-              />
-            </View>
-          )}
           renderItem={({ item }) => (
             <Issue
               issue={{ ...item, isBookmarked: bookmarks.some((x) => x.id === item.id) }}
               navigation={props.navigation}
             />
           )}
+        />
+      </View>
+
+      <View pointerEvents="box-none" style={styles.paginationButtons}>
+        <Button
+          style={{ width: 120 }}
+          disabled={page < 2}
+          type="quaternary"
+          text="Previous"
+          leftIcon={<Feather size={20} name="chevron-left" color={page < 2 ? Color.border : Color.blue} />}
+          onPress={goToPreviousPage}
+        />
+        <Button
+          text="Next"
+          type="quaternary"
+          style={{ width: 120 }}
+          rightIcon={<Feather size={20} name="chevron-right" color={Color.blue} />}
+          onPress={goToNextPage}
+        />
+        <LinearGradient
+          pointerEvents="none"
+          colors={[Color.steel + '00', Color.steel + '44']}
+          style={styles.gradient}
         />
       </View>
     </View>

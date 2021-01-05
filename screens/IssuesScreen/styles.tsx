@@ -1,4 +1,4 @@
-import { Color } from '../../components';
+import { Color, vw } from '../../components';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -141,20 +141,18 @@ export default StyleSheet.create({
   paginationButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    width: vw,
+    paddingHorizontal: 16,
   },
-  paginationButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: Color.blue + '22',
-    borderRadius: 8,
-    paddingVertical: 8,
-    width: 150,
-    justifyContent: 'center',
-  },
-  paginationButtonText: {
-    color: Color.blue,
-    marginTop: 4,
-    fontSize: 16,
-    marginHorizontal: 8
+  gradient: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    height: 120,
+    width: vw,
+    zIndex: -1,
   },
 });

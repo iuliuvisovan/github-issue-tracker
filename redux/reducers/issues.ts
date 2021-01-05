@@ -30,6 +30,7 @@ const initialState: IIssueState = {
   repoSlug: 'react-native',
   filters: defaultFilters,
   sortCriteria: defaultSortCriteria,
+  page: 1,
 };
 
 export default (state: IIssueState = initialState, action: IIssueAction): IIssueState => {
@@ -57,6 +58,12 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
       return {
         ...state,
         repoSlug: action.payload as string,
+      };
+
+    case IssueActionType.SET_PAGE:
+      return {
+        ...state,
+        page: action.payload as number,
       };
 
     case IssueActionType.TOGGLE_FILTER:

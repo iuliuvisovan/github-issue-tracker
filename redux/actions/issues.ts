@@ -6,7 +6,7 @@ import store from '..';
 export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
   dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
 
-  const { organizationSlug, repoSlug, filters, sortCriteria } = store.getState().issuesReducer;
+  const { organizationSlug, repoSlug, filters, sortCriteria, page } = store.getState().issuesReducer;
 
   let filterCriterion = filters.find((x) => x.isActive)?.id || 'all';
   if (filters.every((x) => x.isActive)) {
@@ -19,6 +19,7 @@ export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
       repoSlug,
       filter: filterCriterion,
       sort: sortCriteria.find((x) => x.isActive)?.id || 'created',
+      page: page,
     });
 
     dispatch({ type: IssueActionType.GET_ISSUES_SUCCESS, payload: issues });
@@ -33,6 +34,10 @@ export const setOrganizationSlug = (organizationSlug: string) => async (dispatch
 
 export const setRepoSlug = (repoSlug: string) => async (dispatch: Dispatch<IIssueAction>) => {
   dispatch({ type: IssueActionType.SET_REPO_SLUG, payload: repoSlug });
+};
+
+export const setPage = (pageNumber: number) => async (dispatch: Dispatch<IIssueAction>) => {
+  dispatch({ type: IssueActionType.SET_PAGE, payload: pageNumber });
 };
 
 export const toggleFilter = (filterId: string) => async (dispatch: Dispatch<IIssueAction>) => {

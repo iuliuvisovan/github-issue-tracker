@@ -6,6 +6,7 @@ export interface IGetIssuesParams {
   repoSlug: string;
   filter: string;
   sort: string;
+  page: number;
 }
 
 export interface IGithubUser {
@@ -62,11 +63,12 @@ export interface IIssueState {
   repoSlug: string;
   filters: IIsueFilter[];
   sortCriteria: IIssueSortCriteria[];
+  page: number;
 }
 
 export interface IIssueAction {
   type: IssueActionType;
-  payload?: IGithubIssue[] | IGithubComment[] | string | Error;
+  payload?: IGithubIssue[] | IGithubComment[] | string | number | Error;
 }
 
 export interface IIsueFilter {
@@ -89,4 +91,5 @@ export enum IssueActionType {
   SET_REPO_SLUG = 'SET_REPO_SLUG',
   TOGGLE_FILTER = 'TOGGLE_FILTER',
   SET_SORT_CRITERION = 'SET_SORT_CRITERION',
+  SET_PAGE = 'SET_PAGE',
 }
