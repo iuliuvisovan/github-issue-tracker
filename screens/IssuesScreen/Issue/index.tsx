@@ -5,7 +5,8 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import { Color, Text } from '../../../components';
 import { IIssueItemProps } from '../../../types/issues';
 import styles from './styles';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
+import Header from './Header';
 
 export default function Issue(props: IIssueItemProps) {
   const { issue } = props;
@@ -16,22 +17,7 @@ export default function Issue(props: IIssueItemProps) {
 
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={goToDetails} style={styles.card}>
-      <View style={styles.user}>
-        <Image style={styles.profileImage} source={{ uri: issue.user.avatar_url }} />
-        <Text style={styles.username}>{issue.user.login}</Text>
-        <Text style={styles.timeAgoText}>
-          {' '}
-          • {moment.duration(moment().diff(moment(issue.created_at))).humanize() + ' ago'}
-        </Text>
-      </View>
-      <View style={[styles.state, { backgroundColor: issue.state == 'open' ? Color.green : Color.border }]}>
-        <Text style={styles.stateText}>{issue.state[0].toUpperCase() + issue.state.slice(1)}</Text>
-      </View>
-      {issue.isBookmarked && (
-        <View style={styles.star}>
-          <Feather size={20} color={Color.yellow} name="star" style={{ marginRight: 4 }} />
-        </View>
-      )}
+      <Header issue={issue} />
       <Text style={styles.title}>{issue.title}</Text>
       <View style={styles.labels}>
         {issue.labels.map((label) => (

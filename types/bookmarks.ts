@@ -8,7 +8,7 @@ export interface IBookmarkState {
 
 export interface IBookmarkAction {
   type: BookmarkActionType;
-  payload?: IGithubIssue[] | IGithubIssue | string | Error;
+  payload?: IGithubIssue[] | IGithubIssue | number | Error;
 }
 
 export enum BookmarkActionType {

@@ -90,4 +90,9 @@ export default StyleSheet.create({
     shadowRadius: 3,
     shadowOpacity: 0.1,
   },
+  filterIcon: {
+    marginLeft: 8,
+    marginTop: 4,
+    marginRight: 8,
+  },
 });

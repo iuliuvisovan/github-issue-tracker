@@ -13,7 +13,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 16,
     lineHeight: 20,
-    fontFamily: 'muli-extra-bold'
+    fontFamily: 'muli-extra-bold',
   },
   separator: {
     width: '100%',
@@ -33,5 +33,21 @@ export default StyleSheet.create({
     letterSpacing: 0.9,
     marginTop: 6,
     margin: 16,
+  },
+  noComments: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 48,
+    alignSelf: 'center',
+  },
+  noCommentsText: {
+    color: Color.border,
+    marginTop: 8,
+  },
+  bookmarkButton: {
+    alignSelf: 'flex-end',
+    marginRight: 16,
+    width: 'auto',
+    paddingHorizontal: 16,
   },
 });

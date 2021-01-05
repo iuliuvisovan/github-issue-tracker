@@ -13,6 +13,8 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
       return { ...state, loading: true };
     case BookmarkActionType.ADD_BOOKMARK_PENDING:
       return { ...state, loading: true };
+    case BookmarkActionType.REMOVE_BOOKMARK_PENDING:
+      return { ...state, loading: true };
 
     // ---SUCCESSES---
     case BookmarkActionType.GET_BOOKMARKS_SUCCESS:
@@ -27,12 +29,22 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
       return {
         ...state,
         list: [...state.list, action.payload as IGithubIssue],
+        loading: false,
+      };
+
+    case BookmarkActionType.REMOVE_BOOKMARK_SUCCESS:
+      return {
+        ...state,
+        list: [...state.list.filter((x) => x.id !== action.payload)],
+        loading: false,
       };
 
     // ---ERRORS---
     case BookmarkActionType.GET_BOOKMARKS_ERROR:
       return { ...state, loading: false, error: action.payload as Error };
     case BookmarkActionType.ADD_BOOKMARK_ERROR:
+      return { ...state, loading: false, error: action.payload as Error };
+    case BookmarkActionType.REMOVE_BOOKMARK_ERROR:
       return { ...state, loading: false, error: action.payload as Error };
 
     default:

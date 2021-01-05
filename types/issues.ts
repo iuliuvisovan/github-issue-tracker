@@ -27,7 +27,7 @@ export interface IGithubIssueLabel {
 
 export interface IGithubIssue {
   url: string;
-  id: string;
+  id: number;
   number: string;
   title: string;
   body: string;
@@ -43,6 +43,10 @@ export interface IGithubIssue {
 export interface IIssueItemProps {
   issue: IGithubIssue;
   navigation: StackNavigationProp<IIssuesStackParamList, 'Issues'>;
+}
+
+export interface IIssueHeaderProps {
+  issue: IGithubIssue;
 }
 
 export interface IIssueDetailsProps {

@@ -7,7 +7,11 @@ export const getBookmarks = () => async (dispatch: Dispatch<IBookmarkAction>) =>
   dispatch({ type: BookmarkActionType.GET_BOOKMARKS_PENDING });
 
   try {
+    console.log('gettgin');
+
     const bookmarksJson = await AsyncStorage.getItem('bookmarks');
+
+    console.log('bookmarksJson', bookmarksJson?.slice(0, 10));
 
     let bookmarks = [];
     if (bookmarksJson) {
@@ -34,7 +38,32 @@ export const addBookmark = (issue: IGithubIssue) => async (dispatch: Dispatch<IB
     bookmarks.push(issue);
 
     await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+    dispatch({ type: BookmarkActionType.ADD_BOOKMARK_SUCCESS, payload: issue });
   } catch (error) {
+    console.log('error', error);
+
     dispatch({ type: BookmarkActionType.ADD_BOOKMARK_ERROR, payload: error });
+  }
+};
+
+export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<IBookmarkAction>) => {
+  dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_PENDING });
+
+  try {
+    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
+
+    if (bookmarksJson) {
+      let bookmarks = JSON.parse(bookmarksJson) as IGithubIssue[];
+      bookmarks = bookmarks.filter((x) => x.id !== issueId);
+
+      await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+    }
+
+    dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_SUCCESS, payload: issueId });
+  } catch (error) {
+    console.log('error', error);
+
+    dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_ERROR, payload: error });
   }
 };

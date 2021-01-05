@@ -1,25 +1,25 @@
 import React, { useEffect } from 'react';
 
-import { View, Image } from 'react-native';
+import { View, Image, ScrollView } from 'react-native';
+import { WebView } from 'react-native-webview';
 import isDarkColor from 'is-dark-color';
-import moment from 'moment';
 
 import { Button, Color, Text } from '../../components';
 import { IIssueDetailsScreenProps } from '../../types/navigation';
 
 import styles from './styles';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { IApplicationState } from '../../redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../redux/actions/comments';
 import * as bookmarkActions from '../../redux/actions/bookmarks';
 import Comment from './Comment';
-import { ScrollView } from 'react-native-gesture-handler';
-import { WebView } from 'react-native-webview';
+import Header from '../IssuesScreen/Issue/Header';
 
 export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   const { issue } = props.route.params;
 
+  const { list: bookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);
   const { commentList: comments } = useSelector((state: IApplicationState) => state.commentsReducer);
   const dispatch = useDispatch();
 
@@ -27,30 +27,25 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
     dispatch(commentActions.getComments(issue.comments_url));
   }, []);
 
-  const bookmark = () => {
+  const addAsBookmark = () => {
     dispatch(bookmarkActions.addBookmark(issue));
   };
+
+  const removeAsBookmark = () => {
+    dispatch(bookmarkActions.removeBookmark(issue.id));
+  };
+
+  const isBookmarked = bookmarks.some((x) => x.id === issue.id);
 
   return (
     <ScrollView>
       <View style={styles.card}>
-        <View style={styles.user}>
-          <Image style={styles.profileImage} source={{ uri: issue.user.avatar_url }} />
-          <Text style={styles.username}>{issue.user.login}</Text>
-          <Text style={styles.timeAgoText}>
-            {' '}
-            • {moment.duration(moment().diff(moment(issue.created_at))).humanize() + ' ago'}
-          </Text>
-        </View>
-
-        <View style={[styles.state, { backgroundColor: issue.state == 'open' ? Color.green : Color.steel }]}>
-          <Text style={styles.stateText}>{issue.state[0].toUpperCase() + issue.state.slice(1)}</Text>
-        </View>
+        <Header issue={{ ...issue, isBookmarked }} />
 
         <Text style={styles.title}>{issue.title}</Text>
         <View style={styles.separator}></View>
         {/* <Text style={styles.body}>{issue.body.slice(0, 12050)}</Text> */}
-        {/* Apparently <Text> crashes above 10k characters.  */}
+        {/* Apparently <Text> crashes after 10k characters of content.  */}
         <WebView source={{ html: getHtmlFromBody(issue.body) }} style={{ height: 250 }} />
         <View style={styles.labels}>
           {issue.labels.map((label) => (
@@ -63,12 +58,22 @@ export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
         </View>
       </View>
       <Button
-        text="Bookmark"
-        style={{ alignSelf: 'flex-end', marginRight: 16 }}
-        leftIcon={<Feather size={20} color={Color.blue} name="star" style={{ marginRight: 4 }} />}
-        onPress={bookmark}
+        text={isBookmarked ? 'Remove Bookmark' : 'Bookmark'}
+        style={styles.bookmarkButton}
+        leftIcon={
+          <AntDesign size={20} color={Color.blue} name={isBookmarked ? 'star' : 'staro'} style={{ marginRight: 6 }} />
+        }
+        onPress={isBookmarked ? removeAsBookmark : addAsBookmark}
       />
-      <Text style={styles.subtitle}>COMMENTS</Text>
+      {comments.length ? (
+        <Text style={styles.subtitle}>COMMENTS</Text>
+      ) : (
+        <View style={styles.noComments}>
+          <Feather size={40} color={Color.border} name="message-square" style={{ marginRight: 4 }} />
+          <Text style={styles.noCommentsText}>No comments to show.</Text>
+        </View>
+      )}
+
       {comments.map((comment) => (
         <Comment key={comment.id + ''} comment={comment} />
       ))}
@@ -82,9 +87,7 @@ const getHtmlFromBody = (rawBody: string): string => {
     .replace(/>/g, '&gt;')
     .replace(/##([^\r]+)/g, '<h3>$1</h3>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-    ;
-
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
   const html = `<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><p>${formattedBody}</p></body></html>`;
 
   console.log('html', html);

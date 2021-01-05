@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -18,7 +18,7 @@ export default function BottomTabNavigator() {
         name="Issues"
         component={IssuesNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="check-square" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="github" color={color} />,
           tabBarLabel: ({ color }) => <Text style={{ fontSize: 11, fontFamily: 'muli', color }}>Issues</Text>,
         }}
       />
@@ -35,7 +35,7 @@ export default function BottomTabNavigator() {
 }
 
 function TabBarIcon(props: { name: any; color: string }) {
-  return <Feather size={25} style={{ marginBottom: -10 }} {...props} />;
+  return <AntDesign size={25} style={{ marginBottom: -8 }} {...props} />;
 }
 
 const IssuesStack = createStackNavigator<IIssuesStackParamList>();

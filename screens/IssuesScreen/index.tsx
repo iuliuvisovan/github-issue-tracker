@@ -7,12 +7,12 @@ import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { IApplicationState } from '../../redux';
 import * as issueActions from '../../redux/actions/issues';
+import * as bookmarkActions from '../../redux/actions/bookmarks';
 
 import { Button, Color, TextInput, Text } from '../../components';
 import Issue from './Issue';
 import styles from './styles';
 import { IIssuesScreenProps } from '../../types/navigation';
-import { getBookmarks } from '../../redux/actions/bookmarks';
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
   const { list: issues, loading: loadingIssues, filters, sortCriteria, organizationSlug, repoSlug } = useSelector(
@@ -21,6 +21,8 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
   const { list: bookmarks, loading: loadingBookmarks } = useSelector(
     (state: IApplicationState) => state.bookmarksReducer
   );
+
+  console.log('bookmarks', bookmarks);
 
   issues.forEach((issue) => {
     if (bookmarks.find((bookmark) => bookmark.id === issue.id)) {
@@ -63,7 +65,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
 
   useEffect(() => {
     getIssues();
-    getBookmarks();
+    dispatch(bookmarkActions.getBookmarks());
   }, []);
 
   return (
@@ -76,15 +78,16 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
         </View>
         <Button style={{ alignSelf: 'center' }} type="quaternary" text="View issues" onPress={getIssues} />
 
-        {loadingIssues || loadingBookmarks && (
-          <View style={styles.loading}>
-            <ActivityIndicator color={Color.blue} />
-          </View>
-        )}
+        {loadingIssues ||
+          (loadingBookmarks && (
+            <View style={styles.loading}>
+              <ActivityIndicator color={Color.blue} />
+            </View>
+          ))}
       </View>
 
       <View style={styles.filters}>
-        <Text style={styles.label}>SHOW:</Text>
+        <Feather size={20} name="sliders" color={Color.border} style={styles.filterIcon} />
         {filters.map(({ id, label, isActive }) => (
           <TouchableOpacity
             onPress={() => toggleFilter(id)}
@@ -95,12 +98,12 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
             {isActive && (
               <Feather size={16} name="check" color={Color.blue} style={{ marginRight: 4, marginLeft: -4 }} />
             )}
-            <Text style={{ color: Color.blue }}>{label}</Text>
+            <Text style={{ color: Color.blue }}>{label} issues</Text>
           </TouchableOpacity>
         ))}
       </View>
       <View style={styles.filters}>
-        <Text style={styles.label}>SORT BY:</Text>
+        <Feather size={20} name="arrow-up" color={Color.border} style={styles.filterIcon} />
         <TouchableOpacity onPress={showSortOptions} style={styles.sortButton}>
           <FontAwesome
             size={17}
@@ -108,7 +111,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
             color={Color.blue}
             style={{ marginRight: 8, marginLeft: -2, marginTop: -2 }}
           />
-          <Text style={{ color: Color.blue }}>{sortCriteria.find((x) => x.isActive)?.label}</Text>
+          <Text style={{ color: Color.blue }}>Sort By {sortCriteria.find((x) => x.isActive)?.label}</Text>
         </TouchableOpacity>
       </View>
 
