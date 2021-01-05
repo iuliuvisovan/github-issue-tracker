@@ -34,7 +34,6 @@ export default StyleSheet.create({
     color: Color.steel,
     fontSize: 12,
   },
-
   title: {
     maxWidth: Dimensions.get('screen').width - 100,
   },
@@ -64,5 +63,18 @@ export default StyleSheet.create({
   timeAgoText: {
     color: Color.border,
     fontSize: 12,
+  },
+  state: {
+    position: 'absolute',
+    right: 0,
+    top: 14,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+  },
+  stateText: {
+    color: Color.white,
+    fontFamily: 'muli-extra-bold',
   },
 });

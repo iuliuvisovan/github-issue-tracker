@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
-import { get } from '../../api/issues';
+import * as issueEndpoints from '../../api/issues';
+import * as issueEndpoints from '../../api/issues';
 import { IIssueAction } from '../reducers/issues/types';
 import store from '../index';
 
@@ -12,6 +13,9 @@ export enum IssueActionType {
   SET_REPO_SLUG,
   TOGGLE_FILTER,
   SET_SORT_CRITERION,
+  GET_COMMENTS_PENDING,
+  GET_COMMENTS_SUCCESS,
+  GET_COMMENTS_ERROR,
 }
 
 export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
@@ -31,6 +35,18 @@ export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
       filter: filterCriterion,
       sort: sortCriteria.find((x) => x.isActive)?.id || 'created',
     });
+
+    dispatch({ type: IssueActionType.GET_ISSUES_SUCCESS, payload: issues });
+  } catch (error) {
+    dispatch({ type: IssueActionType.GET_ISSUES_ERROR, payload: error });
+  }
+};
+
+export const getComments = (commentsUrl: string) => async (dispatch: Dispatch<IIssueAction>) => {
+  dispatch({ type: IssueActionType.GET_COMMENTS_PENDING });
+
+  try {
+    const issues = await get( );
 
     dispatch({ type: IssueActionType.GET_ISSUES_SUCCESS, payload: issues });
   } catch (error) {

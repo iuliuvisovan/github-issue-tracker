@@ -4,7 +4,13 @@ export default {
   get: async function (endpoint: string) {
     const options = { method: 'GET' };
 
-    const response = await fetch(`${baseUrl}/${endpoint}`, options);
+    let fullUrl = `${baseUrl}/${endpoint}`;
+
+    if (endpoint.includes('http')) {
+      fullUrl = endpoint;
+    }
+
+    const response = await fetch(fullUrl, options);
 
     console.log('Fetching', `${baseUrl}/${endpoint}`);
 

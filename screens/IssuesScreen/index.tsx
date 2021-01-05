@@ -11,8 +11,9 @@ import * as issueActions from '../../redux/actions/issues';
 import { Button, Color, TextInput, Text } from '../../components';
 import Issue from './Issue';
 import styles from './styles';
+import { IIssuesScreenProps } from '../../types/navigation';
 
-export default function IssuesScreen() {
+export default function IssuesScreen(props: IIssuesScreenProps) {
   const { list: issues, loading, filters, sortCriteria, organizationSlug, repoSlug } = useSelector(
     (state: IApplicationState) => state.issuesReducer
   );
@@ -57,7 +58,7 @@ export default function IssuesScreen() {
           <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
           <TextInput halfWidth name="Repository" value={repoSlug} onChangeText={setRepoSlug} />
         </View>
-        <Button type="quaternary" text="Show issues" onPress={getIssues} />
+        <Button style={{ alignSelf: 'center' }} type="quaternary" text="View issues" onPress={getIssues} />
 
         {loading && (
           <View style={styles.loading}>
@@ -72,6 +73,7 @@ export default function IssuesScreen() {
           <TouchableOpacity
             onPress={() => toggleFilter(id)}
             activeOpacity={1}
+            key={id}
             style={[styles.filter, isActive ? styles.activeFilter : {}]}
           >
             {isActive && (
@@ -95,7 +97,7 @@ export default function IssuesScreen() {
       </View>
 
       <View style={styles.issues}>
-        <FlatList data={issues} renderItem={({ item }) => <Issue issue={item} />} />
+        <FlatList data={issues} renderItem={({ item }) => <Issue issue={item} navigation={props.navigation} />} />
       </View>
     </View>
   );

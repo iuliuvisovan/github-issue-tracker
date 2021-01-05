@@ -5,10 +5,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Color, Text } from '../components';
 import IssuesScreen from '../screens/IssuesScreen';
-import Bookmarks from '../screens/BookmarksScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import IssuesDetailsScreen from '../screens/IssueDetailsScreen';
+import BookmarksScreen from '../screens/BookmarksScreen';
+import { IBottomTabParamList, IIssuesStackParamList, IBookmarksStackParamList } from '../types/navigation';
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
+const BottomTab = createBottomTabNavigator<IBottomTabParamList>();
 
 export default function BottomTabNavigator() {
   return (
@@ -37,7 +38,7 @@ function TabBarIcon(props: { name: any; color: string }) {
   return <Feather size={25} style={{ marginBottom: -10 }} {...props} />;
 }
 
-const IssuesStack = createStackNavigator<TabOneParamList>();
+const IssuesStack = createStackNavigator<IIssuesStackParamList>();
 
 function IssuesNavigator() {
   return (
@@ -50,16 +51,24 @@ function IssuesNavigator() {
           headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
         }}
       />
+      <IssuesStack.Screen
+        name="IssueDetails"
+        component={IssuesDetailsScreen}
+        options={{
+          headerTitle: 'Issue details',
+          headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
+        }}
+      />
     </IssuesStack.Navigator>
   );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const BookmarksStack = createStackNavigator<IBookmarksStackParamList>();
 
 function BookmarksNavigator() {
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen name="TabTwoScreen" component={Bookmarks} options={{ headerTitle: 'Tab Two Title' }} />
-    </TabTwoStack.Navigator>
+    <BookmarksStack.Navigator>
+      <BookmarksStack.Screen name="Bookmarks" component={BookmarksScreen} options={{ headerTitle: 'Tab Two Title' }} />
+    </BookmarksStack.Navigator>
   );
 }

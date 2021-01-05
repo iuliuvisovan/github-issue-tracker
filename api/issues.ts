@@ -1,6 +1,9 @@
+import { IGetIssuesParams, IGithubIssue } from '../types/issues';
 import methods from './methods';
 
-export async function get({ organizationSlug, repoSlug, filter, sort }: IGetIssuesParams): Promise<IGithubIssue[]> {
+export async function get(queryParams: IGetIssuesParams): Promise<IGithubIssue[]> {
+  const { organizationSlug, repoSlug, filter, sort } = queryParams;
+
   const issues: IGithubIssue[] = await methods.get(
     `repos/${organizationSlug}/${repoSlug}/issues?state=${filter}&sort=${sort}`
   );
@@ -8,37 +11,12 @@ export async function get({ organizationSlug, repoSlug, filter, sort }: IGetIssu
   return issues.filter((x) => !x.pull_request);
 }
 
-export interface IGetIssuesParams {
-  organizationSlug: string;
-  repoSlug: string;
-  filter: string;
-  sort: string;
-}
+export async function getComments(queryParams: IGetIssuesParams): Promise<IGithubIssue[]> {
+  const { organizationSlug, repoSlug, filter, sort } = queryParams;
 
-export interface IGithubUser {
-  login: string;
-  id: number;
-  avatar_url: string;
-  url: string;
-  html_url: string;
-}
+  const issues: IGithubIssue[] = await methods.get(
+    `repos/${organizationSlug}/${repoSlug}/issues?state=${filter}&sort=${sort}`
+  );
 
-export interface IGithubIssueLabel {
-  id: string;
-  url: string;
-  name: string;
-  color: string;
-  default: boolean;
-  description: string;
-}
-
-export interface IGithubIssue {
-  url: string;
-  id: string;
-  number: string;
-  title: string;
-  user: IGithubUser;
-  labels: IGithubIssueLabel[];
-  created_at: string;
-  pull_request?: any;
+  return issues.filter((x) => !x.pull_request);
 }

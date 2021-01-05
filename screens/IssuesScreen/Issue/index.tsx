@@ -1,18 +1,20 @@
 import React from 'react';
-
-import { View, Image } from 'react-native';
-
-import { Color, Text } from '../../../components';
-import styles from './styles';
-import { IGithubIssue } from '../../../api/issues';
-import moment from 'moment';
 import isDarkColor from 'is-dark-color';
+import moment from 'moment';
+import { View, Image, TouchableOpacity } from 'react-native';
+import { Color, Text } from '../../../components';
+import { IIssueItemProps } from '../../../types/issues';
+import styles from './styles';
 
-export default function Issue(props: IIssueProps) {
+export default function Issue(props: IIssueItemProps) {
   const { issue } = props;
 
+  const goToDetails = () => {
+    props.navigation.push('IssueDetails', { issue });
+  };
+
   return (
-    <View style={styles.card}>
+    <TouchableOpacity activeOpacity={0.8} onPress={goToDetails} style={styles.card}>
       <View style={styles.user}>
         <Image style={styles.profileImage} source={{ uri: issue.user.avatar_url }} />
         <Text style={styles.username}>{issue.user.login}</Text>
@@ -20,6 +22,9 @@ export default function Issue(props: IIssueProps) {
           {' '}
           • {moment.duration(moment().diff(moment(issue.created_at))).humanize() + ' ago'}
         </Text>
+      </View>
+      <View style={[styles.state, { backgroundColor: issue.state == 'open' ? Color.green : Color.border }]}>
+        <Text style={styles.stateText}>{issue.state[0].toUpperCase() + issue.state.slice(1)}</Text>
       </View>
       <Text style={styles.title}>{issue.title}</Text>
       <View style={styles.labels}>
@@ -31,10 +36,6 @@ export default function Issue(props: IIssueProps) {
           </View>
         ))}
       </View>
-    </View>
+    </TouchableOpacity>
   );
-}
-
-export interface IIssueProps {
-  issue: IGithubIssue;
 }
