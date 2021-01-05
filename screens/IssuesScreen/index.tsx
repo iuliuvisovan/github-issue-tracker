@@ -22,13 +22,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     (state: IApplicationState) => state.bookmarksReducer
   );
 
-  console.log('bookmarks', bookmarks);
-
-  issues.forEach((issue) => {
-    if (bookmarks.find((bookmark) => bookmark.id === issue.id)) {
-      issue.isBookmarked = true;
-    }
-  });
+  console.log('main page rendered');
 
   const dispatch = useDispatch();
   const setOrganizationSlug = (slug: string): void => {
@@ -119,7 +113,12 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
         <FlatList
           data={issues}
           keyExtractor={(item) => item.id + ''}
-          renderItem={({ item }) => <Issue issue={item} navigation={props.navigation} />}
+          renderItem={({ item }) => (
+            <Issue
+              issue={{ ...item, isBookmarked: bookmarks.some((x) => x.id === item.id) }}
+              navigation={props.navigation}
+            />
+          )}
         />
       </View>
     </View>

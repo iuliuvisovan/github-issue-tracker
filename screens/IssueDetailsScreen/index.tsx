@@ -90,7 +90,5 @@ const getHtmlFromBody = (rawBody: string): string => {
     .replace(/`([^`]+)`/g, '<code>$1</code>');
   const html = `<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body><p>${formattedBody}</p></body></html>`;
 
-  console.log('html', html);
-
   return html;
 };
