@@ -12,8 +12,6 @@ export default {
 
     const response = await fetch(fullUrl, options);
 
-    console.log('Fetching', `${baseUrl}/${endpoint}`);
-
     const json = await response.json();
 
     if (!response.ok) throw Error(json.message);

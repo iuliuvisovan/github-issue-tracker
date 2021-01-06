@@ -1,14 +1,12 @@
 import React from 'react';
 import isDarkColor from 'is-dark-color';
-import moment from 'moment';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Color, Text } from '../../../components';
-import { IIssueItemProps } from '../../../types/issues';
+import { IssueItemProps } from '../../../types/issues';
 import styles from './styles';
-import { AntDesign, Feather } from '@expo/vector-icons';
 import Header from './Header';
 
-export default function Issue(props: IIssueItemProps) {
+export default function Issue(props: IssueItemProps) {
   const { issue } = props;
 
   const goToDetails = () => {

@@ -6,10 +6,10 @@ import { FlatList } from "react-native-gesture-handler";
 import { Color } from "../../components";
 import Issue from "../IssuesScreen/Issue";
 import styles from "./styles";
-import { IBookmarksScreenProps } from "../../types/navigation";
+import { BookmarksScreenProps } from "../../types/navigation";
 import useBookmarks from "../../hooks/useBookmarks";
 
-export default function BookmarksScreen(props: IBookmarksScreenProps) {
+export default function BookmarksScreen(props: BookmarksScreenProps) {
   const bookmarksManager = useBookmarks();
   const { bookmarks, loading } = bookmarksManager.data;
   const { getBookmarks } = bookmarksManager.actions;

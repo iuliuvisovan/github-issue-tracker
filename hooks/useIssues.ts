@@ -1,4 +1,3 @@
-import { lang } from "moment";
 import { LayoutAnimation } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../redux";

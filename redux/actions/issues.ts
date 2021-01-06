@@ -1,9 +1,9 @@
 import { Dispatch } from "redux";
 import * as issuesApi from "../../api/issues";
-import { IssueActionType, IIssueAction } from "../../types/issues";
+import { IssueActionType, IssueAction } from "../../types/issues";
 import store from "..";
 
-export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
+export const getIssues = () => async (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
 
   const { organizationId, repoId, filters, sortCriteria, currentPage: page } = store.getState().issuesReducer;
@@ -28,22 +28,22 @@ export const getIssues = () => async (dispatch: Dispatch<IIssueAction>) => {
   }
 };
 
-export const setOrganizationId = (organizationId: string) => (dispatch: Dispatch<IIssueAction>) => {
+export const setOrganizationId = (organizationId: string) => (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.SET_ORGANIZATION_SLUG, payload: organizationId });
 };
 
-export const setRepoId = (repoId: string) => (dispatch: Dispatch<IIssueAction>) => {
+export const setRepoId = (repoId: string) => (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.SET_REPO_SLUG, payload: repoId });
 };
 
-export const setPage = (pageNumber: number) => (dispatch: Dispatch<IIssueAction>) => {
+export const setPage = (pageNumber: number) => (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.SET_PAGE, payload: pageNumber });
 };
 
-export const toggleFilter = (filterId: string) => (dispatch: Dispatch<IIssueAction>) => {
+export const toggleFilter = (filterId: string) => (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.TOGGLE_FILTER, payload: filterId });
 };
 
-export const setSortCriterion = (criterionId: string) => (dispatch: Dispatch<IIssueAction>) => {
+export const setSortCriterion = (criterionId: string) => (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.SET_SORT_CRITERION, payload: criterionId });
 };

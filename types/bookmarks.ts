@@ -1,14 +1,14 @@
-import { IGithubIssue } from "./issues";
+import { GithubIssue } from "./issues";
 
-export interface IBookmarkState {
-  bookmarks: IGithubIssue[];
+export interface BookmarkState {
+  bookmarks: GithubIssue[];
   loading: Boolean;
   error?: Error;
 }
 
-export interface IBookmarkAction {
+export interface BookmarkAction {
   type: BookmarkActionType;
-  payload?: IGithubIssue[] | IGithubIssue | number | Error;
+  payload?: GithubIssue[] | GithubIssue | number | Error;
 }
 
 export enum BookmarkActionType {

@@ -1,4 +1,4 @@
-import { IGithubIssue, IssueActionType, IIssueState, IIssueAction } from '../../types/issues';
+import { GithubIssue, IssueActionType, IssueState, IssueAction } from '../../types/issues';
 
 const defaultFilters = [
   { id: 'open', label: 'Open', isActive: true },
@@ -23,7 +23,7 @@ const defaultSortCriteria = [
   },
 ];
 
-const initialState: IIssueState = {
+const initialState: IssueState = {
   issues: [],
   loading: false,
   organizationId: 'facebook',
@@ -33,7 +33,7 @@ const initialState: IIssueState = {
   currentPage: 1,
 };
 
-export default (state: IIssueState = initialState, action: IIssueAction): IIssueState => {
+export default (state: IssueState = initialState, action: IssueAction): IssueState => {
   switch (action.type) {
     // ---PENDINGS---
     case IssueActionType.GET_ISSUES_PENDING:
@@ -43,7 +43,7 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
     case IssueActionType.GET_ISSUES_SUCCESS:
       return {
         ...state,
-        issues: action.payload as IGithubIssue[],
+        issues: action.payload as GithubIssue[],
         loading: false,
         error: undefined,
       };

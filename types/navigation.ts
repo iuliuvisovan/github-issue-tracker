@@ -1,28 +1,28 @@
-import { StackScreenProps } from '@react-navigation/stack';
-import { IGithubIssue } from './issues';
+import { StackScreenProps } from "@react-navigation/stack";
+import { GithubIssue } from "./issues";
 
 export type RootStackParamList = {
   Root: undefined;
-  NotFound: undefined;
   IssueDetails: {
-    issue: IGithubIssue;
+    issue: GithubIssue;
   };
 };
 
-export type IBottomTabParamList = {
+export type BottomTabParamList = {
   Issues: undefined;
   Bookmarks: undefined;
 };
 
-export type IIssuesStackParamList = {
+export type IssuesStackParamList = {
   Issues: undefined;
 };
 
-export type IBookmarksStackParamList = {
+export type BookmarksStackParamList = {
   Bookmarks: undefined;
 };
 
-export type IIssuesScreenProps = StackScreenProps<IIssuesStackParamList, 'Issues'>;
-export type IIssueDetailsScreenProps = StackScreenProps<RootStackParamList, 'IssueDetails'>;
+export type IssueDetailsScreenProps = StackScreenProps<RootStackParamList, "IssueDetails">;
 
-export type IBookmarksScreenProps = StackScreenProps<IBookmarksStackParamList, 'Bookmarks'>;
+export type IssuesScreenProps = StackScreenProps<IssuesStackParamList, "Issues">;
+
+export type BookmarksScreenProps = StackScreenProps<BookmarksStackParamList, "Bookmarks">;

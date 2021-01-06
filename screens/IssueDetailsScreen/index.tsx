@@ -5,7 +5,7 @@ import { WebView } from 'react-native-webview';
 import isDarkColor from 'is-dark-color';
 
 import { Button, Color, Text } from '../../components';
-import { IIssueDetailsScreenProps } from '../../types/navigation';
+import { IssueDetailsScreenProps } from '../../types/navigation';
 
 import styles from './styles';
 import { AntDesign, Feather } from '@expo/vector-icons';
@@ -16,7 +16,7 @@ import * as bookmarkActions from '../../redux/actions/bookmarks';
 import Comment from './Comment';
 import Header from '../IssuesScreen/Issue/Header';
 
-export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
+export default function IssuesDetailsScreen(props: IssueDetailsScreenProps) {
   const { issue } = props.route.params;
 
   const { bookmarks: bookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);

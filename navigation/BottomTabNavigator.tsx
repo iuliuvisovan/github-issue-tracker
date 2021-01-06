@@ -7,9 +7,9 @@ import { Color, Text } from '../components';
 import IssuesScreen from '../screens/IssuesScreen';
 import IssuesDetailsScreen from '../screens/IssueDetailsScreen';
 import BookmarksScreen from '../screens/BookmarksScreen';
-import { IBottomTabParamList, IIssuesStackParamList, IBookmarksStackParamList } from '../types/navigation';
+import { BottomTabParamList, IssuesStackParamList, BookmarksStackParamList } from '../types/navigation';
 
-const BottomTab = createBottomTabNavigator<IBottomTabParamList>();
+const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
   return (
@@ -38,7 +38,7 @@ function TabBarIcon(props: { name: any; color: string }) {
   return <AntDesign size={25} style={{ marginBottom: -8 }} {...props} />;
 }
 
-const IssuesStack = createStackNavigator<IIssuesStackParamList>();
+const IssuesStack = createStackNavigator<IssuesStackParamList>();
 
 function IssuesNavigator() {
   return (
@@ -55,7 +55,7 @@ function IssuesNavigator() {
   );
 }
 
-const BookmarksStack = createStackNavigator<IBookmarksStackParamList>();
+const BookmarksStack = createStackNavigator<BookmarksStackParamList>();
 
 function BookmarksNavigator() {
   return (

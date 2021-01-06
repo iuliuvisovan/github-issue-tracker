@@ -2,11 +2,11 @@ import React from 'react';
 import moment from 'moment';
 import { View, Image } from 'react-native';
 import { Color, Text } from '../../../../components';
-import { IIssueHeaderProps } from '../../../../types/issues';
+import { IssueHeaderProps } from '../../../../types/issues';
 import styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
 
-export default function Header(props: IIssueHeaderProps) {
+export default function Header(props: IssueHeaderProps) {
   const { issue } = props;
 
   return (

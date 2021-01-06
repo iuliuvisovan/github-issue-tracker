@@ -3,9 +3,9 @@ import moment from 'moment';
 import { View, Image } from 'react-native';
 import { Text } from '../../../components';
 import styles from './styles';
-import { ICommentProps } from '../../../types/comments';
+import { CommentProps } from '../../../types/comments';
 
-export default function Comment(props: ICommentProps) {
+export default function Comment(props: CommentProps) {
   const { comment } = props;
 
   return (

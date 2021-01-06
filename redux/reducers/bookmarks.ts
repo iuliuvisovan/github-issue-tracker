@@ -1,12 +1,12 @@
-import { IBookmarkState, BookmarkActionType, IBookmarkAction } from '../../types/bookmarks';
-import { IGithubIssue } from '../../types/issues';
+import { BookmarkState, BookmarkActionType, BookmarkAction } from '../../types/bookmarks';
+import { GithubIssue } from '../../types/issues';
 
-const initialState: IBookmarkState = {
+const initialState: BookmarkState = {
   bookmarks: [],
   loading: false,
 };
 
-export default (state: IBookmarkState = initialState, action: IBookmarkAction): IBookmarkState => {
+export default (state: BookmarkState = initialState, action: BookmarkAction): BookmarkState => {
   switch (action.type) {
     // ---PENDINGS---
     case BookmarkActionType.GET_BOOKMARKS_PENDING:
@@ -20,7 +20,7 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
     case BookmarkActionType.GET_BOOKMARKS_SUCCESS:
       return {
         ...state,
-        bookmarks: action.payload as IGithubIssue[],
+        bookmarks: action.payload as GithubIssue[],
         loading: false,
         error: undefined,
       };
@@ -28,7 +28,7 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
     case BookmarkActionType.ADD_BOOKMARK_SUCCESS:
       return {
         ...state,
-        bookmarks: [...state.bookmarks, action.payload as IGithubIssue],
+        bookmarks: [...state.bookmarks, action.payload as GithubIssue],
         loading: false,
       };
 

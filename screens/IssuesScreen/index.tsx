@@ -7,7 +7,7 @@ import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Color, TextInput, Text } from "../../components";
 import Issue from "./Issue";
 import styles from "./styles";
-import { IIssuesScreenProps } from "../../types/navigation";
+import { IssuesScreenProps } from "../../types/navigation";
 import { LinearGradient } from "expo-linear-gradient";
 import useCurrentPage from "./useCurrentPage";
 import useDeepCompareEffect from "use-deep-compare-effect";
@@ -16,7 +16,7 @@ import useIssues from "../../hooks/useIssues";
 import useBookmarks from "../../hooks/useBookmarks";
 import { setPage } from "../../redux/actions/issues";
 
-export default function IssuesScreen(props: IIssuesScreenProps) {
+export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
   const { issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = issuesManager.data;
   const { getIssues, toggleFilter, setSortCriterion, setOrganizationId, setRepoId } = issuesManager.actions;

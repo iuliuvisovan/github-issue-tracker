@@ -1,9 +1,9 @@
 import { Dispatch } from "redux";
-import { BookmarkActionType, IBookmarkAction } from "../../types/bookmarks";
+import { BookmarkActionType, BookmarkAction } from "../../types/bookmarks";
 import AsyncStorage from "@react-native-community/async-storage";
-import { IGithubIssue } from "../../types/issues";
+import { GithubIssue } from "../../types/issues";
 
-export const getBookmarks = () => async (dispatch: Dispatch<IBookmarkAction>) => {
+export const getBookmarks = () => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.GET_BOOKMARKS_PENDING });
 
   try {
@@ -20,7 +20,7 @@ export const getBookmarks = () => async (dispatch: Dispatch<IBookmarkAction>) =>
   }
 };
 
-export const addBookmark = (issue: IGithubIssue) => async (dispatch: Dispatch<IBookmarkAction>) => {
+export const addBookmark = (issue: GithubIssue) => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.ADD_BOOKMARK_PENDING });
 
   try {
@@ -28,9 +28,9 @@ export const addBookmark = (issue: IGithubIssue) => async (dispatch: Dispatch<IB
 
     const bookmarksJson = await AsyncStorage.getItem("bookmarks");
 
-    let bookmarks: IGithubIssue[] = [];
+    let bookmarks: GithubIssue[] = [];
     if (bookmarksJson) {
-      bookmarks = JSON.parse(bookmarksJson) as IGithubIssue[];
+      bookmarks = JSON.parse(bookmarksJson) as GithubIssue[];
     }
 
     bookmarks.push(issue);
@@ -41,14 +41,14 @@ export const addBookmark = (issue: IGithubIssue) => async (dispatch: Dispatch<IB
   }
 };
 
-export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<IBookmarkAction>) => {
+export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_PENDING });
 
   try {
     const bookmarksJson = await AsyncStorage.getItem("bookmarks");
 
     if (bookmarksJson) {
-      let bookmarks = JSON.parse(bookmarksJson) as IGithubIssue[];
+      let bookmarks = JSON.parse(bookmarksJson) as GithubIssue[];
       bookmarks = bookmarks.filter((x) => x.id !== issueId);
 
       await AsyncStorage.setItem("bookmarks", JSON.stringify(bookmarks));

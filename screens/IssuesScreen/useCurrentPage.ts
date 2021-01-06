@@ -2,21 +2,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { IApplicationState } from "../../redux";
 import { ActionSheetIOS, FlatList, LayoutAnimation } from "react-native";
 import { useRef, useState } from "react";
-import { IGithubIssue, IIssueSortCriteria } from "../../types/issues";
+import { GithubIssue, IssueSortCriteria, CurrentPageHookReturnValue } from "../../types/issues";
 import * as issueActions from "../../redux/actions/issues";
 
-export default function usePage() {
+export default function usePage(): CurrentPageHookReturnValue {
   const issuesReducer = useSelector((state: IApplicationState) => state.issuesReducer);
   const { error, organizationId, repoId } = issuesReducer;
 
   const dispatch = useDispatch();
 
-  const setOrganizationId = (id: string) => dispatch(issueActions.setOrganizationId(id));
-  const setRepoId = (id: string) => dispatch(issueActions.setRepoId(id));
+  const setOrganizationId = (id: string) => {
+    dispatch(issueActions.setOrganizationId(id));
+  };
+  const setRepoId = (id: string) => {
+    dispatch(issueActions.setRepoId(id));
+  };
 
-  const flatListRef = useRef<FlatList<IGithubIssue>>(null);
+  const flatListRef = useRef<FlatList<GithubIssue>>(null);
 
-  const pickSortCriterion = (sortCriteria: IIssueSortCriteria[]): Promise<string> => {
+  const pickSortCriterion = (sortCriteria: IssueSortCriteria[]): Promise<string> => {
     return new Promise((resolve) => {
       ActionSheetIOS.showActionSheetWithOptions(
         {

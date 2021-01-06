@@ -1,11 +1,11 @@
-import { CommentActionType, ICommentAction, ICommentState, IGithubComment } from '../../types/comments';
+import { CommentActionType, CommentAction, CommentState, GithubComment } from '../../types/comments';
 
-const initialState: ICommentState = {
+const initialState: CommentState = {
   list: [],
   loading: false,
 };
 
-export default (state: ICommentState = initialState, action: ICommentAction): ICommentState => {
+export default (state: CommentState = initialState, action: CommentAction): CommentState => {
   switch (action.type) {
     // -- PENDINGS --
     case CommentActionType.GET_COMMENTS_PENDING:
@@ -15,7 +15,7 @@ export default (state: ICommentState = initialState, action: ICommentAction): IC
     case CommentActionType.GET_COMMENTS_SUCCESS:
       return {
         ...state,
-        list: action.payload as IGithubComment[],
+        list: action.payload as GithubComment[],
         loading: false,
         error: undefined,
       };
