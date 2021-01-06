@@ -1,8 +1,8 @@
-import { GithubUser } from "./issues";
+import { IssueUser } from "./issues";
 
 export interface GithubComment {
-  id: GithubUser;
-  user: GithubUser;
+  id: IssueUser;
+  user: IssueUser;
   body: string;
   created_at: string;
 }

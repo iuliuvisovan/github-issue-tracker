@@ -1,25 +1,24 @@
-import React, { useEffect } from "react";
-import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
+import React, { useEffect } from 'react';
+import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
-import { ActivityIndicator, LayoutAnimation, View } from "react-native";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import { ActivityIndicator, LayoutAnimation, View } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-import { Button, Color, TextInput, Text } from "../../components";
-import Issue from "./Issue";
-import styles from "./styles";
-import { IssuesScreenProps } from "../../types/navigation";
-import { LinearGradient } from "expo-linear-gradient";
-import useCurrentPage from "./useCurrentPage";
-import useDeepCompareEffect from "use-deep-compare-effect";
+import { Button, Color, TextInput, Text } from '../../components';
+import Issue from './Issue';
+import styles from './styles';
+import { IssuesScreenProps } from '../../types/navigation';
+import { LinearGradient } from 'expo-linear-gradient';
+import useCurrentPage from './useCurrentPage';
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import useIssues from "../../hooks/useIssues";
-import useBookmarks from "../../hooks/useBookmarks";
-import { setPage } from "../../redux/actions/issues";
+import useIssues from '../../hooks/useIssues';
+import useBookmarks from '../../hooks/useBookmarks';
 
 export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
   const { issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = issuesManager.data;
-  const { getIssues, toggleFilter, setSortCriterion, setOrganizationId, setRepoId } = issuesManager.actions;
+  const { getIssues, toggleFilter, setSortCriterion, setPage, setOrganizationId, setRepoId } = issuesManager.actions;
 
   const bookmarksManager = useBookmarks();
   const { bookmarks, loading: loadingBookmarks } = bookmarksManager.data;
@@ -40,12 +39,15 @@ export default function IssuesScreen(props: IssuesScreenProps) {
   }, []);
 
   useEffect(() => {
-    flatListRef?.current?.scrollToOffset({ animated: true, offset: 0 });
     LayoutAnimation.easeInEaseOut();
     setIsPickerOpen(false);
+    setIsScrolled(false);
   }, [issues]);
 
-  useDeepCompareEffect(getIssues, [currentPage, filters, sortCriteria]);
+  useDeepCompareEffect(() => {
+    console.log('Changed here something');
+    getIssues();
+  }, [sortCriteria]);
 
   return (
     <View style={styles.container}>
@@ -111,7 +113,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
           data={issues}
           ref={flatListRef}
           onScroll={(event) => setIsScrolled(event.nativeEvent.contentOffset.y >= 16)}
-          keyExtractor={(item) => item.id + ""}
+          keyExtractor={(item) => item.id + ''}
           contentContainerStyle={styles.issuesContainer}
           renderItem={({ item }) => (
             <Issue issue={{ ...item, isBookmarked: bookmarks.some((x) => x.id === item.id) }} navigation={props.navigation} />
@@ -135,7 +137,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
           rightIcon={<Feather size={20} name="chevron-right" color={Color.blue} />}
           onPress={() => setPage(currentPage + 1)}
         />
-        <LinearGradient pointerEvents="none" colors={[Color.steel + "00", Color.steel + "44"]} style={styles.gradient} />
+        <LinearGradient pointerEvents="none" colors={[Color.steel + '00', Color.steel + '44']} style={styles.gradient} />
       </View>
     </View>
   );

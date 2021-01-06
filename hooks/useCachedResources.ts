@@ -16,7 +16,6 @@ export default function useCachedResources() {
           ...Ionicons.font,
           muli: require('../assets/fonts/Muli.ttf'),
           'muli-semi-bold': require('../assets/fonts/Muli-SemiBold.ttf'),
-          'muli-bold': require('../assets/fonts/Muli-Bold.ttf'),
           'muli-extra-bold': require('../assets/fonts/Muli-ExtraBold.ttf'),
         });
       } catch (e) {

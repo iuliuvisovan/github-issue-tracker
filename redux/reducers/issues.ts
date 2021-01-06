@@ -1,4 +1,4 @@
-import { GithubIssue, IssueActionType, IssueState, IssueAction } from '../../types/issues';
+import { Issue, IssueActionType, IssueState, IssueAction } from '../../types/issues';
 
 const defaultFilters = [
   { id: 'open', label: 'Open', isActive: true },
@@ -43,7 +43,7 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
     case IssueActionType.GET_ISSUES_SUCCESS:
       return {
         ...state,
-        issues: action.payload as GithubIssue[],
+        issues: action.payload as Issue[],
         loading: false,
         error: undefined,
       };
@@ -71,7 +71,7 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
 
       const targetFilter = newFilters.find((x) => x.id === action.payload);
       if (targetFilter) {
-        targetFilter.isActive = !targetFilter.isActive;
+        targetFilter.isActive = !targetFilter.isActive || 'salam';
       }
 
       return {

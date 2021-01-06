@@ -1,13 +1,13 @@
-import { Dispatch } from "redux";
-import { BookmarkActionType, BookmarkAction } from "../../types/bookmarks";
-import AsyncStorage from "@react-native-community/async-storage";
-import { GithubIssue } from "../../types/issues";
+import { Dispatch } from 'redux';
+import { BookmarkActionType, BookmarkAction } from '../../types/bookmarks';
+import AsyncStorage from '@react-native-community/async-storage';
+import { Issue } from '../../types/issues';
 
 export const getBookmarks = () => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.GET_BOOKMARKS_PENDING });
 
   try {
-    const bookmarksJson = await AsyncStorage.getItem("bookmarks");
+    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
     let bookmarks = [];
     if (bookmarksJson) {
@@ -20,22 +20,22 @@ export const getBookmarks = () => async (dispatch: Dispatch<BookmarkAction>) => 
   }
 };
 
-export const addBookmark = (issue: GithubIssue) => async (dispatch: Dispatch<BookmarkAction>) => {
+export const addBookmark = (issue: Issue) => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.ADD_BOOKMARK_PENDING });
 
   try {
     dispatch({ type: BookmarkActionType.ADD_BOOKMARK_SUCCESS, payload: issue });
 
-    const bookmarksJson = await AsyncStorage.getItem("bookmarks");
+    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
-    let bookmarks: GithubIssue[] = [];
+    let bookmarks: Issue[] = [];
     if (bookmarksJson) {
-      bookmarks = JSON.parse(bookmarksJson) as GithubIssue[];
+      bookmarks = JSON.parse(bookmarksJson) as Issue[];
     }
 
     bookmarks.push(issue);
 
-    await AsyncStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
   } catch (error) {
     dispatch({ type: BookmarkActionType.ADD_BOOKMARK_ERROR, payload: error });
   }
@@ -45,13 +45,13 @@ export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<Boo
   dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_PENDING });
 
   try {
-    const bookmarksJson = await AsyncStorage.getItem("bookmarks");
+    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
     if (bookmarksJson) {
-      let bookmarks = JSON.parse(bookmarksJson) as GithubIssue[];
+      let bookmarks = JSON.parse(bookmarksJson) as Issue[];
       bookmarks = bookmarks.filter((x) => x.id !== issueId);
 
-      await AsyncStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }
 
     dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_SUCCESS, payload: issueId });

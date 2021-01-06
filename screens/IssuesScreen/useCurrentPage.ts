@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { IApplicationState } from "../../redux";
-import { ActionSheetIOS, FlatList, LayoutAnimation } from "react-native";
-import { useRef, useState } from "react";
-import { GithubIssue, IssueSortCriteria, CurrentPageHookReturnValue } from "../../types/issues";
-import * as issueActions from "../../redux/actions/issues";
+import { useDispatch, useSelector } from 'react-redux';
+import { IApplicationState } from '../../redux';
+import { ActionSheetIOS, FlatList, LayoutAnimation } from 'react-native';
+import { useRef, useState } from 'react';
+import { Issue, IssueSortCriteria, CurrentPageHookReturnValue as useCurrentPageReturnValue } from '../../types/issues';
+import * as issueActions from '../../redux/actions/issues';
 
-export default function usePage(): CurrentPageHookReturnValue {
+export default function usePage(): useCurrentPageReturnValue {
   const issuesReducer = useSelector((state: IApplicationState) => state.issuesReducer);
   const { error, organizationId, repoId } = issuesReducer;
 
@@ -18,13 +18,13 @@ export default function usePage(): CurrentPageHookReturnValue {
     dispatch(issueActions.setRepoId(id));
   };
 
-  const flatListRef = useRef<FlatList<GithubIssue>>(null);
+  const flatListRef = useRef<FlatList<Issue>>(null);
 
   const pickSortCriterion = (sortCriteria: IssueSortCriteria[]): Promise<string> => {
     return new Promise((resolve) => {
       ActionSheetIOS.showActionSheetWithOptions(
         {
-          options: ["Cancel", ...sortCriteria.map((x) => x.label)],
+          options: ['Cancel', ...sortCriteria.map((x) => x.label)],
           cancelButtonIndex: 0,
         },
         (buttonIndex) => {

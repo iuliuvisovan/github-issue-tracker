@@ -22,6 +22,11 @@ export default function useIssues() {
     dispatch(issueActions.setSortCriterion(criterionId));
   };
 
+  const setPage = (pageNumber: number) => {
+    LayoutAnimation.easeInEaseOut();
+    dispatch(issueActions.setPage(pageNumber));
+  };
+
   const setOrganizationId = (id: string) => dispatch(issueActions.setOrganizationId(id));
   const setRepoId = (id: string) => dispatch(issueActions.setRepoId(id));
 
@@ -38,6 +43,7 @@ export default function useIssues() {
       getIssues,
       toggleFilter,
       setSortCriterion,
+      setPage,
       setOrganizationId,
       setRepoId,
     },

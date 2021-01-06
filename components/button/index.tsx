@@ -1,62 +1,44 @@
-import React, { Component } from 'react';
-import { GestureResponderEvent, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import React from 'react';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { Color } from '..';
 import Text from '../text';
 import styles from './styles';
 
 export interface ButtonProps {
   text?: String;
-  type?: string;
-  style?: any;
+  type?: 'secondary' | 'tertiary' | 'quaternary';
   leftIcon?: JSX.Element;
-  leftIconSize?: number;
-  rightIcon?: any;
-  onPress?: any;
-  disabled?: boolean;
-  loading?: boolean;
-  noSpacing?: boolean;
-  autoWidth?: boolean;
-  nT?: boolean;
-  textStyle?: TextStyle;
+  rightIcon?: JSX.Element;
 }
 
-export default class Button extends React.Component<ButtonProps> {
-  onPress = (e: GestureResponderEvent) => {
-    this.props.onPress && this.props.onPress(e);
-  };
+export default function styledButton(props: TouchableOpacityProps & ButtonProps) {
+  const { style, type = 'default', text = '', leftIcon, rightIcon, disabled } = props;
 
-  render() {
-    const { style, textStyle, type = 'default', text = '', leftIcon, rightIcon, disabled } = this.props;
+  const buttonStyle = [
+    styles.baseButton,
+    styles[(type + 'Button') as keyof ButtonStyle],
+    disabled ? { borderColor: Color.border } : {},
+    style,
+  ];
 
-    const incomingButtonStyle = Array.isArray(style) ? style : [style];
-    const incomingTextStyle = Array.isArray(textStyle) ? textStyle : [textStyle];
+  const buttonTextStyle = [styles.defaultText, styles[(type + 'Text') as keyof ButtonTextStyle], disabled ? { color: Color.border } : {}];
 
-    return (
-      <TouchableOpacity
-        {...this.props}
-        onPress={this.onPress}
-        disabled={disabled}
-        style={[
-          styles.defaultButton,
-          styles[type + 'Button'],
-          disabled ? { borderColor: Color.border } : {},
-          ...incomingButtonStyle,
-        ]}
-      >
-        {leftIcon}
-        <Text
-          nT
-          style={[
-            styles.defaultText,
-            styles[type + 'Text'],
-            disabled ? { color: Color.border } : {},
-            ...incomingTextStyle,
-          ]}
-        >
-          {text.toUpperCase()}
-        </Text>
-        {rightIcon}
-      </TouchableOpacity>
-    );
-  }
+  return (
+    <TouchableOpacity {...props} style={buttonStyle}>
+      {leftIcon}
+      <Text style={buttonTextStyle}>{text.toUpperCase()}</Text>
+      {rightIcon}
+    </TouchableOpacity>
+  );
+}
+
+interface ButtonStyle {
+  secondaryButton: object;
+  tertiaryButton: object;
+  quaternaryButton: object;
+}
+
+interface ButtonTextStyle {
+  tertiaryText: object;
+  quaternaryText: object;
 }

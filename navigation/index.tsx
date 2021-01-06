@@ -1,16 +1,16 @@
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import * as React from "react";
+import { ColorSchemeName } from "react-native";
 
-import { RootStackParamList } from '../types/navigation';
-import BottomTabNavigator from './BottomTabNavigator';
-import IssuesDetailsScreen from '../screens/IssueDetailsScreen';
-import { Color } from '../components';
+import { RootStackParamList } from "../types/navigation";
+import BottomTabNavigator from "./BottomTabNavigator";
+import IssuesDetailsScreen from "../screens/IssueDetailsScreen";
+import { Color } from "../components";
 
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation() {
   return (
-    <NavigationContainer theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavigationContainer theme={DefaultTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -25,9 +25,9 @@ function RootNavigator() {
       <Stack.Screen
         name="IssueDetails"
         options={{
-          title: 'Issue Details',
-          headerBackTitle: 'Back',
-          headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
+          title: "Issue Details",
+          headerBackTitle: "Back",
+          headerTitleStyle: { fontFamily: "muli-extra-bold", color: Color.black },
         }}
         component={IssuesDetailsScreen}
       />

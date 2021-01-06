@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  defaultButton: {
+  baseButton: {
     backgroundColor: '#fff',
     borderRadius: 609,
     width: 130,
@@ -25,10 +25,6 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
     shadowOpacity: 0,
     elevation: 0,
-  },
-  activityIndicator: {
-    marginRight: 4,
-    marginLeft: -4,
   },
   tertiaryIndicator: {
     position: 'absolute',

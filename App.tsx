@@ -5,12 +5,10 @@ import { Provider as ReduxProvider } from 'react-redux';
 import store from './redux';
 
 import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
 
   if (!isLoadingComplete) {
     return null;
@@ -18,7 +16,7 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <ReduxProvider store={store}>
-          <Navigation colorScheme={colorScheme} />
+          <Navigation />
           <StatusBar />
         </ReduxProvider>
       </SafeAreaProvider>

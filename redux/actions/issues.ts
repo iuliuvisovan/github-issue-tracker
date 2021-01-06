@@ -1,16 +1,16 @@
-import { Dispatch } from "redux";
-import * as issuesApi from "../../api/issues";
-import { IssueActionType, IssueAction } from "../../types/issues";
-import store from "..";
+import { Dispatch } from 'redux';
+import * as issuesApi from '../../api/issues';
+import { IssueActionType, IssueAction } from '../../types/issues';
+import store from '..';
 
 export const getIssues = () => async (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
 
   const { organizationId, repoId, filters, sortCriteria, currentPage: page } = store.getState().issuesReducer;
 
-  let filterCriterion = filters.find((x) => x.isActive)?.id || "all";
+  let filterCriterion = filters.find((x) => x.isActive)?.id || 'all';
   if (filters.every((x) => x.isActive)) {
-    filterCriterion = "all";
+    filterCriterion = 'all';
   }
 
   try {
@@ -18,7 +18,7 @@ export const getIssues = () => async (dispatch: Dispatch<IssueAction>) => {
       organizationId,
       repoId,
       filter: filterCriterion,
-      sort: sortCriteria.find((x) => x.isActive)?.id || "created",
+      sort: sortCriteria.find((x) => x.isActive)?.id || 'created',
       page: page,
     });
 

@@ -1,5 +1,5 @@
 import { BookmarkState, BookmarkActionType, BookmarkAction } from '../../types/bookmarks';
-import { GithubIssue } from '../../types/issues';
+import { Issue } from '../../types/issues';
 
 const initialState: BookmarkState = {
   bookmarks: [],
@@ -20,7 +20,7 @@ export default (state: BookmarkState = initialState, action: BookmarkAction): Bo
     case BookmarkActionType.GET_BOOKMARKS_SUCCESS:
       return {
         ...state,
-        bookmarks: action.payload as GithubIssue[],
+        bookmarks: action.payload as Issue[],
         loading: false,
         error: undefined,
       };
@@ -28,7 +28,7 @@ export default (state: BookmarkState = initialState, action: BookmarkAction): Bo
     case BookmarkActionType.ADD_BOOKMARK_SUCCESS:
       return {
         ...state,
-        bookmarks: [...state.bookmarks, action.payload as GithubIssue],
+        bookmarks: [...state.bookmarks, action.payload as Issue],
         loading: false,
       };
 

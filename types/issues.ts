@@ -1,8 +1,40 @@
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RefObject } from "react";
-import { FlatList } from "react-native";
-import { GithubComment } from "./comments";
-import { RootStackParamList as RootStackParams } from "./navigation";
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RefObject } from 'react';
+import { FlatList } from 'react-native';
+import { GithubComment } from './comments';
+import { RootStackParamList as RootStackParams } from './navigation';
+
+export interface Issue {
+  url: string;
+  id: number;
+  number: string;
+  title: string;
+  body: string;
+  user: IssueUser;
+  labels: IssueLabel[];
+  created_at: string;
+  state: 'open' | 'closed';
+  comments_url: string;
+  pull_request?: object;
+  isBookmarked?: boolean;
+}
+
+export interface IssueUser {
+  login: string;
+  id: number;
+  avatar_url: string;
+  url: string;
+  html_url: string;
+}
+
+export interface IssueLabel {
+  id: string;
+  url: string;
+  name: string;
+  color: string;
+  default: boolean;
+  description: string;
+}
 
 export interface GetIssuesParams {
   organizationId: string;
@@ -12,49 +44,17 @@ export interface GetIssuesParams {
   page: number;
 }
 
-export interface GithubUser {
-  login: string;
-  id: number;
-  avatar_url: string;
-  url: string;
-  html_url: string;
-}
-
-export interface GithubIssueLabel {
-  id: string;
-  url: string;
-  name: string;
-  color: string;
-  default: boolean;
-  description: string;
-}
-
-export interface GithubIssue {
-  url: string;
-  id: number;
-  number: string;
-  title: string;
-  body: string;
-  user: GithubUser;
-  labels: GithubIssueLabel[];
-  created_at: string;
-  state: "open" | "closed";
-  comments_url: string;
-  pull_request?: object;
-  isBookmarked?: boolean;
-}
-
 export interface IssueItemProps {
-  issue: GithubIssue;
-  navigation: StackNavigationProp<RootStackParams, "IssueDetails">;
+  issue: Issue;
+  navigation: StackNavigationProp<RootStackParams, 'IssueDetails'>;
 }
 
 export interface IssueHeaderProps {
-  issue: GithubIssue;
+  issue: Issue;
 }
 
 export interface IssueState {
-  issues: GithubIssue[];
+  issues: Issue[];
   loading: Boolean;
   error?: Error;
   organizationId: string;
@@ -66,7 +66,7 @@ export interface IssueState {
 
 export interface IssueAction {
   type: IssueActionType;
-  payload?: GithubIssue[] | GithubComment[] | string | number | Error;
+  payload?: Issue[] | GithubComment[] | string | number | Error;
 }
 
 export interface IssueFilter {
@@ -82,14 +82,14 @@ export interface IssueSortCriteria {
 }
 
 export enum IssueActionType {
-  GET_ISSUES_PENDING = "GET_ISSUES_PENDING",
-  GET_ISSUES_SUCCESS = "GET_ISSUES_SUCCESS",
-  GET_ISSUES_ERROR = "GET_ISSUES_ERROR",
-  SET_ORGANIZATION_SLUG = "SET_ORGANIZATION_SLUG",
-  SET_REPO_SLUG = "SET_REPO_SLUG",
-  TOGGLE_FILTER = "TOGGLE_FILTER",
-  SET_SORT_CRITERION = "SET_SORT_CRITERION",
-  SET_PAGE = "SET_PAGE",
+  GET_ISSUES_PENDING = 'GET_ISSUES_PENDING',
+  GET_ISSUES_SUCCESS = 'GET_ISSUES_SUCCESS',
+  GET_ISSUES_ERROR = 'GET_ISSUES_ERROR',
+  SET_ORGANIZATION_SLUG = 'SET_ORGANIZATION_SLUG',
+  SET_REPO_SLUG = 'SET_REPO_SLUG',
+  TOGGLE_FILTER = 'TOGGLE_FILTER',
+  SET_SORT_CRITERION = 'SET_SORT_CRITERION',
+  SET_PAGE = 'SET_PAGE',
 }
 
 export interface CurrentPageHookReturnValue {
@@ -98,7 +98,7 @@ export interface CurrentPageHookReturnValue {
     repoId: string;
     isPickerOpen: boolean;
     isScrolled: boolean;
-    flatListRef: RefObject<FlatList<GithubIssue>>;
+    flatListRef: RefObject<FlatList<Issue>>;
     error?: Error;
   };
   actions: {

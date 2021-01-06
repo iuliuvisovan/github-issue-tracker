@@ -1,12 +1,10 @@
-import { GetIssuesParams, GithubIssue } from '../types/issues';
+import { GetIssuesParams, Issue } from '../types/issues';
 import methods from './methods';
 
-export async function get(queryParams: GetIssuesParams): Promise<GithubIssue[]> {
+export async function get(queryParams: GetIssuesParams): Promise<Issue[]> {
   const { organizationId, repoId, filter, sort, page } = queryParams;
 
-  const issues: GithubIssue[] = await methods.get(
-    `repos/${organizationId}/${repoId}/issues?state=${filter}&sort=${sort}&page=${page}`
-  );
+  const issues: Issue[] = await methods.get(`repos/${organizationId}/${repoId}/issues?state=${filter}&sort=${sort}&page=${page}`);
 
   return issues.filter((x) => !x.pull_request);
 }

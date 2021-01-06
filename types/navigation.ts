@@ -1,10 +1,10 @@
-import { StackScreenProps } from "@react-navigation/stack";
-import { GithubIssue } from "./issues";
+import { StackScreenProps } from '@react-navigation/stack';
+import { Issue } from './issues';
 
 export type RootStackParamList = {
   Root: undefined;
   IssueDetails: {
-    issue: GithubIssue;
+    issue: Issue;
   };
 };
 
@@ -21,8 +21,8 @@ export type BookmarksStackParamList = {
   Bookmarks: undefined;
 };
 
-export type IssueDetailsScreenProps = StackScreenProps<RootStackParamList, "IssueDetails">;
+export type IssueDetailsScreenProps = StackScreenProps<RootStackParamList, 'IssueDetails'>;
 
-export type IssuesScreenProps = StackScreenProps<IssuesStackParamList, "Issues">;
+export type IssuesScreenProps = StackScreenProps<IssuesStackParamList, 'Issues'>;
 
-export type BookmarksScreenProps = StackScreenProps<BookmarksStackParamList, "Bookmarks">;
+export type BookmarksScreenProps = StackScreenProps<BookmarksStackParamList, 'Bookmarks'>;
