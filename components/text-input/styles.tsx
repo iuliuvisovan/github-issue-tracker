@@ -1,29 +1,30 @@
-import { StyleSheet } from 'react-native';
-import Color from '../color';
+import { Dimensions, StyleSheet } from "react-native";
+import Color from "../color";
 
 export default StyleSheet.create({
   wrapper: {
     marginVertical: 12,
+    width: (Dimensions.get("screen").width - (32 + 8 + 32 + 8)) / 2,
   },
   input: {
-    width: '100%',
+    width: "100%",
     borderWidth: 1,
     borderRadius: 6,
     height: 39,
-    fontFamily: 'muli',
+    fontFamily: "muli",
     paddingRight: 25,
     paddingLeft: 13,
   },
   iconWrapper: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     bottom: 0,
-    justifyContent: 'center',
+    justifyContent: "center",
     right: -2,
     zIndex: 1,
     padding: 10,
     width: 42,
-    alignItems: 'center',
+    alignItems: "center",
   },
   icon: {
     width: 16,
@@ -40,19 +41,19 @@ export default StyleSheet.create({
     marginTop: 2,
   },
   secure: {
-    tintColor: '#16c65daa',
+    tintColor: "#16c65daa",
   },
   disabled: {
-    color: '#aab2ba',
-    borderColor: '#aab2ba66',
+    color: "#aab2ba",
+    borderColor: "#aab2ba66",
   },
   row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   overlappingWrapper: {
     backgroundColor: Color.white,
-    position: 'absolute',
+    position: "absolute",
     top: -8,
     left: 0,
     borderRadius: 8,
@@ -61,8 +62,8 @@ export default StyleSheet.create({
     marginLeft: 6,
   },
   overlappingText: {
-    fontFamily: 'muli-semi-bold',
-    color: '#aab2ba',
+    fontFamily: "muli-semi-bold",
+    color: "#aab2ba",
     fontSize: 12,
   },
 });

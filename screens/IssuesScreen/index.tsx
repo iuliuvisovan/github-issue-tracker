@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, LayoutAnimation, View } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
 import { Button, Color, TextInput, Text } from "../../components";
@@ -11,23 +11,19 @@ import { IIssuesScreenProps } from "../../types/navigation";
 import { LinearGradient } from "expo-linear-gradient";
 import useCurrentPage from "./useCurrentPage";
 import useDeepCompareEffect from "use-deep-compare-effect";
-import useList from "../../hooks/useList";
-import * as issueActions from "../../redux/actions/issues";
-import * as bookmarkActions from "../../redux/actions/bookmarks";
-import { IApplicationState } from "../../redux";
-import { useDispatch, useSelector } from "react-redux";
-import { IGithubIssue } from "../../types/issues";
+
+import useIssues from "../../hooks/useIssues";
+import useBookmarks from "../../hooks/useBookmarks";
+import { setPage } from "../../redux/actions/issues";
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
-  const issuesReducer = useSelector((state: IApplicationState) => state.issuesReducer);
-  const { list: issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = issuesReducer;
+  const { issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = useIssues();
+  const { getIssues, toggleFilter, setSortCriterion, setOrganizationId, setRepoId } = useIssues();
 
-  const { list: bookmarks, loading: loadingBookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);
+  const { bookmarks, loading: loadingBookmarks, getBookmarks } = useBookmarks();
 
-  const { getList: getIssues, toggleFilter, setSortCriterion, goToPage } = useList(issueActions);
-  const { getList: getBookmarks } = useList(bookmarkActions);
-
-  const { organizationId, repoId, isPickerOpen, setIsPickerOpen, isScrolled, setIsScrolled, pickSortCriterion } = useCurrentPage();
+  const { organizationId, repoId, isPickerOpen, isScrolled, flatListRef } = useCurrentPage();
+  const { setIsPickerOpen, setIsScrolled, pickSortCriterion } = useCurrentPage();
 
   useEffect(() => {
     getIssues();
@@ -36,18 +32,16 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
 
   useDeepCompareEffect(getIssues, [currentPage, filters, sortCriteria]);
 
-  const flatListRef = useRef<FlatList<IGithubIssue>>(null);
   useEffect(() => {
     flatListRef?.current?.scrollToOffset({ animated: true, offset: 0 });
+    LayoutAnimation.easeInEaseOut();
     setIsPickerOpen(false);
-  }, [issuesReducer]);
+  }, [issues]);
 
   const changeSortCriterion = async () => {
     const pickedCriterion = await pickSortCriterion(sortCriteria);
     setSortCriterion(pickedCriterion);
   };
-
-  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -55,14 +49,9 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
         {isPickerOpen ? (
           <View style={styles.card}>
             <View style={styles.repositoryInputs}>
-              <TextInput
-                halfWidth
-                name="Organization"
-                value={organizationId}
-                onChangeText={(value) => dispatch(issueActions.setOrganizationId(value))}
-              />
+              <TextInput name="Organization" value={organizationId} onChangeText={setOrganizationId} />
               <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
-              <TextInput halfWidth name="Repository" value={repoId} onChangeText={(value) => dispatch(issueActions.setRepoId(value))} />
+              <TextInput name="Repository" value={repoId} onChangeText={setRepoId} />
             </View>
             <View style={styles.buttonsWrapper}>
               <Button type="secondary" text="Cancel" onPress={() => setIsPickerOpen(false)} style={{ width: 130 }} />
@@ -77,9 +66,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
         ) : (
           <View style={[styles.spacedRow, { marginTop: 0 }]}>
             <Feather size={20} name="git-branch" color={Color.border} style={styles.filterIcon} />
-            <Text style={styles.repoText}>
-              {organizationId} / {repoId}
-            </Text>
+            <Text style={styles.repoText}>{`${organizationId} / ${repoId}`}</Text>
             <TouchableOpacity onPress={() => setIsPickerOpen(true)} style={styles.editRepoButton}>
               <Feather size={14} name="edit-2" color={Color.blue} />
             </TouchableOpacity>
@@ -135,14 +122,14 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
           disabled={currentPage < 2}
           text="Previous"
           leftIcon={<Feather size={20} name="chevron-left" color={currentPage < 2 ? Color.border : Color.blue} />}
-          onPress={() => goToPage(currentPage - 1)}
+          onPress={() => setPage(currentPage - 1)}
         />
         <Button
           type="quaternary"
           text="Next"
           style={{ width: 120 }}
           rightIcon={<Feather size={20} name="chevron-right" color={Color.blue} />}
-          onPress={() => goToPage(currentPage + 1)}
+          onPress={() => setPage(currentPage + 1)}
         />
         <LinearGradient pointerEvents="none" colors={[Color.steel + "00", Color.steel + "44"]} style={styles.gradient} />
       </View>

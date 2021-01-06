@@ -56,7 +56,7 @@ export interface IIssueDetailsProps {
 }
 
 export interface IIssueState {
-  list: IGithubIssue[];
+  issues: IGithubIssue[];
   loading: Boolean;
   error?: Error;
   organizationId: string;

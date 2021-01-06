@@ -24,7 +24,7 @@ const defaultSortCriteria = [
 ];
 
 const initialState: IIssueState = {
-  list: [],
+  issues: [],
   loading: false,
   organizationId: 'facebook',
   repoId: 'react-native',
@@ -43,7 +43,7 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
     case IssueActionType.GET_ISSUES_SUCCESS:
       return {
         ...state,
-        list: action.payload as IGithubIssue[],
+        issues: action.payload as IGithubIssue[],
         loading: false,
         error: undefined,
       };
@@ -94,7 +94,7 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
 
     // ---ERRORS---
     case IssueActionType.GET_ISSUES_ERROR:
-      return { ...state, loading: false, error: action.payload as Error, list: [] };
+      return { ...state, loading: false, error: action.payload as Error, issues: [] };
 
     default:
       return state;

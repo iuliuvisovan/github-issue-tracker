@@ -2,7 +2,7 @@ import { IBookmarkState, BookmarkActionType, IBookmarkAction } from '../../types
 import { IGithubIssue } from '../../types/issues';
 
 const initialState: IBookmarkState = {
-  list: [],
+  bookmarks: [],
   loading: false,
 };
 
@@ -20,7 +20,7 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
     case BookmarkActionType.GET_BOOKMARKS_SUCCESS:
       return {
         ...state,
-        list: action.payload as IGithubIssue[],
+        bookmarks: action.payload as IGithubIssue[],
         loading: false,
         error: undefined,
       };
@@ -28,24 +28,24 @@ export default (state: IBookmarkState = initialState, action: IBookmarkAction): 
     case BookmarkActionType.ADD_BOOKMARK_SUCCESS:
       return {
         ...state,
-        list: [...state.list, action.payload as IGithubIssue],
+        bookmarks: [...state.bookmarks, action.payload as IGithubIssue],
         loading: false,
       };
 
     case BookmarkActionType.REMOVE_BOOKMARK_SUCCESS:
       return {
         ...state,
-        list: [...state.list.filter((x) => x.id !== action.payload)],
+        bookmarks: [...state.bookmarks.filter((x) => x.id !== action.payload)],
         loading: false,
       };
 
     // ---ERRORS---
     case BookmarkActionType.GET_BOOKMARKS_ERROR:
-      return { ...state, loading: false, error: action.payload as Error, list: [] };
+      return { ...state, loading: false, error: action.payload as Error, bookmarks: [] };
     case BookmarkActionType.ADD_BOOKMARK_ERROR:
-      return { ...state, loading: false, error: action.payload as Error, list: [] };
+      return { ...state, loading: false, error: action.payload as Error, bookmarks: [] };
     case BookmarkActionType.REMOVE_BOOKMARK_ERROR:
-      return { ...state, loading: false, error: action.payload as Error, list: [] };
+      return { ...state, loading: false, error: action.payload as Error, bookmarks: [] };
 
     default:
       return state;

@@ -13,12 +13,12 @@ import styles from './styles';
 import { IBookmarksScreenProps } from '../../types/navigation';
 
 export default function BookmarksScreen(props: IBookmarksScreenProps) {
-  const { list: bookmarks, loading } = useSelector((state: IApplicationState) => state.bookmarksReducer);
+  const { bookmarks: bookmarks, loading } = useSelector((state: IApplicationState) => state.bookmarksReducer);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(bookmarkActions.getList());
+    dispatch(bookmarkActions.getBookmarks());
   }, []);
 
   return (

@@ -19,7 +19,7 @@ import Header from '../IssuesScreen/Issue/Header';
 export default function IssuesDetailsScreen(props: IIssueDetailsScreenProps) {
   const { issue } = props.route.params;
 
-  const { list: bookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);
+  const { bookmarks: bookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);
   const { list: comments } = useSelector((state: IApplicationState) => state.commentsReducer);
   const dispatch = useDispatch();
 

@@ -1,19 +1,17 @@
-import Text from '../text';
-import Color from '../color';
+import Text from "../text";
+import Color from "../color";
 
-import * as React from 'react';
-import { Dimensions, TextInput, TextInputProps, View } from 'react-native';
-import styles from './styles';
+import * as React from "react";
+import { TextInput, TextInputProps, View } from "react-native";
+import styles from "./styles";
 
 export default function styledTextInput(props: StyledTextInputProps) {
   const [isFocused, setIsFocused] = React.useState(false);
 
-  const { halfWidth, name, style } = props;
+  const { name, style } = props;
 
   return (
-    <View
-      style={[styles.wrapper, halfWidth ? { width: (Dimensions.get('screen').width - (32 + 8 + 32 + 8)) / 2 } : {}]}
-    >
+    <View style={styles.wrapper}>
       <View pointerEvents="none" style={[styles.row, { zIndex: 1 }]}>
         <View style={styles.overlappingWrapper}>
           <Text style={styles.overlappingText}>{name}</Text>
@@ -35,5 +33,4 @@ export default function styledTextInput(props: StyledTextInputProps) {
 export interface StyledTextInputProps extends TextInputProps {
   name: string;
   initialValue?: string;
-  halfWidth?: boolean;
 }

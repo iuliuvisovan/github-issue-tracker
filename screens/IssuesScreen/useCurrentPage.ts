@@ -1,18 +1,26 @@
-import { useSelector } from 'react-redux';
-import { IApplicationState } from '../../redux';
-import { ActionSheetIOS, LayoutAnimation } from 'react-native';
-import { useState } from 'react';
-import { IIssueSortCriteria } from '../../types/issues';
+import { useDispatch, useSelector } from "react-redux";
+import { IApplicationState } from "../../redux";
+import { ActionSheetIOS, FlatList, LayoutAnimation } from "react-native";
+import { useRef, useState } from "react";
+import { IGithubIssue, IIssueSortCriteria } from "../../types/issues";
+import * as issueActions from "../../redux/actions/issues";
 
 export default function usePage() {
   const issuesReducer = useSelector((state: IApplicationState) => state.issuesReducer);
   const { error, organizationId, repoId } = issuesReducer;
 
+  const dispatch = useDispatch();
+
+  const setOrganizationId = (id: string) => dispatch(issueActions.setOrganizationId(id));
+  const setRepoId = (id: string) => dispatch(issueActions.setRepoId(id));
+
+  const flatListRef = useRef<FlatList<IGithubIssue>>(null);
+
   const pickSortCriterion = (sortCriteria: IIssueSortCriteria[]): Promise<string> => {
     return new Promise((resolve) => {
       ActionSheetIOS.showActionSheetWithOptions(
         {
-          options: ['Cancel', ...sortCriteria.map((x) => x.label)],
+          options: ["Cancel", ...sortCriteria.map((x) => x.label)],
           cancelButtonIndex: 0,
         },
         (buttonIndex) => {
@@ -28,6 +36,9 @@ export default function usePage() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   return {
+    setOrganizationId,
+    setRepoId,
+
     organizationId,
     repoId,
     pickSortCriterion,
@@ -40,6 +51,8 @@ export default function usePage() {
 
     isScrolled,
     setIsScrolled,
+
+    flatListRef,
 
     error,
   };
