@@ -1,25 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import { ActivityIndicator, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { ActivityIndicator, View } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { IApplicationState } from '../../redux';
-import * as bookmarkActions from '../../redux/actions/bookmarks';
-
-import { Color } from '../../components';
-import Issue from '../IssuesScreen/Issue';
-import styles from './styles';
-import { IBookmarksScreenProps } from '../../types/navigation';
+import { Color } from "../../components";
+import Issue from "../IssuesScreen/Issue";
+import styles from "./styles";
+import { IBookmarksScreenProps } from "../../types/navigation";
+import useBookmarks from "../../hooks/useBookmarks";
 
 export default function BookmarksScreen(props: IBookmarksScreenProps) {
-  const { bookmarks: bookmarks, loading } = useSelector((state: IApplicationState) => state.bookmarksReducer);
+  const bookmarksManager = useBookmarks();
+  const { bookmarks, loading } = bookmarksManager.data;
+  const { getBookmarks } = bookmarksManager.actions;
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(bookmarkActions.getBookmarks());
-  }, []);
+  useEffect(getBookmarks, []);
 
   return (
     <View style={styles.container}>
@@ -27,7 +22,7 @@ export default function BookmarksScreen(props: IBookmarksScreenProps) {
       <FlatList
         data={bookmarks}
         contentContainerStyle={{ paddingTop: 16 }}
-        keyExtractor={(item) => item.id + ''}
+        keyExtractor={(item) => item.id + ""}
         renderItem={({ item }) => <Issue issue={{ ...item, isBookmarked: true }} navigation={props.navigation} />}
       />
     </View>

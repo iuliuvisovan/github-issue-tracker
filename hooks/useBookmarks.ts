@@ -12,8 +12,12 @@ export default function useBookmarks() {
   };
 
   return {
-    bookmarks,
-    loading,
-    getBookmarks,
+    data: {
+      bookmarks,
+      loading,
+    },
+    actions: {
+      getBookmarks,
+    },
   };
 }

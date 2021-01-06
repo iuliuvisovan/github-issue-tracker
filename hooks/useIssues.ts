@@ -27,17 +27,20 @@ export default function useIssues() {
   const setRepoId = (id: string) => dispatch(issueActions.setRepoId(id));
 
   return {
-    issues,
-    loading,
-    filters,
-    sortCriteria,
-    currentPage,
-    error,
-
-    getIssues,
-    toggleFilter,
-    setSortCriterion,
-    setOrganizationId,
-    setRepoId,
+    data: {
+      issues,
+      loading,
+      filters,
+      sortCriteria,
+      currentPage,
+      error,
+    },
+    actions: {
+      getIssues,
+      toggleFilter,
+      setSortCriterion,
+      setOrganizationId,
+      setRepoId,
+    },
   };
 }

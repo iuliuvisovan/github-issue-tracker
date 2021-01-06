@@ -17,20 +17,27 @@ import useBookmarks from "../../hooks/useBookmarks";
 import { setPage } from "../../redux/actions/issues";
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
-  const { issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = useIssues();
-  const { getIssues, toggleFilter, setSortCriterion, setOrganizationId, setRepoId } = useIssues();
+  const issuesManager = useIssues();
+  const { issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = issuesManager.data;
+  const { getIssues, toggleFilter, setSortCriterion, setOrganizationId, setRepoId } = issuesManager.actions;
 
-  const { bookmarks, loading: loadingBookmarks, getBookmarks } = useBookmarks();
+  const bookmarksManager = useBookmarks();
+  const { bookmarks, loading: loadingBookmarks } = bookmarksManager.data;
+  const { getBookmarks } = bookmarksManager.actions;
 
-  const { organizationId, repoId, isPickerOpen, isScrolled, flatListRef } = useCurrentPage();
-  const { setIsPickerOpen, setIsScrolled, pickSortCriterion } = useCurrentPage();
+  const currentPageManager = useCurrentPage();
+  const { organizationId, repoId, isPickerOpen, isScrolled, flatListRef } = currentPageManager.data;
+  const { setIsPickerOpen, setIsScrolled, pickSortCriterion } = currentPageManager.actions;
+
+  const changeSortCriterion = async () => {
+    const pickedCriterion = await pickSortCriterion(sortCriteria);
+    setSortCriterion(pickedCriterion);
+  };
 
   useEffect(() => {
     getIssues();
     getBookmarks();
   }, []);
-
-  useDeepCompareEffect(getIssues, [currentPage, filters, sortCriteria]);
 
   useEffect(() => {
     flatListRef?.current?.scrollToOffset({ animated: true, offset: 0 });
@@ -38,10 +45,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     setIsPickerOpen(false);
   }, [issues]);
 
-  const changeSortCriterion = async () => {
-    const pickedCriterion = await pickSortCriterion(sortCriteria);
-    setSortCriterion(pickedCriterion);
-  };
+  useDeepCompareEffect(getIssues, [currentPage, filters, sortCriteria]);
 
   return (
     <View style={styles.container}>

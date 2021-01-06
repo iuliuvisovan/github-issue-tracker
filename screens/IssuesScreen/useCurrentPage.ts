@@ -36,24 +36,23 @@ export default function usePage() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   return {
-    setOrganizationId,
-    setRepoId,
-
-    organizationId,
-    repoId,
-    pickSortCriterion,
-
-    isPickerOpen,
-    setIsPickerOpen: (value: boolean) => {
-      LayoutAnimation.easeInEaseOut();
-      setIsPickerOpen(value);
+    data: {
+      organizationId,
+      repoId,
+      isPickerOpen,
+      isScrolled,
+      flatListRef,
+      error,
     },
-
-    isScrolled,
-    setIsScrolled,
-
-    flatListRef,
-
-    error,
+    actions: {
+      setOrganizationId,
+      setRepoId,
+      pickSortCriterion,
+      setIsPickerOpen: (value: boolean) => {
+        LayoutAnimation.easeInEaseOut();
+        setIsPickerOpen(value);
+      },
+      setIsScrolled,
+    },
   };
 }
