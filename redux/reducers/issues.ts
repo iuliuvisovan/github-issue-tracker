@@ -71,7 +71,8 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
 
       const targetFilter = newFilters.find((x) => x.id === action.payload);
       if (targetFilter) {
-        targetFilter.isActive = !targetFilter.isActive || 'salam';
+        targetFilter.isActive = !targetFilter.isActive || undefined;
+        targetFilter.changeDate = +new Date();
       }
 
       return {

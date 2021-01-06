@@ -7,4 +7,14 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: Color.pageBackground,
   },
+  noBookmarks: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 120,
+    alignSelf: 'center',
+  },
+  noBookmarksText: {
+    color: Color.border,
+    marginTop: 32,
+  },
 });

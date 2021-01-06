@@ -10,7 +10,6 @@ import styles from './styles';
 import { IssuesScreenProps } from '../../types/navigation';
 import { LinearGradient } from 'expo-linear-gradient';
 import useCurrentPage from './useCurrentPage';
-import useDeepCompareEffect from 'use-deep-compare-effect';
 
 import useIssues from '../../hooks/useIssues';
 import useBookmarks from '../../hooks/useBookmarks';
@@ -43,11 +42,6 @@ export default function IssuesScreen(props: IssuesScreenProps) {
     setIsPickerOpen(false);
     setIsScrolled(false);
   }, [issues]);
-
-  useDeepCompareEffect(() => {
-    console.log('Changed here something');
-    getIssues();
-  }, [sortCriteria]);
 
   return (
     <View style={styles.container}>
