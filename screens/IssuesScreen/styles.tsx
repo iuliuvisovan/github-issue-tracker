@@ -2,9 +2,10 @@ import { Color, vw } from '../../components';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  issues: {
-    marginTop: 16,
-    marginHorizontal: -16,
+  issuesContainer: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 120,
   },
   label: {
     color: Color.steel,
@@ -14,9 +15,8 @@ export default StyleSheet.create({
     marginTop: 6,
   },
   loading: {
-    position: 'absolute',
-    right: 16,
-    top: 8,
+    marginTop: 24,
+    alignSelf: 'center',
   },
   spacedRow: {
     flexDirection: 'row',
@@ -69,8 +69,6 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 16,
-    paddingVertical: 8,
     backgroundColor: Color.pageBackground,
   },
   title: {
@@ -151,8 +149,23 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
-    height: 120,
+    height: 40,
     width: vw,
     zIndex: -1,
+  },
+  actions: {
+    padding: 16,
+    backgroundColor: Color.pageBackground,
+  },
+  scrolled: {
+    elevation: 4,
+    shadowColor: '#414d5b',
+    shadowOffset: {
+      width: 2,
+      height: 4,
+    },
+    shadowRadius: 3,
+    shadowOpacity: 0.1,
+    zIndex: 10,
   },
 });

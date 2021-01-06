@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { MutableRefObject, useEffect, useRef, useState } from 'react';
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
-import { ActionSheetIOS, ActivityIndicator, LayoutAnimation, View } from 'react-native';
+import { ActionSheetIOS, ActivityIndicator, FlatListProps, LayoutAnimation, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +14,7 @@ import Issue from './Issue';
 import styles from './styles';
 import { IIssuesScreenProps } from '../../types/navigation';
 import { LinearGradient } from 'expo-linear-gradient';
+import { IGithubIssue } from '../../types/issues';
 
 export default function IssuesScreen(props: IIssuesScreenProps) {
   const {
@@ -30,6 +31,8 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
     (state: IApplicationState) => state.bookmarksReducer
   );
 
+  const flatList = useRef<FlatList<IGithubIssue>>(null);
+
   const dispatch = useDispatch();
   const setOrganizationSlug = (slug: string): void => {
     dispatch(issueActions.setOrganizationSlug(slug));
@@ -40,10 +43,12 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
   const goToNextPage = (): void => {
     dispatch(issueActions.setPage(page + 1));
     getIssues();
+    flatList?.current?.scrollToOffset({ animated: true, offset: 0 });
   };
   const goToPreviousPage = (): void => {
     dispatch(issueActions.setPage(page - 1));
     getIssues();
+    flatList?.current?.scrollToOffset({ animated: true, offset: 0 });
   };
   const getIssues = (): void => {
     dispatch(issueActions.getIssues());
@@ -78,6 +83,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
   }, []);
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const expandRepoPicker = () => {
     LayoutAnimation.easeInEaseOut();
@@ -91,78 +97,74 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
 
   return (
     <View style={styles.container}>
-      {isExpanded ? (
-        <View style={styles.card}>
-          <View style={styles.repositoryPicker}>
-            <TextInput halfWidth name="Organization" value={organizationSlug} onChangeText={setOrganizationSlug} />
-            <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
-            <TextInput halfWidth name="Repository" value={repoSlug} onChangeText={setRepoSlug} />
+      <View style={[styles.actions, isScrolled ? styles.scrolled : {}]}>
+        {isExpanded ? (
+          <View style={styles.card}>
+            <View style={styles.repositoryPicker}>
+              <TextInput halfWidth name="Organization" value={organizationSlug} onChangeText={setOrganizationSlug} />
+              <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
+              <TextInput halfWidth name="Repository" value={repoSlug} onChangeText={setRepoSlug} />
+            </View>
+            <View style={styles.buttonsWrapper}>
+              <Button type="secondary" text="Cancel" onPress={collapseRepoPicker} style={{ width: 130 }} />
+              <Button
+                type="quaternary"
+                text="View issues"
+                leftIcon={<AntDesign size={20} color={Color.blue} name="github" style={{ marginRight: 6 }} />}
+                onPress={getIssues}
+              />
+            </View>
           </View>
-          <View style={styles.buttonsWrapper}>
-            <Button type="secondary" text="Cancel" onPress={collapseRepoPicker} style={{ width: 130 }} />
-            <Button
-              type="quaternary"
-              text="View issues"
-              leftIcon={<AntDesign size={20} color={Color.blue} name="github" style={{ marginRight: 6 }} />}
-              onPress={getIssues}
-            />
-          </View>
-
-          {loadingIssues ||
-            (loadingBookmarks && (
-              <View style={styles.loading}>
-                <ActivityIndicator color={Color.blue} />
-              </View>
-            ))}
-        </View>
-      ) : (
-        <View style={[styles.spacedRow, { marginTop: 0 }]}>
-          <Feather size={20} name="git-branch" color={Color.border} style={styles.filterIcon} />
-          <Text style={styles.repoText}>
-            {organizationSlug} / {repoSlug}
-          </Text>
-          <TouchableOpacity onPress={expandRepoPicker} style={styles.editRepoButton}>
-            <Feather size={14} name="edit-2" color={Color.blue} />
-          </TouchableOpacity>
-        </View>
-      )}
-
-      <View style={styles.spacedRow}>
-        <Feather size={20} name="sliders" color={Color.border} style={styles.filterIcon} />
-        {filters.map(({ id, label, isActive }) => (
-          <TouchableOpacity
-            onPress={() => toggleFilter(id)}
-            activeOpacity={1}
-            key={id}
-            style={[styles.filter, isActive ? styles.activeFilter : {}]}
-          >
-            {isActive && (
-              <Feather size={16} name="check" color={Color.blue} style={{ marginRight: 4, marginLeft: -4 }} />
-            )}
-            <Text style={{ color: Color.blue }}>{label} issues</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-      <View style={styles.spacedRow}>
-        <Feather size={20} name="arrow-up" color={Color.border} style={styles.filterIcon} />
-        <TouchableOpacity onPress={showSortOptions} style={styles.sortButton}>
-          <FontAwesome size={17} name="caret-down" color={Color.blue} style={styles.caretIcon} />
-          <Text style={{ color: Color.blue }}>Sort By {sortCriteria.find((x) => x.isActive)?.label}</Text>
-        </TouchableOpacity>
-        {(loadingIssues || loadingBookmarks) && (
-          <View style={styles.loading}>
-            <ActivityIndicator color={Color.blue} />
+        ) : (
+          <View style={[styles.spacedRow, { marginTop: 0 }]}>
+            <Feather size={20} name="git-branch" color={Color.border} style={styles.filterIcon} />
+            <Text style={styles.repoText}>
+              {organizationSlug} / {repoSlug}
+            </Text>
+            <TouchableOpacity onPress={expandRepoPicker} style={styles.editRepoButton}>
+              <Feather size={14} name="edit-2" color={Color.blue} />
+            </TouchableOpacity>
           </View>
         )}
+
+        <View style={styles.spacedRow}>
+          <Feather size={20} name="sliders" color={Color.border} style={styles.filterIcon} />
+          {filters.map(({ id, label, isActive }) => (
+            <TouchableOpacity
+              onPress={() => toggleFilter(id)}
+              activeOpacity={1}
+              key={id}
+              style={[styles.filter, isActive ? styles.activeFilter : {}]}
+            >
+              {isActive && (
+                <Feather size={16} name="check" color={Color.blue} style={{ marginRight: 4, marginLeft: -4 }} />
+              )}
+              <Text style={{ color: Color.blue }}>{label} issues</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+        <View style={styles.spacedRow}>
+          <Feather size={20} name="arrow-up" color={Color.border} style={styles.filterIcon} />
+          <TouchableOpacity onPress={showSortOptions} style={styles.sortButton}>
+            <FontAwesome size={17} name="caret-down" color={Color.blue} style={styles.caretIcon} />
+            <Text style={{ color: Color.blue }}>Sort By {sortCriteria.find((x) => x.isActive)?.label}</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {error && <Text style={styles.error}>An error occurred: {error.message}</Text>}
 
-      <View style={styles.issues}>
+      {loadingIssues || loadingBookmarks ? (
+        <View style={styles.loading}>
+          <ActivityIndicator color={Color.blue} />
+        </View>
+      ) : (
         <FlatList
           data={issues}
+          ref={flatList}
+          onScroll={(event) => setIsScrolled(event.nativeEvent.contentOffset.y >= 16)}
           keyExtractor={(item) => item.id + ''}
-          contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 150 }}
+          contentContainerStyle={styles.issuesContainer}
           renderItem={({ item }) => (
             <Issue
               issue={{ ...item, isBookmarked: bookmarks.some((x) => x.id === item.id) }}
@@ -170,7 +172,7 @@ export default function IssuesScreen(props: IIssuesScreenProps) {
             />
           )}
         />
-      </View>
+      )}
 
       <View pointerEvents="box-none" style={styles.paginationButtons}>
         <Button
