@@ -18,7 +18,7 @@ export default function BookmarksScreen(props: IBookmarksScreenProps) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(bookmarkActions.getBookmarks());
+    dispatch(bookmarkActions.getList());
   }, []);
 
   return (

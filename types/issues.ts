@@ -2,8 +2,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { IIssuesStackParamList } from './navigation';
 
 export interface IGetIssuesParams {
-  organizationSlug: string;
-  repoSlug: string;
+  organizationId: string;
+  repoId: string;
   filter: string;
   sort: string;
   page: number;
@@ -59,11 +59,11 @@ export interface IIssueState {
   list: IGithubIssue[];
   loading: Boolean;
   error?: Error;
-  organizationSlug: string;
-  repoSlug: string;
+  organizationId: string;
+  repoId: string;
   filters: IIsueFilter[];
   sortCriteria: IIssueSortCriteria[];
-  page: number;
+  currentPage: number;
 }
 
 export interface IIssueAction {

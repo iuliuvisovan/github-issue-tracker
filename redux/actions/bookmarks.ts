@@ -3,7 +3,7 @@ import { BookmarkActionType, IBookmarkAction } from '../../types/bookmarks';
 import AsyncStorage from '@react-native-community/async-storage';
 import { IGithubIssue } from '../../types/issues';
 
-export const getBookmarks = () => async (dispatch: Dispatch<IBookmarkAction>) => {
+export const getList = () => async (dispatch: Dispatch<IBookmarkAction>) => {
   dispatch({ type: BookmarkActionType.GET_BOOKMARKS_PENDING });
 
   try {

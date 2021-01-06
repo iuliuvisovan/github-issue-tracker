@@ -5,7 +5,7 @@ export default StyleSheet.create({
   issuesContainer: {
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 120,
+    paddingBottom: 80,
   },
   label: {
     color: Color.steel,
@@ -85,7 +85,7 @@ export default StyleSheet.create({
     width: '100%',
     backgroundColor: Color.border + '88',
   },
-  repositoryPicker: {
+  repositoryInputs: {
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',

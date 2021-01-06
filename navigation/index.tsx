@@ -7,6 +7,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types/navigation';
 import BottomTabNavigator from './BottomTabNavigator';
 import IssuesDetailsScreen from '../screens/IssueDetailsScreen';
+import { Color } from '../components';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -25,7 +26,11 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Screen
         name="IssueDetails"
-        options={{ title: 'Issue Details', headerBackTitle: 'Back' }}
+        options={{
+          title: 'Issue Details',
+          headerBackTitle: 'Back',
+          headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
+        }}
         component={IssuesDetailsScreen}
       />
     </Stack.Navigator>

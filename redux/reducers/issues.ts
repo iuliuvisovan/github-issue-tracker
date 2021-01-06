@@ -26,11 +26,11 @@ const defaultSortCriteria = [
 const initialState: IIssueState = {
   list: [],
   loading: false,
-  organizationSlug: 'facebook',
-  repoSlug: 'react-native',
+  organizationId: 'facebook',
+  repoId: 'react-native',
   filters: defaultFilters,
   sortCriteria: defaultSortCriteria,
-  page: 1,
+  currentPage: 1,
 };
 
 export default (state: IIssueState = initialState, action: IIssueAction): IIssueState => {
@@ -51,19 +51,19 @@ export default (state: IIssueState = initialState, action: IIssueAction): IIssue
     case IssueActionType.SET_ORGANIZATION_SLUG:
       return {
         ...state,
-        organizationSlug: action.payload as string,
+        organizationId: action.payload as string,
       };
 
     case IssueActionType.SET_REPO_SLUG:
       return {
         ...state,
-        repoSlug: action.payload as string,
+        repoId: action.payload as string,
       };
 
     case IssueActionType.SET_PAGE:
       return {
         ...state,
-        page: action.payload as number,
+        currentPage: action.payload as number,
       };
 
     case IssueActionType.TOGGLE_FILTER:
