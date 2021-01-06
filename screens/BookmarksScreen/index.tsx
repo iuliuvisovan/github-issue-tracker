@@ -23,7 +23,7 @@ export default function BookmarksScreen(props: BookmarksScreenProps) {
       {!bookmarks.length && (
         <View style={styles.noBookmarks}>
           <Feather size={60} color={Color.border + '88'} name="star" style={{ marginRight: 4 }} />
-          <Text style={styles.noBookmarksText}>Bookmarked issues will be shown here.</Text>
+          <Text style={styles.noBookmarksText}>Bookmarked issues will appear here!</Text>
         </View>
       )}
       <FlatList
