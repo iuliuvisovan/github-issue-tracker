@@ -46,7 +46,7 @@ export interface GetIssuesParams {
 
 export interface IssueItemProps {
   issue: Issue;
-  navigation: StackNavigationProp<RootStackParams, 'IssueDetails'>;
+  navigation: StackNavigationProp<RootStackParams>;
 }
 
 export interface IssueHeaderProps {
