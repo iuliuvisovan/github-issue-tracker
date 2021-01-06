@@ -23,6 +23,6 @@ export type IBookmarksStackParamList = {
 };
 
 export type IIssuesScreenProps = StackScreenProps<IIssuesStackParamList, 'Issues'>;
-export type IIssueDetailsScreenProps = StackScreenProps<IIssuesStackParamList, 'IssueDetails'>;
+export type IIssueDetailsScreenProps = StackScreenProps<RootStackParamList, 'IssueDetails'>;
 
 export type IBookmarksScreenProps = StackScreenProps<IBookmarksStackParamList, 'Bookmarks'>;

@@ -24,6 +24,8 @@ export const addBookmark = (issue: IGithubIssue) => async (dispatch: Dispatch<IB
   dispatch({ type: BookmarkActionType.ADD_BOOKMARK_PENDING });
 
   try {
+    dispatch({ type: BookmarkActionType.ADD_BOOKMARK_SUCCESS, payload: issue });
+
     const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
     let bookmarks: IGithubIssue[] = [];
@@ -34,8 +36,6 @@ export const addBookmark = (issue: IGithubIssue) => async (dispatch: Dispatch<IB
     bookmarks.push(issue);
 
     await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-    dispatch({ type: BookmarkActionType.ADD_BOOKMARK_SUCCESS, payload: issue });
   } catch (error) {
     dispatch({ type: BookmarkActionType.ADD_BOOKMARK_ERROR, payload: error });
   }
