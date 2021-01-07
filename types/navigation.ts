@@ -21,7 +21,7 @@ export type BookmarksStackParamList = {
   Bookmarks: undefined;
 };
 
-export type IssueDetailsScreenProps = StackScreenProps<RootStackParamList>;
+export type IssueDetailsScreenProps = StackScreenProps<RootStackParamList, 'IssueDetails'>;
 
 export type IssuesScreenProps = StackScreenProps<IssuesStackParamList>;
 

@@ -1,0 +1,692 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <RNCSafeAreaProvider
+    onInsetsChange={[Function]}
+    style={
+      Array [
+        Object {
+          "flex": 1,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      pointerEvents="box-none"
+      style={
+        Object {
+          "zIndex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
+        onLayout={[Function]}
+        pointerEvents="box-none"
+        style={null}
+      >
+        <View
+          pointerEvents="box-none"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "opacity": 1,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "zIndex": 0,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "rgb(255, 255, 255)",
+                "borderBottomColor": "rgb(216, 216, 216)",
+                "flex": 1,
+                "shadowColor": "rgb(216, 216, 216)",
+                "shadowOffset": Object {
+                  "height": 0.5,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.85,
+                "shadowRadius": 0,
+              }
+            }
+          />
+        </View>
+        <View
+          pointerEvents="box-none"
+          style={
+            Object {
+              "height": 64,
+              "maxHeight": undefined,
+              "minHeight": undefined,
+              "opacity": undefined,
+              "transform": undefined,
+            }
+          }
+        >
+          <View
+            pointerEvents="none"
+            style={
+              Object {
+                "height": 20,
+              }
+            }
+          />
+          <View
+            pointerEvents="box-none"
+            style={
+              Object {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <View
+              pointerEvents="box-none"
+              style={
+                Object {
+                  "marginHorizontal": 16,
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="header"
+                aria-level="1"
+                numberOfLines={1}
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "color": "rgb(28, 28, 30)",
+                    "fontSize": 17,
+                    "fontWeight": "600",
+                  }
+                }
+              >
+                MockedScreen
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        pointerEvents="box-none"
+        style={
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        />
+        <View
+          accessibilityElementsHidden={false}
+          closing={false}
+          gestureVelocityImpact={0.3}
+          importantForAccessibility="auto"
+          onClose={[Function]}
+          onGestureBegin={[Function]}
+          onGestureCanceled={[Function]}
+          onGestureEnd={[Function]}
+          onOpen={[Function]}
+          onTransition={[Function]}
+          pointerEvents="box-none"
+          style={
+            Array [
+              Object {
+                "overflow": undefined,
+              },
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+          transitionSpec={
+            Object {
+              "close": Object {
+                "animation": "spring",
+                "config": Object {
+                  "damping": 500,
+                  "mass": 3,
+                  "overshootClamping": true,
+                  "restDisplacementThreshold": 10,
+                  "restSpeedThreshold": 10,
+                  "stiffness": 1000,
+                },
+              },
+              "open": Object {
+                "animation": "spring",
+                "config": Object {
+                  "damping": 500,
+                  "mass": 3,
+                  "overshootClamping": true,
+                  "restDisplacementThreshold": 10,
+                  "restSpeedThreshold": 10,
+                  "stiffness": 1000,
+                },
+              },
+            }
+          }
+        >
+          <View
+            needsOffscreenAlphaCompositing={false}
+            pointerEvents="box-none"
+            style={
+              Object {
+                "flex": 1,
+              }
+            }
+          >
+            <View
+              collapsable={false}
+              forwardedRef={[Function]}
+              onGestureHandlerEvent={[Function]}
+              onGestureHandlerStateChange={[Function]}
+              style={
+                Object {
+                  "flex": 1,
+                  "transform": Array [
+                    Object {
+                      "translateX": 0,
+                    },
+                    Object {
+                      "translateX": 0,
+                    },
+                  ],
+                }
+              }
+            >
+              <View
+                pointerEvents="none"
+                style={
+                  Object {
+                    "backgroundColor": "rgb(242, 242, 242)",
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "shadowColor": "#000",
+                    "shadowOffset": Object {
+                      "height": 1,
+                      "width": -1,
+                    },
+                    "shadowOpacity": 0.3,
+                    "shadowRadius": 5,
+                    "top": 0,
+                    "width": 3,
+                  }
+                }
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flex": 1,
+                      "overflow": "hidden",
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "rgb(242, 242, 242)",
+                      },
+                      undefined,
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "flex": 1,
+                      "flexDirection": "column-reverse",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Object {
+                        "flex": 1,
+                      }
+                    }
+                  >
+                    <RCTScrollView>
+                      <View>
+                        <View
+                          style={
+                            Object {
+                              "backgroundColor": "#fff",
+                              "borderRadius": 0,
+                              "elevation": 4,
+                              "marginBottom": 8,
+                              "marginTop": 0,
+                              "paddingHorizontal": 16,
+                              "paddingVertical": 16,
+                              "shadowColor": "#414d5b",
+                              "shadowOffset": Object {
+                                "height": 2,
+                                "width": 2,
+                              },
+                              "shadowOpacity": 0.1,
+                              "shadowRadius": 3,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "marginBottom": 16,
+                                "marginTop": -2,
+                              }
+                            }
+                          >
+                            <Image
+                              source={
+                                Object {
+                                  "uri": "mock_url",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "borderRadius": 10,
+                                  "height": 20,
+                                  "marginRight": 8,
+                                  "marginTop": 1,
+                                  "width": 20,
+                                }
+                              }
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#414d5b",
+                                    "fontFamily": "muli-semi-bold",
+                                    "fontSize": 12,
+                                  },
+                                ]
+                              }
+                            >
+                              mock_login
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#aab2ba",
+                                    "fontSize": 12,
+                                  },
+                                ]
+                              }
+                            >
+                               
+                              • 
+                              a few seconds ago
+                            </Text>
+                          </View>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "borderBottomLeftRadius": 16,
+                                  "borderTopLeftRadius": 16,
+                                  "paddingLeft": 12,
+                                  "paddingRight": 14,
+                                  "paddingVertical": 4,
+                                  "position": "absolute",
+                                  "right": 0,
+                                  "top": 13,
+                                },
+                                Object {
+                                  "backgroundColor": "#16c65d",
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#fff",
+                                    "fontFamily": "muli-extra-bold",
+                                  },
+                                ]
+                              }
+                            >
+                              Open
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#14181c",
+                                  "fontFamily": "muli",
+                                  "lineHeight": 16,
+                                },
+                                Object {
+                                  "fontFamily": "muli-extra-bold",
+                                  "fontSize": 16,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                          >
+                            Mock
+                          </Text>
+                          <View
+                            style={
+                              Object {
+                                "backgroundColor": "#aab2ba44",
+                                "height": 1,
+                                "marginTop": 16,
+                                "width": "100%",
+                              }
+                            }
+                          />
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flex": 1,
+                                  "overflow": "hidden",
+                                },
+                                undefined,
+                              ]
+                            }
+                          >
+                            <RNCWebView
+                              cacheEnabled={true}
+                              injectedJavaScriptBeforeContentLoadedForMainFrameOnly={true}
+                              injectedJavaScriptForMainFrameOnly={true}
+                              javaScriptEnabled={true}
+                              messagingEnabled={false}
+                              onContentProcessDidTerminate={[Function]}
+                              onHttpError={[Function]}
+                              onLoadingError={[Function]}
+                              onLoadingFinish={[Function]}
+                              onLoadingProgress={[Function]}
+                              onLoadingStart={[Function]}
+                              onMessage={[Function]}
+                              onShouldStartLoadWithRequest={[Function]}
+                              source={
+                                Object {
+                                  "html": "<html style=\\"overflow: hidden\\">
+    <head>
+      <meta name=\\"viewport\\" content=\\"width=device-width, initial-scale=1.0\\">
+      <link rel=\\"preconnect\\" href=\\"https://fonts.gstatic.com\\">
+      <link href=\\"https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500&display=swap\\" rel=\\"stylesheet\\">
+    </head>
+    <body style=\\"font-family: Mulish; overflow: hidden\\">
+      <p>mock body</p>
+    </body>
+  </html>
+  ",
+                                }
+                              }
+                              style={
+                                Array [
+                                  Object {
+                                    "flex": 1,
+                                    "overflow": "hidden",
+                                  },
+                                  Object {
+                                    "backgroundColor": "#ffffff",
+                                  },
+                                  Object {
+                                    "height": 250,
+                                  },
+                                ]
+                              }
+                              useSharedProcessPool={true}
+                            />
+                          </View>
+                          <View
+                            style={
+                              Object {
+                                "flexDirection": "row",
+                                "flexWrap": "wrap",
+                                "marginTop": 8,
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "borderRadius": 16,
+                                    "flexDirection": "row",
+                                    "height": 22,
+                                    "marginRight": 8,
+                                    "marginTop": 8,
+                                    "paddingHorizontal": 10,
+                                  },
+                                  Object {
+                                    "backgroundColor": "##000",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#14181c",
+                                      "fontFamily": "muli",
+                                      "lineHeight": 16,
+                                    },
+                                    Object {
+                                      "fontFamily": "muli-semi-bold",
+                                      "fontSize": 12,
+                                    },
+                                    Object {
+                                      "color": "#fff",
+                                    },
+                                  ]
+                                }
+                              >
+                                mock label
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                        <View
+                          accessible={true}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "alignSelf": "flex-end",
+                              "backgroundColor": "#fff",
+                              "borderRadius": 609,
+                              "elevation": 6,
+                              "flexDirection": "row",
+                              "height": 39,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "marginVertical": 8,
+                              "opacity": 1,
+                              "paddingHorizontal": 16,
+                              "shadowColor": "#aab2ba",
+                              "shadowOffset": Object {
+                                "height": 2,
+                                "width": 0,
+                              },
+                              "shadowOpacity": 0.35,
+                              "shadowRadius": 4,
+                              "width": "auto",
+                            }
+                          }
+                        >
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#00aaff",
+                                  "fontSize": 20,
+                                },
+                                Object {
+                                  "marginRight": 6,
+                                },
+                                Object {
+                                  "fontFamily": "anticon",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#14181c",
+                                  "fontFamily": "muli",
+                                  "lineHeight": 16,
+                                },
+                                Object {
+                                  "color": "#00aaff",
+                                  "fontFamily": "muli-extra-bold",
+                                  "fontSize": 12,
+                                  "letterSpacing": 0.8,
+                                },
+                                Object {
+                                  "color": "#00aaff",
+                                  "fontFamily": "muli-extra-bold",
+                                  "fontSize": 12,
+                                  "letterSpacing": 0.8,
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            BOOKMARK
+                          </Text>
+                        </View>
+                        <View
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "alignSelf": "center",
+                              "justifyContent": "center",
+                              "marginTop": 48,
+                            }
+                          }
+                        >
+                          <Text
+                            allowFontScaling={false}
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#aab2ba",
+                                  "fontSize": 40,
+                                },
+                                Object {
+                                  "marginRight": 4,
+                                },
+                                Object {
+                                  "fontFamily": "feather",
+                                  "fontStyle": "normal",
+                                  "fontWeight": "normal",
+                                },
+                                Object {},
+                              ]
+                            }
+                          >
+                            
+                          </Text>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#14181c",
+                                  "fontFamily": "muli",
+                                  "lineHeight": 16,
+                                },
+                                Object {
+                                  "color": "#aab2ba",
+                                  "marginTop": 8,
+                                },
+                              ]
+                            }
+                          >
+                            No comments to show.
+                          </Text>
+                        </View>
+                      </View>
+                    </RCTScrollView>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RNCSafeAreaProvider>
+</View>
+`;
