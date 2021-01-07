@@ -14,7 +14,7 @@ export interface CommentAction {
 
 export interface CommentState {
   list: GithubComment[];
-  loading: Boolean;
+  loading: boolean;
   error?: Error;
 }
 

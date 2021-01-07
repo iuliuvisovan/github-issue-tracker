@@ -55,7 +55,7 @@ export interface IssueHeaderProps {
 
 export interface IssueState {
   issues: Issue[];
-  loading: Boolean;
+  loading: boolean;
   error?: Error;
   organizationId: string;
   repoId: string;

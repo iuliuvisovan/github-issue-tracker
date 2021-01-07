@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
-import { ActivityIndicator, LayoutAnimation, View } from 'react-native';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { ActivityIndicator, LayoutAnimation, View, FlatList, TouchableOpacity } from 'react-native';
 
 import { Button, Color, TextInput, Text } from '../../components';
 import Issue from './Issue';

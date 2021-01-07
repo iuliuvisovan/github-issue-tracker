@@ -2,7 +2,7 @@ import { Issue } from './issues';
 
 export interface BookmarkState {
   bookmarks: Issue[];
-  loading: Boolean;
+  loading: boolean;
   error?: Error;
 }
 

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { ActivityIndicator, View } from 'react-native';
-import { FlatList } from 'react-native-gesture-handler';
+import { ActivityIndicator, View, FlatList } from 'react-native';
 
 import { Color, Text } from '../../components';
 import Issue from '../IssuesScreen/Issue';

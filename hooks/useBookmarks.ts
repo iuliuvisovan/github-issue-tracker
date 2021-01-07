@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IApplicationState } from '../redux';
-import * as issueActions from '../redux/actions/issues';
+import * as bokmarkActions from '../redux/actions/bookmarks';
 import { useBookmarksReturnValue } from '../types/bookmarks';
 
 export default function useBookmarks(): useBookmarksReturnValue {
@@ -9,7 +9,7 @@ export default function useBookmarks(): useBookmarksReturnValue {
   const dispatch = useDispatch();
 
   const getBookmarks = () => {
-    dispatch(issueActions.getIssues());
+    dispatch(bokmarkActions.getBookmarks());
   };
 
   return {
