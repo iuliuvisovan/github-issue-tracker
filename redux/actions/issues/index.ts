@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import * as issuesApi from '../../api/issues';
-import { IssueActionType, IssueAction } from '../../types/issues';
-import store from '..';
+import * as issuesApi from '../../../api/issues';
+import { IssueActionType, IssueAction } from '../../../types/issues';
+import store from '../..';
 
 export const getIssues = () => async (dispatch: Dispatch<IssueAction>) => {
   dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
