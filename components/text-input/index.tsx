@@ -14,7 +14,7 @@ export default function styledTextInput(props: StyledTextInputProps) {
     <View style={styles.wrapper}>
       <View pointerEvents="none" style={[styles.row, { zIndex: 1 }]}>
         <View style={styles.overlappingWrapper}>
-          <Text style={styles.overlappingText}>{name}</Text>
+          <Text testID="inputName" style={styles.overlappingText}>{name}</Text>
         </View>
       </View>
       <TextInput

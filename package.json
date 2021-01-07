@@ -12,7 +12,8 @@
     "preset": "jest-expo",
     "setupFiles": [
       "<rootDir>/jestSetup.js"
-    ]
+    ],
+    "collectCoverage": true
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
