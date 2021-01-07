@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
-import { BookmarkActionType, BookmarkAction } from '../../types/bookmarks';
+import { BookmarkActionType, BookmarkAction } from '../../../types/bookmarks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Issue } from '../../types/issues';
+import { Issue } from '../../../types/issues';
 
 export const getBookmarks = () => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.GET_BOOKMARKS_PENDING });

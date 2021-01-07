@@ -4,6 +4,10 @@ import MockedNavigator from '../../navigation/MockedNavigator';
 import { create, act } from 'react-test-renderer';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '../../redux';
+import isDarkColor from 'is-dark-color';
+
+jest.mock('is-dark-color');
+isDarkColor.mockReturnValue(true);
 
 test('snapshot', async () => {
   let tree;

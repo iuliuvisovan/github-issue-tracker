@@ -294,63 +294,64 @@ exports[`snapshot 1`] = `
                         }
                       }
                     >
-                      <View
-                        style={
-                          Object {
-                            "alignItems": "center",
-                            "alignSelf": "center",
-                            "justifyContent": "center",
-                            "marginTop": 120,
-                          }
-                        }
-                      >
-                        <Text
-                          allowFontScaling={false}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#aab2ba88",
-                                "fontSize": 60,
-                              },
-                              Object {
-                                "marginRight": 4,
-                              },
-                              Object {
-                                "fontFamily": "feather",
-                                "fontStyle": "normal",
-                                "fontWeight": "normal",
-                              },
-                              Object {},
-                            ]
-                          }
-                        >
-                          
-                        </Text>
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#14181c",
-                                "fontFamily": "muli",
-                                "lineHeight": 16,
-                              },
-                              Object {
-                                "color": "#aab2ba",
-                                "marginTop": 32,
-                              },
-                            ]
-                          }
-                        >
-                          Bookmarked issues will appear here!
-                        </Text>
-                      </View>
                       <RCTScrollView
                         contentContainerStyle={
                           Object {
                             "paddingTop": 16,
                           }
                         }
-                        data={Array []}
+                        data={
+                          Array [
+                            Object {
+                              "body": "mock body",
+                              "id": 1,
+                              "isBookmarked": true,
+                              "labels": Array [
+                                Object {
+                                  "color": "#000",
+                                  "default": false,
+                                  "description": "mock description",
+                                  "id": "2",
+                                  "name": "mock label",
+                                  "url": "mock_url",
+                                },
+                              ],
+                              "state": "open",
+                              "title": "Mock",
+                              "user": Object {
+                                "avatar_url": "mock_url",
+                                "html_url": "mock_url",
+                                "id": 1,
+                                "login": "mock_login",
+                                "url": "mock_url",
+                              },
+                            },
+                            Object {
+                              "body": "mock body",
+                              "id": 2,
+                              "isBookmarked": true,
+                              "labels": Array [
+                                Object {
+                                  "color": "#000",
+                                  "default": false,
+                                  "description": "mock description",
+                                  "id": "2",
+                                  "name": "mock label",
+                                  "url": "mock_url",
+                                },
+                              ],
+                              "state": "open",
+                              "title": "Mock",
+                              "user": Object {
+                                "avatar_url": "mock_url",
+                                "html_url": "mock_url",
+                                "id": 2,
+                                "login": "mock_login",
+                                "url": "mock_url",
+                              },
+                            },
+                          ]
+                        }
                         disableVirtualization={false}
                         getItem={[Function]}
                         getItemCount={[Function]}
@@ -373,7 +374,503 @@ exports[`snapshot 1`] = `
                         viewabilityConfigCallbackPairs={Array []}
                         windowSize={21}
                       >
-                        <View />
+                        <View>
+                          <View
+                            onLayout={[Function]}
+                            style={null}
+                          >
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "backgroundColor": "#fff",
+                                  "borderRadius": 8,
+                                  "elevation": 4,
+                                  "marginBottom": 16,
+                                  "opacity": 1,
+                                  "paddingHorizontal": 16,
+                                  "paddingVertical": 16,
+                                  "shadowColor": "#414d5b",
+                                  "shadowOffset": Object {
+                                    "height": 2,
+                                    "width": 2,
+                                  },
+                                  "shadowOpacity": 0.1,
+                                  "shadowRadius": 3,
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Object {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
+                                    "marginBottom": 16,
+                                    "marginTop": -2,
+                                  }
+                                }
+                              >
+                                <Image
+                                  source={
+                                    Object {
+                                      "uri": "mock_url",
+                                    }
+                                  }
+                                  style={
+                                    Object {
+                                      "borderRadius": 10,
+                                      "height": 20,
+                                      "marginRight": 8,
+                                      "marginTop": 1,
+                                      "width": 20,
+                                    }
+                                  }
+                                />
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#414d5b",
+                                        "fontFamily": "muli-semi-bold",
+                                        "fontSize": 12,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  mock_login
+                                </Text>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#aab2ba",
+                                        "fontSize": 12,
+                                      },
+                                    ]
+                                  }
+                                >
+                                   
+                                  • 
+                                  a few seconds ago
+                                </Text>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#aab2ba",
+                                        "fontSize": 12,
+                                      },
+                                    ]
+                                  }
+                                >
+                                   • 
+                                </Text>
+                                <View
+                                  style={Object {}}
+                                >
+                                  <Text
+                                    allowFontScaling={false}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#aab2ba",
+                                          "fontSize": 16,
+                                        },
+                                        Object {
+                                          "marginRight": 4,
+                                        },
+                                        Object {
+                                          "fontFamily": "anticon",
+                                          "fontStyle": "normal",
+                                          "fontWeight": "normal",
+                                        },
+                                        Object {},
+                                      ]
+                                    }
+                                  >
+                                    
+                                  </Text>
+                                </View>
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "borderBottomLeftRadius": 16,
+                                      "borderTopLeftRadius": 16,
+                                      "paddingLeft": 12,
+                                      "paddingRight": 14,
+                                      "paddingVertical": 4,
+                                      "position": "absolute",
+                                      "right": 0,
+                                      "top": 13,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#16c65d",
+                                    },
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#fff",
+                                        "fontFamily": "muli-extra-bold",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Open
+                                </Text>
+                              </View>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#14181c",
+                                      "fontFamily": "muli",
+                                      "lineHeight": 16,
+                                    },
+                                    Object {
+                                      "maxWidth": 650,
+                                    },
+                                  ]
+                                }
+                              >
+                                Mock
+                              </Text>
+                              <View
+                                style={
+                                  Object {
+                                    "flexDirection": "row",
+                                    "flexWrap": "wrap",
+                                    "marginTop": 8,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderRadius": 16,
+                                        "flexDirection": "row",
+                                        "height": 22,
+                                        "marginRight": 8,
+                                        "marginTop": 8,
+                                        "paddingHorizontal": 10,
+                                      },
+                                      Object {
+                                        "backgroundColor": "##000",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#14181c",
+                                          "fontFamily": "muli",
+                                          "lineHeight": 16,
+                                        },
+                                        Object {
+                                          "fontFamily": "muli-semi-bold",
+                                          "fontSize": 12,
+                                        },
+                                        Object {
+                                          "color": "#fff",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    mock label
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            onLayout={[Function]}
+                            style={null}
+                          >
+                            <View
+                              accessible={true}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "backgroundColor": "#fff",
+                                  "borderRadius": 8,
+                                  "elevation": 4,
+                                  "marginBottom": 16,
+                                  "opacity": 1,
+                                  "paddingHorizontal": 16,
+                                  "paddingVertical": 16,
+                                  "shadowColor": "#414d5b",
+                                  "shadowOffset": Object {
+                                    "height": 2,
+                                    "width": 2,
+                                  },
+                                  "shadowOpacity": 0.1,
+                                  "shadowRadius": 3,
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Object {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
+                                    "marginBottom": 16,
+                                    "marginTop": -2,
+                                  }
+                                }
+                              >
+                                <Image
+                                  source={
+                                    Object {
+                                      "uri": "mock_url",
+                                    }
+                                  }
+                                  style={
+                                    Object {
+                                      "borderRadius": 10,
+                                      "height": 20,
+                                      "marginRight": 8,
+                                      "marginTop": 1,
+                                      "width": 20,
+                                    }
+                                  }
+                                />
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#414d5b",
+                                        "fontFamily": "muli-semi-bold",
+                                        "fontSize": 12,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  mock_login
+                                </Text>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#aab2ba",
+                                        "fontSize": 12,
+                                      },
+                                    ]
+                                  }
+                                >
+                                   
+                                  • 
+                                  a few seconds ago
+                                </Text>
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#aab2ba",
+                                        "fontSize": 12,
+                                      },
+                                    ]
+                                  }
+                                >
+                                   • 
+                                </Text>
+                                <View
+                                  style={Object {}}
+                                >
+                                  <Text
+                                    allowFontScaling={false}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#aab2ba",
+                                          "fontSize": 16,
+                                        },
+                                        Object {
+                                          "marginRight": 4,
+                                        },
+                                        Object {
+                                          "fontFamily": "anticon",
+                                          "fontStyle": "normal",
+                                          "fontWeight": "normal",
+                                        },
+                                        Object {},
+                                      ]
+                                    }
+                                  >
+                                    
+                                  </Text>
+                                </View>
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "borderBottomLeftRadius": 16,
+                                      "borderTopLeftRadius": 16,
+                                      "paddingLeft": 12,
+                                      "paddingRight": 14,
+                                      "paddingVertical": 4,
+                                      "position": "absolute",
+                                      "right": 0,
+                                      "top": 13,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#16c65d",
+                                    },
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#14181c",
+                                        "fontFamily": "muli",
+                                        "lineHeight": 16,
+                                      },
+                                      Object {
+                                        "color": "#fff",
+                                        "fontFamily": "muli-extra-bold",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Open
+                                </Text>
+                              </View>
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#14181c",
+                                      "fontFamily": "muli",
+                                      "lineHeight": 16,
+                                    },
+                                    Object {
+                                      "maxWidth": 650,
+                                    },
+                                  ]
+                                }
+                              >
+                                Mock
+                              </Text>
+                              <View
+                                style={
+                                  Object {
+                                    "flexDirection": "row",
+                                    "flexWrap": "wrap",
+                                    "marginTop": 8,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "borderRadius": 16,
+                                        "flexDirection": "row",
+                                        "height": 22,
+                                        "marginRight": 8,
+                                        "marginTop": 8,
+                                        "paddingHorizontal": 10,
+                                      },
+                                      Object {
+                                        "backgroundColor": "##000",
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <Text
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#14181c",
+                                          "fontFamily": "muli",
+                                          "lineHeight": 16,
+                                        },
+                                        Object {
+                                          "fontFamily": "muli-semi-bold",
+                                          "fontSize": 12,
+                                        },
+                                        Object {
+                                          "color": "#fff",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    mock label
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              Object {
+                                "height": 0,
+                              }
+                            }
+                          />
+                        </View>
                       </RCTScrollView>
                     </View>
                   </View>
