@@ -8,9 +8,9 @@ export default function useIssues() {
 
   const dispatch = useDispatch();
 
-  const getIssues = () => {
+  function getIssues() {
     dispatch(issueActions.getIssues());
-  };
+  }
 
   const toggleFilter = (filterId: string) => {
     LayoutAnimation.easeInEaseOut();

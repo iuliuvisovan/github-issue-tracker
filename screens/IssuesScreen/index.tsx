@@ -78,6 +78,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
             <TouchableOpacity
               onPress={() => toggleFilter(id)}
               activeOpacity={1}
+              testID={id}
               key={id}
               style={[styles.filter, isActive ? styles.activeFilter : {}]}
             >
