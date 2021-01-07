@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1610056854864" clover="3.2.0">
-  <project timestamp="1610056854864" name="All files">
-    <metrics statements="239" coveredstatements="165" conditionals="95" coveredconditionals="67" methods="94" coveredmethods="45" elements="428" coveredelements="277" complexity="0" loc="239" ncloc="239" packages="21" files="39" classes="39"/>
+<coverage generated="1610059401793" clover="3.2.0">
+  <project timestamp="1610059401793" name="All files">
+    <metrics statements="239" coveredstatements="170" conditionals="95" coveredconditionals="68" methods="94" coveredmethods="45" elements="428" coveredelements="283" complexity="0" loc="239" ncloc="239" packages="22" files="39" classes="39"/>
     <package name="api">
-      <metrics statements="14" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="3"/>
+      <metrics statements="14" coveredstatements="12" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="3"/>
       <file name="comments.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/api/comments.ts">
-        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
       </file>
       <file name="issues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/api/issues.ts">
         <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
@@ -16,16 +16,16 @@
         <line num="9" count="0" type="stmt"/>
       </file>
       <file name="methods.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/api/methods.ts">
-        <metrics statements="9" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="cond" truecount="1" falsecount="1"/>
+        <metrics statements="9" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="cond" truecount="1" falsecount="1"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components">
@@ -117,8 +117,8 @@
       </file>
       <file name="issues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/mocks/issues.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="43" count="3" type="stmt"/>
-        <line num="48" count="3" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="48" count="4" type="stmt"/>
       </file>
       <file name="users.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/mocks/users.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -141,7 +141,7 @@
       </file>
     </package>
     <package name="redux.actions">
-      <metrics statements="57" coveredstatements="29" conditionals="12" coveredconditionals="4" methods="24" coveredmethods="9"/>
+      <metrics statements="51" coveredstatements="24" conditionals="12" coveredconditionals="4" methods="22" coveredmethods="7"/>
       <file name="bookmarks.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/bookmarks.ts">
         <metrics statements="30" coveredstatements="9" conditionals="6" coveredconditionals="1" methods="7" coveredmethods="2"/>
         <line num="6" count="3" type="stmt"/>
@@ -175,15 +175,6 @@
         <line num="57" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
       </file>
-      <file name="comments.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/comments.ts">
-        <metrics statements="6" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-      </file>
       <file name="issues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/issues.ts">
         <metrics statements="21" coveredstatements="15" conditionals="6" coveredconditionals="3" methods="15" coveredmethods="5"/>
         <line num="6" count="1" type="stmt"/>
@@ -207,6 +198,18 @@
         <line num="44" count="0" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="redux.actions.comments">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="index.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/comments/index.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
       </file>
     </package>
     <package name="redux.reducers.bookmarks">
