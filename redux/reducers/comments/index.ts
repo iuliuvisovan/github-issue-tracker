@@ -1,7 +1,7 @@
-import { CommentActionType, CommentAction, CommentState, GithubComment } from '../../types/comments';
+import { CommentActionType, CommentAction, CommentState, Comment } from '../../../types/comments';
 
 const initialState: CommentState = {
-  list: [],
+  comments: [],
   loading: false,
 };
 
@@ -15,14 +15,14 @@ export default (state: CommentState = initialState, action: CommentAction): Comm
     case CommentActionType.GET_COMMENTS_SUCCESS:
       return {
         ...state,
-        list: action.payload as GithubComment[],
+        comments: action.payload as Comment[],
         loading: false,
         error: undefined,
       };
 
     // -- ERRORS --
     case CommentActionType.GET_COMMENTS_ERROR:
-      return { ...state, loading: false, error: action.payload as Error, list: [] };
+      return { ...state, loading: false, error: action.payload as Error, comments: [] };
 
     default:
       return state;

@@ -1,7 +1,7 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RefObject } from 'react';
 import { FlatList } from 'react-native';
-import { GithubComment } from './comments';
+import { Comment } from './comments';
 import { RootStackParamList as RootStackParams } from './navigation';
 
 export interface Issue {
@@ -66,7 +66,7 @@ export interface IssueState {
 
 export interface IssueAction {
   type: IssueActionType;
-  payload?: Issue[] | GithubComment[] | string | number | Error;
+  payload?: Issue[] | Comment[] | string | number | Error;
 }
 
 export interface IssueFilter {

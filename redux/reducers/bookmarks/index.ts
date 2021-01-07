@@ -1,5 +1,5 @@
-import { BookmarkState, BookmarkActionType, BookmarkAction } from '../../types/bookmarks';
-import { Issue } from '../../types/issues';
+import { BookmarkState, BookmarkActionType, BookmarkAction } from '../../../types/bookmarks';
+import { Issue } from '../../../types/issues';
 
 const initialState: BookmarkState = {
   bookmarks: [],
@@ -35,7 +35,7 @@ export default (state: BookmarkState = initialState, action: BookmarkAction): Bo
     case BookmarkActionType.REMOVE_BOOKMARK_SUCCESS:
       return {
         ...state,
-        bookmarks: [...state.bookmarks.filter((x) => x.id !== action.payload)],
+        bookmarks: [...state.bookmarks.filter((x) => x.id !== (action.payload as number))],
         loading: false,
       };
 
