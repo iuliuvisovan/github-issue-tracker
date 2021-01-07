@@ -21,4 +21,31 @@ describe('Comments Reducer', () => {
       loading: true,
     });
   });
+  it('handles GET_COMMENTS_SUCCESS', () => {
+    const action: CommentAction = {
+      type: CommentActionType.GET_COMMENTS_SUCCESS,
+      payload: mockComments,
+    };
+
+    const newState = commentsReducer(initialState, action);
+
+    expect(newState).toEqual({
+      comments: mockComments,
+      loading: false,
+    });
+  });
+  it('handles GET_COMMENTS_ERROR', () => {
+    const action: CommentAction = {
+      type: CommentActionType.GET_COMMENTS_ERROR,
+      payload: Error('test error'),
+    };
+
+    const newState = commentsReducer(initialState, action);
+
+    expect(newState).toEqual({
+      comments: [],
+      loading: false,
+      error: Error('test error'),
+    });
+  });
 });

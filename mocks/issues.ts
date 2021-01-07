@@ -39,3 +39,26 @@ export default [
     user: mockUsers[1],
   } as Issue,
 ];
+
+export const mockFilters = [
+  { id: 'open', label: 'Open', isActive: true },
+  { id: 'closed', label: 'Closed', isActive: true },
+];
+
+export const mockSortCriteria = [
+  {
+    id: 'created',
+    label: 'Created Date',
+    isActive: true,
+  },
+  {
+    id: 'updated',
+    label: 'Updated Date',
+    isActive: false,
+  },
+  {
+    id: 'comments',
+    label: 'Number Of Comments',
+    isActive: false,
+  },
+];

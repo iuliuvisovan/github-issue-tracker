@@ -1,4 +1,4 @@
-import { Issue, IssueActionType, IssueState, IssueAction } from '../../types/issues';
+import { Issue, IssueActionType, IssueState, IssueAction } from '../../../types/issues';
 
 const defaultFilters = [
   { id: 'open', label: 'Open', isActive: true },
@@ -70,9 +70,11 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
       const newFilters = [...state.filters];
 
       const targetFilter = newFilters.find((x) => x.id === action.payload);
+
       if (targetFilter) {
-        targetFilter.isActive = !targetFilter.isActive || undefined;
-        targetFilter.changeDate = +new Date();
+        targetFilter.isActive = !targetFilter.isActive;
+      } else {
+        throw Error('nonexistent_filter');
       }
 
       return {
@@ -86,6 +88,8 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
       const targetCriterion = newSortCriteria.find((x) => x.id === action.payload);
       if (targetCriterion) {
         targetCriterion.isActive = true;
+      } else {
+        throw Error('nonexistent_criterion');
       }
 
       return {
