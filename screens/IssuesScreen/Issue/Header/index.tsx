@@ -22,7 +22,7 @@ export default function Header(props: IssueHeaderProps) {
           <>
             <Text style={styles.timeAgoText}> • </Text>
             <View style={styles.star}>
-              <AntDesign size={16} color={Color.border} name="star" style={{ marginRight: 4 }} />
+              <AntDesign size={16} color={Color.border} name="star" />
             </View>
           </>
         )}

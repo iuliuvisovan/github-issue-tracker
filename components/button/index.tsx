@@ -12,7 +12,7 @@ export interface ButtonProps {
 }
 
 export default function styledButton(props: TouchableOpacityProps & ButtonProps) {
-  const { style, type = 'default', text = '', leftIcon, rightIcon, disabled } = props;
+  const { style, type = 'default', text, leftIcon, rightIcon, disabled } = props;
 
   const buttonStyle = [
     styles.baseButton,
@@ -26,7 +26,7 @@ export default function styledButton(props: TouchableOpacityProps & ButtonProps)
   return (
     <TouchableOpacity {...props} style={buttonStyle}>
       {leftIcon}
-      <Text style={buttonTextStyle}>{text.toUpperCase()}</Text>
+      {Boolean(text) && <Text style={buttonTextStyle}>{text.toUpperCase()}</Text>}
       {rightIcon}
     </TouchableOpacity>
   );

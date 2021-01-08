@@ -48,7 +48,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
         {isPickerOpen ? (
           <View style={styles.card}>
             <View style={styles.repositoryInputs}>
-              <TextInput name="Organization" value={organizationId} onChangeText={setOrganizationId} />
+              <TextInput name="Organization" testID="organizationInput" value={organizationId} onChangeText={setOrganizationId} />
               <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
               <TextInput name="Repository" value={repoId} onChangeText={setRepoId} />
             </View>
@@ -66,7 +66,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
           <View style={[styles.spacedRow, { marginTop: 0 }]}>
             <Feather size={20} name="git-branch" color={Color.border} style={styles.filterIcon} />
             <Text style={styles.repoText}>{`${organizationId} / ${repoId}`}</Text>
-            <TouchableOpacity onPress={() => setIsPickerOpen(true)} style={styles.editRepoButton}>
+            <TouchableOpacity testID="expandPickerButton" onPress={() => setIsPickerOpen(true)} style={styles.editRepoButton}>
               <Feather size={14} name="edit-2" color={Color.blue} />
             </TouchableOpacity>
           </View>

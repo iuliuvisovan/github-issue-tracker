@@ -80,6 +80,7 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
       return {
         ...state,
         filters: newFilters,
+        currentPage: 1,
       };
 
     case IssueActionType.SET_SORT_CRITERION:
@@ -95,11 +96,18 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
       return {
         ...state,
         sortCriteria: newSortCriteria,
+        currentPage: 1,
       };
 
     // ---ERRORS---
     case IssueActionType.GET_ISSUES_ERROR:
-      return { ...state, loading: false, error: action.payload as Error, issues: [] };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload as Error,
+        issues: [],
+        currentPage: 1,
+      };
 
     default:
       return state;

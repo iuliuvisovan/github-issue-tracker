@@ -36,7 +36,7 @@ export default StyleSheet.create({
     fontFamily: 'muli-semi-bold',
   },
   title: {
-    maxWidth: Dimensions.get('screen').width - 100,
+    maxWidth: Dimensions.get('screen').width - 16,
   },
   labels: {
     flexDirection: 'row',

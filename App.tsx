@@ -17,7 +17,7 @@ export default function App() {
       <SafeAreaProvider>
         <ReduxProvider store={store}>
           <Navigation />
-          <StatusBar />
+          <StatusBar style="dark" />
         </ReduxProvider>
       </SafeAreaProvider>
     );

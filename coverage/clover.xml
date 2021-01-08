@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1610062883774" clover="3.2.0">
-  <project timestamp="1610062883774" name="All files">
-    <metrics statements="238" coveredstatements="184" conditionals="95" coveredconditionals="71" methods="94" coveredmethods="57" elements="427" coveredelements="312" complexity="0" loc="238" ncloc="238" packages="23" files="39" classes="39"/>
+<coverage generated="1610144117159" clover="3.2.0">
+  <project timestamp="1610144117159" name="All files">
+    <metrics statements="84" coveredstatements="76" conditionals="48" coveredconditionals="44" methods="26" coveredmethods="20" elements="158" coveredelements="140" complexity="0" loc="84" ncloc="84" packages="13" files="14" classes="14"/>
     <package name="api">
-      <metrics statements="14" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
-      <file name="comments.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/api/comments.ts">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-      </file>
-      <file name="issues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/api/issues.ts">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="9" count="8" type="stmt"/>
-      </file>
+      <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
       <file name="methods.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/api/methods.ts">
-        <metrics statements="9" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
         <line num="1" count="4" type="stmt"/>
-        <line num="5" count="6" type="stmt"/>
-        <line num="7" count="6" type="stmt"/>
-        <line num="9" count="6" type="cond" truecount="1" falsecount="1"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="13" count="5" type="stmt"/>
-        <line num="15" count="5" type="stmt"/>
-        <line num="17" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="19" count="5" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="9" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="17" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="6" type="stmt"/>
       </file>
     </package>
     <package name="components">
@@ -36,77 +26,13 @@
       </file>
     </package>
     <package name="components.button">
-      <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+      <metrics statements="4" coveredstatements="4" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
       <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/components/button/index.tsx">
-        <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <line num="15" count="33" type="cond" truecount="1" falsecount="1"/>
-        <line num="17" count="33" type="stmt"/>
-        <line num="24" count="33" type="cond" truecount="2" falsecount="0"/>
-        <line num="26" count="33" type="stmt"/>
-      </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/components/button/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-    </package>
-    <package name="components.color">
-      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/components/color/index.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-    </package>
-    <package name="components.text">
-      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/components/text/index.tsx">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="5" count="198" type="stmt"/>
-        <line num="6" count="198" type="cond" truecount="2" falsecount="0"/>
-        <line num="8" count="198" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.text-input">
-      <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
-      <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/components/text-input/index.tsx">
-        <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-      </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/components/text-input/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-    </package>
-    <package name="hooks">
-      <metrics statements="23" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="7"/>
-      <file name="useBookmarks.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/hooks/useBookmarks.ts">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="7" count="49" type="stmt"/>
-        <line num="9" count="23" type="stmt"/>
-        <line num="11" count="23" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="15" count="23" type="stmt"/>
-      </file>
-      <file name="useIssues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/hooks/useIssues.ts">
-        <metrics statements="18" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="4"/>
-        <line num="7" count="42" type="stmt"/>
-        <line num="9" count="20" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="15" count="20" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="27" count="20" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="33" count="20" type="stmt"/>
-        <line num="34" count="20" type="stmt"/>
-        <line num="36" count="20" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="15" count="57" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="57" type="stmt"/>
+        <line num="24" count="57" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="57" type="stmt"/>
       </file>
     </package>
     <package name="mocks">
@@ -116,11 +42,8 @@
       </file>
       <file name="issues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/mocks/issues.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="43" count="10" type="stmt"/>
-        <line num="48" count="10" type="stmt"/>
-      </file>
-      <file name="users.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/mocks/users.ts">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
       </file>
     </package>
     <package name="navigation">
@@ -129,7 +52,7 @@
         <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="4" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
       </file>
     </package>
     <package name="redux">
@@ -139,110 +62,16 @@
         <line num="7" count="4" type="stmt"/>
       </file>
     </package>
-    <package name="redux.actions.bookmarks">
-      <metrics statements="30" coveredstatements="10" conditionals="6" coveredconditionals="1" methods="7" coveredmethods="2"/>
-      <file name="index.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/bookmarks/index.ts">
-        <metrics statements="30" coveredstatements="10" conditionals="6" coveredconditionals="1" methods="7" coveredmethods="2"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="14" count="4" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-      </file>
-    </package>
     <package name="redux.actions.comments">
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="index.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/comments/index.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-      </file>
-    </package>
-    <package name="redux.actions.issues">
-      <metrics statements="21" coveredstatements="16" conditionals="6" coveredconditionals="4" methods="15" coveredmethods="7"/>
-      <file name="index.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/actions/issues/index.ts">
-        <metrics statements="21" coveredstatements="16" conditionals="6" coveredconditionals="4" methods="15" coveredmethods="7"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="11" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="12" count="7" type="cond" truecount="2" falsecount="0"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="16" count="4" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="21" count="4" type="cond" truecount="1" falsecount="1"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="43" count="2" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="redux.reducers.bookmarks">
-      <metrics statements="13" coveredstatements="13" conditionals="11" coveredconditionals="11" methods="2" coveredmethods="2"/>
-      <file name="index.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/reducers/bookmarks/index.ts">
-        <metrics statements="13" coveredstatements="13" conditionals="11" coveredconditionals="11" methods="2" coveredmethods="2"/>
-        <line num="4" count="5" type="stmt"/>
-        <line num="10" count="35" type="cond" truecount="10" falsecount="0"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="51" count="21" type="stmt"/>
-      </file>
-    </package>
-    <package name="redux.reducers.comments">
-      <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/redux/reducers/comments/index.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <line num="3" count="5" type="stmt"/>
-        <line num="9" count="30" type="cond" truecount="4" falsecount="0"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="28" count="25" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
       </file>
     </package>
     <package name="redux.reducers.issues">
@@ -252,9 +81,9 @@
         <line num="3" count="5" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
         <line num="26" count="5" type="stmt"/>
-        <line num="37" count="37" type="cond" truecount="9" falsecount="0"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="44" count="4" type="stmt"/>
+        <line num="37" count="41" type="cond" truecount="9" falsecount="0"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="44" count="5" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
         <line num="64" count="1" type="stmt"/>
@@ -264,57 +93,14 @@
         <line num="75" count="2" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
         <line num="80" count="2" type="stmt"/>
-        <line num="86" count="6" type="stmt"/>
-        <line num="88" count="4" type="stmt"/>
-        <line num="89" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="92" count="1" type="stmt"/>
-        <line num="95" count="1" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
-        <line num="105" count="20" type="stmt"/>
-      </file>
-    </package>
-    <package name="screens.BookmarksScreen">
-      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
-      <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/BookmarksScreen/index.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
-        <line num="31" count="5" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
-      </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/BookmarksScreen/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-    </package>
-    <package name="screens.IssueDetailsScreen">
-      <metrics statements="18" coveredstatements="15" conditionals="10" coveredconditionals="5" methods="10" coveredmethods="6"/>
-      <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssueDetailsScreen/index.tsx">
-        <metrics statements="18" coveredstatements="15" conditionals="10" coveredconditionals="5" methods="10" coveredmethods="6"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="22" count="7" type="stmt"/>
-        <line num="23" count="7" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="26" count="3" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="30" count="3" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
-        <line num="52" count="3" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="84" count="1" type="stmt"/>
-        <line num="85" count="3" type="stmt"/>
-        <line num="91" count="3" type="stmt"/>
-        <line num="103" count="3" type="stmt"/>
-      </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssueDetailsScreen/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="87" count="6" type="stmt"/>
+        <line num="89" count="4" type="stmt"/>
+        <line num="90" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="113" count="22" type="stmt"/>
       </file>
     </package>
     <package name="screens.IssueDetailsScreen.Comment">
@@ -324,81 +110,45 @@
         <line num="9" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
       </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssueDetailsScreen/Comment/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
     </package>
     <package name="screens.IssuesScreen">
-      <metrics statements="49" coveredstatements="35" conditionals="18" coveredconditionals="12" methods="24" coveredmethods="12"/>
+      <metrics statements="30" coveredstatements="24" conditionals="16" coveredconditionals="13" methods="15" coveredmethods="10"/>
       <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/index.tsx">
-        <metrics statements="30" coveredstatements="23" conditionals="16" coveredconditionals="12" methods="15" coveredmethods="9"/>
-        <line num="17" count="20" type="stmt"/>
-        <line num="18" count="20" type="stmt"/>
-        <line num="19" count="20" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="22" count="20" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
-        <line num="26" count="20" type="stmt"/>
-        <line num="27" count="20" type="stmt"/>
-        <line num="29" count="20" type="stmt"/>
+        <metrics statements="30" coveredstatements="24" conditionals="16" coveredconditionals="13" methods="15" coveredmethods="10"/>
+        <line num="17" count="34" type="stmt"/>
+        <line num="18" count="34" type="stmt"/>
+        <line num="19" count="34" type="stmt"/>
+        <line num="21" count="34" type="stmt"/>
+        <line num="22" count="34" type="stmt"/>
+        <line num="23" count="34" type="stmt"/>
+        <line num="25" count="34" type="stmt"/>
+        <line num="26" count="34" type="stmt"/>
+        <line num="27" count="34" type="stmt"/>
+        <line num="29" count="34" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="34" count="20" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="39" count="20" type="stmt"/>
-        <line num="40" count="7" type="stmt"/>
-        <line num="41" count="7" type="stmt"/>
-        <line num="42" count="7" type="stmt"/>
-        <line num="45" count="20" type="stmt"/>
+        <line num="34" count="34" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="39" count="34" type="stmt"/>
+        <line num="40" count="11" type="stmt"/>
+        <line num="41" count="11" type="stmt"/>
+        <line num="42" count="11" type="stmt"/>
+        <line num="45" count="34" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="78" count="40" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="78" count="68" type="stmt"/>
         <line num="79" count="1" type="stmt"/>
-        <line num="94" count="20" type="stmt"/>
+        <line num="94" count="34" type="stmt"/>
         <line num="109" count="0" type="stmt"/>
-        <line num="110" count="12" type="stmt"/>
-        <line num="113" count="18" type="stmt"/>
+        <line num="110" count="22" type="stmt"/>
+        <line num="113" count="33" type="stmt"/>
         <line num="125" count="0" type="stmt"/>
         <line num="132" count="0" type="stmt"/>
       </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-      <file name="useCurrentPage.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/useCurrentPage.ts">
-        <metrics statements="19" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="3"/>
-        <line num="9" count="42" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="12" count="20" type="stmt"/>
-        <line num="14" count="20" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="20" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="20" type="stmt"/>
-        <line num="23" count="20" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="39" count="20" type="stmt"/>
-        <line num="40" count="20" type="stmt"/>
-        <line num="42" count="20" type="stmt"/>
-        <line num="56" count="7" type="stmt"/>
-        <line num="57" count="7" type="stmt"/>
-      </file>
     </package>
     <package name="screens.IssuesScreen.Issue">
-      <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
-      <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/Issue/index.tsx">
-        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
-        <line num="10" count="14" type="stmt"/>
-        <line num="12" count="14" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="16" count="14" type="stmt"/>
-        <line num="22" count="14" type="stmt"/>
-      </file>
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/Issue/styles.tsx">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
@@ -407,22 +157,13 @@
       <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
       <file name="index.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/Issue/Header/index.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
-        <line num="10" count="17" type="stmt"/>
-        <line num="12" count="17" type="stmt"/>
-      </file>
-      <file name="styles.tsx" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/screens/IssuesScreen/Issue/Header/styles.tsx">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="10" count="27" type="stmt"/>
+        <line num="12" count="27" type="stmt"/>
       </file>
     </package>
     <package name="types">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="bookmarks.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/types/bookmarks.ts">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
       <file name="comments.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/types/comments.ts">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-      <file name="issues.ts" path="/Users/iuliuvisovan/Desktop/github-issue-tracker/types/issues.ts">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>

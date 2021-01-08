@@ -499,9 +499,7 @@ exports[`snapshot 1`] = `
                                           "color": "#aab2ba",
                                           "fontSize": 16,
                                         },
-                                        Object {
-                                          "marginRight": 4,
-                                        },
+                                        undefined,
                                         Object {
                                           "fontFamily": "anticon",
                                           "fontStyle": "normal",
@@ -561,7 +559,7 @@ exports[`snapshot 1`] = `
                                       "lineHeight": 16,
                                     },
                                     Object {
-                                      "maxWidth": 650,
+                                      "maxWidth": 734,
                                     },
                                   ]
                                 }
@@ -743,9 +741,7 @@ exports[`snapshot 1`] = `
                                           "color": "#aab2ba",
                                           "fontSize": 16,
                                         },
-                                        Object {
-                                          "marginRight": 4,
-                                        },
+                                        undefined,
                                         Object {
                                           "fontFamily": "anticon",
                                           "fontStyle": "normal",
@@ -805,7 +801,7 @@ exports[`snapshot 1`] = `
                                       "lineHeight": 16,
                                     },
                                     Object {
-                                      "maxWidth": 650,
+                                      "maxWidth": 734,
                                     },
                                   ]
                                 }
