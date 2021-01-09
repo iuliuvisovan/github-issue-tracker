@@ -6,7 +6,7 @@ Ready-to-use tracker for GitHub issues written in React Native.
 
 Supports filters, sorting, pagination and bookmarks!
 
-------------
+<br />
 
 
 ### :sparkles: Highlights 
@@ -17,7 +17,7 @@ Supports filters, sorting, pagination and bookmarks!
 
 - 100% unit test coverage
 
-------------
+<br />
 
 
 ### :page_with_curl: Tech Stack
@@ -32,23 +32,21 @@ Supports filters, sorting, pagination and bookmarks!
 
 - [ Jest 26.6.0](https://jestjs.io/ " Jest 26.6.0")* (and react-test-renderer)*
 
-
-------------
-
+<br />
 
 ### :open_file_folder: Installation
 
 1. **Clone the repository**
 
- `git clone https://github.com/iuliuvisovan/github-issue-tracker.git`
+ 	`git clone https://github.com/iuliuvisovan/github-issue-tracker.git`
  
 1. **Move to project folder**
 
- `cd github-issue-tracker`
+ 	`cd github-issue-tracker`
  
 1. (if missing) **Install Yarn**
 
- `npm install -g yarn`
+ 	`npm install -g yarn`
 1. **Install dependencies**
 
 	`yarn`
@@ -57,7 +55,7 @@ Supports filters, sorting, pagination and bookmarks!
 
 	`npm install -g expo-cli`
 	
-
+<br />
 
 ### :iphone: Running
 
@@ -73,20 +71,21 @@ Supports filters, sorting, pagination and bookmarks!
 
 	 `yarn start`, then wait for a QR code to show up in console. Scan it with your iOS/Android **Camera** app. It will prompt you to open it with the **Expo Client** app.
 
+<br />
 
 ### 🧪 Testing
 
-This app features **100% test coverage** using Jest and React Native Test Renderer.
+This app features testing using Jest and React Native Test Renderer.
 
 - **Running the tests**:
 
-`yarn test`
+	`yarn test`
 
 - **Running the tests** & also updating the snapshots:
 
-`yarn test -u`
+	`yarn test -u`
 
-After running the tests, full coverage information is available in the `./coverage` folder.
+After running the tests, coverage information in HTML format is available in the `./coverage` folder.
 
 
 
