@@ -15,7 +15,7 @@ Supports filters, sorting, pagination and bookmarks!
 
 - Full static typechecking
 
-- 100% unit test coverage
+- 100% test coverage
 
 <br />
 
