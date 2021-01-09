@@ -9,7 +9,7 @@ Supports filters, sorting, pagination and bookmarks!
 ------------
 
 
-### Highlights :bowtie:
+### :sparkles: Highlights 
 
 - Cleanly separated view / state architecture
 
@@ -20,7 +20,7 @@ Supports filters, sorting, pagination and bookmarks!
 ------------
 
 
-### Tech Stack
+### :page_with_curl: Tech Stack
 
 - [React Native 0.63](https://reactnative.dev/ " React Native 0.63") *(with hooks)*
 
@@ -36,7 +36,7 @@ Supports filters, sorting, pagination and bookmarks!
 ------------
 
 
-### Installation
+### :open_file_folder: Installation
 
 1. **Clone the repository**
 
@@ -59,7 +59,7 @@ Supports filters, sorting, pagination and bookmarks!
 	
 
 
-### Running
+### :iphone: Running
 
 - **On an iOS simulator** (MacOS + XCode installation needed):
 
@@ -74,7 +74,7 @@ Supports filters, sorting, pagination and bookmarks!
 	 `yarn start`, then wait for a QR code to show up in console. Scan it with your iOS/Android **Camera** app. It will prompt you to open it with the **Expo Client** app.
 
 
-### Testing
+### 🧪 Testing
 
 This app features **100% test coverage** using Jest and React Native Test Renderer.
 
