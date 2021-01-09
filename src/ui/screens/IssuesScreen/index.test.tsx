@@ -1,6 +1,6 @@
 import React from 'react';
 import IssuesScreen from './index';
-import MockedNavigator from '../../navigation/MockedNavigator';
+import MockedNavigator from '../../../data/mocks/navigation';
 import { create, act } from 'react-test-renderer';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '../../../data/redux';
