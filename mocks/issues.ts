@@ -35,7 +35,7 @@ export default [
         description: 'mock description',
       },
     ],
-    state: 'open',
+    state: 'closed',
     isBookmarked: true,
     user: mockUsers[1],
     comments_url: 'https://api.github.com/commentsUrl',

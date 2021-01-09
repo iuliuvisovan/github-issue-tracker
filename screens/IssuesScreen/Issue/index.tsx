@@ -14,7 +14,7 @@ export default function Issue(props: IssueItemProps) {
   };
 
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={goToDetails} style={styles.card}>
+    <TouchableOpacity testID="cardButton" activeOpacity={0.8} onPress={goToDetails} style={styles.card}>
       <Header issue={issue} />
       <Text style={styles.title}>{issue.title}</Text>
       <View style={styles.labels}>

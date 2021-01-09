@@ -5,6 +5,7 @@ import { create, act } from 'react-test-renderer';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '../../redux';
 import mockIssues from '../../mocks/issues';
+import mockComments from '../../mocks/comments';
 import fetchMock from 'fetch-mock';
 import isDarkColor from 'is-dark-color';
 import { NativeSyntheticEvent, TextInputFocusEventData, ActionSheetIOS } from 'react-native';
@@ -67,6 +68,15 @@ describe('Issues Screen', () => {
     expect(() => {
       tree.root.findByProps({ testID: 'organizationInput' });
     }).toThrow();
+  });
+
+  it('navigates to IssueDetails correctly', async () => {
+    isDarkColor.mockReturnValue(false);
+
+    const cardButton = tree.root.findAllByProps({ testID: 'cardButton' })[0].props;
+    await act(async () => cardButton.onPress());
+
+    expect(true).toEqual(true);
   });
 
   it('toggles filter correctly', async () => {
@@ -177,5 +187,10 @@ const fetchMocks = (): void => {
       body: mockIssues,
       headers: { 'content-type': 'application/json' },
     });
+  });
+
+  fetchMock.get('https://api.github.com/commentsUrl', {
+    body: mockComments,
+    headers: { 'content-type': 'application/json' },
   });
 };

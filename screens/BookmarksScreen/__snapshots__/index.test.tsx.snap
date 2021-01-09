@@ -342,7 +342,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                   "url": "mock_url",
                                 },
                               ],
-                              "state": "open",
+                              "state": "closed",
                               "title": "Mock",
                               "user": Object {
                                 "avatar_url": "mock_url",
@@ -409,6 +409,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                   "shadowRadius": 3,
                                 }
                               }
+                              testID="cardButton"
                             >
                               <View
                                 style={
@@ -651,6 +652,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                   "shadowRadius": 3,
                                 }
                               }
+                              testID="cardButton"
                             >
                               <View
                                 style={
@@ -771,7 +773,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                       "top": 13,
                                     },
                                     Object {
-                                      "backgroundColor": "#16c65d",
+                                      "backgroundColor": "#aab2ba",
                                     },
                                   ]
                                 }
@@ -791,7 +793,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                     ]
                                   }
                                 >
-                                  Open
+                                  Closed
                                 </Text>
                               </View>
                               <Text
