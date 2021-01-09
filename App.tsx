@@ -2,10 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider as ReduxProvider } from 'react-redux';
-import store from './src/data/redux';
+import store from './data/redux';
 
-import useCachedResources from './src/ui/hooks/useCachedResources';
-import Navigation from './src/ui/navigation';
+import useCachedResources from './ui/hooks/useCachedResources';
+import Navigation from './ui/navigation';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
