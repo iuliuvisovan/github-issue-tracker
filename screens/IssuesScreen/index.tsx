@@ -12,6 +12,8 @@ import useCurrentPage from './useCurrentPage';
 
 import useIssues from '../../hooks/useIssues';
 import useBookmarks from '../../hooks/useBookmarks';
+import { useDispatch } from 'react-redux';
+import * as issueActions from '../../redux/actions/issues';
 
 export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
@@ -30,6 +32,14 @@ export default function IssuesScreen(props: IssuesScreenProps) {
     const pickedCriterion = await pickSortCriterion(sortCriteria);
     setSortCriterion(pickedCriterion);
   };
+
+  // const dispatch = useDispatch();
+
+  // // useEffect(() => {
+  // //   setTimeout(() => {
+  // //     dispatch(issueActions.setPage(2));
+  // //   }, 1000);
+  // // }, [dispatch]);
 
   useEffect(() => {
     getIssues();
@@ -53,7 +63,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
               <TextInput name="Repository" value={repoId} onChangeText={setRepoId} />
             </View>
             <View style={styles.buttonsWrapper}>
-              <Button type="secondary" text="Cancel" onPress={() => setIsPickerOpen(false)} style={{ width: 130 }} />
+              <Button type="secondary" testID="cancelButton" text="Cancel" onPress={() => setIsPickerOpen(false)} style={{ width: 130 }} />
               <Button
                 type="quaternary"
                 text="View issues"
@@ -121,12 +131,14 @@ export default function IssuesScreen(props: IssuesScreenProps) {
           style={{ width: 120 }}
           disabled={currentPage < 2}
           text="Previous"
+          testID="previousPageButton"
           leftIcon={<Feather size={20} name="chevron-left" color={currentPage < 2 ? Color.border : Color.blue} />}
           onPress={() => setPage(currentPage - 1)}
         />
         <Button
           type="quaternary"
           text="Next"
+          testID="nextPageButton"
           style={{ width: 120 }}
           rightIcon={<Feather size={20} name="chevron-right" color={Color.blue} />}
           onPress={() => setPage(currentPage + 1)}

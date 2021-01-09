@@ -1,14 +1,13 @@
 import React from 'react';
 import IssuesScreen from './index';
 import MockedNavigator from '../../navigation/MockedNavigator';
-import { create, act, ReactTestRenderer } from 'react-test-renderer';
+import { create, act } from 'react-test-renderer';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '../../redux';
 import mockIssues from '../../mocks/issues';
 import fetchMock from 'fetch-mock';
 import isDarkColor from 'is-dark-color';
 import { NativeSyntheticEvent, TextInputFocusEventData, TextInputProps } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
 import { Color } from '../../components';
 
 jest.mock('is-dark-color');
@@ -21,61 +20,48 @@ const createFreshTree = () =>
     </ReduxProvider>
   );
 
+const tree = createFreshTree();
+
 describe('Issues Screen', () => {
   afterEach(() => {
     fetchMock.restore();
   });
 
-  it('renders correctly', async () => {
-    let tree;
+  beforeEach(() => {
+    fetchMocks();
+  });
 
-    fetchMock.getOnce('https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=1', {
-      body: mockIssues,
-      headers: { 'content-type': 'application/json' },
-    });
-
-    await act(async () => {
-      tree = createFreshTree();
-    });
-
+  it('renders correctly', () => {
     expect(tree).toMatchSnapshot();
   });
 
   it('toggles filter correctly', async () => {
-    let tree: ReactTestRenderer;
+    const openFilterBefore = tree.root.findByProps({ testID: 'open' }).props;
 
-    fetchMock.getOnce('https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=1', {
-      body: mockIssues,
-      headers: { 'content-type': 'application/json' },
-    });
-    fetchMock.getOnce('https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=1', {
-      body: mockIssues,
-      headers: { 'content-type': 'application/json' },
-    });
+    await act(async () => openFilterBefore.onPress());
 
-    await act(async () => {
-      tree = createFreshTree();
-    });
+    const openFilterAfter = tree.root.findByProps({ testID: 'open' }).props;
+    const closedFilterAfter = tree.root.findByProps({ testID: 'closed' }).props;
 
-    const openFilter = tree.root.findByProps({ testID: 'open' }).props;
-
-    await act(async () => openFilter.onPress());
-
-    expect(tree).toMatchSnapshot();
+    expect(openFilterAfter.style[1].backgroundColor).not.toBeDefined();
+    expect(closedFilterAfter.style[1].backgroundColor).toEqual(Color.white);
   });
 
-  it('expands RepoPicker correctly', async () => {
-    let tree: ReactTestRenderer;
+  it('opens and closes the RepoPicker correctly', async () => {
+    const editButton = tree.root.findByProps({ testID: 'expandPickerButton' }).props;
+    await act(async () => editButton.onPress());
 
-    fetchMock.getOnce('https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=1', {
-      body: mockIssues,
-      headers: { 'content-type': 'application/json' },
-    });
+    expect(tree.root.findByProps({ testID: 'organizationInput' })).toBeDefined();
 
-    await act(async () => {
-      tree = createFreshTree();
-    });
+    const cancelButton = tree.root.findByProps({ testID: 'cancelButton' }).props;
+    await act(async () => cancelButton.onPress());
 
+    expect(() => {
+      tree.root.findByProps({ testID: 'organizationInput' });
+    }).toThrow();
+  });
+
+  it('correctly highlights inputs at onFocus & onBlur', async () => {
     const editButton = tree.root.findByProps({ testID: 'expandPickerButton' }).props;
 
     await act(async () => editButton.onPress());
@@ -92,4 +78,46 @@ describe('Issues Screen', () => {
 
     expect(innerTextInput.props.style[1].borderColor).toEqual(Color.border);
   });
+
+  it('correctly navigates between pages', async () => {
+    const nextPageButton = tree.root.findByProps({ testID: 'nextPageButton' }).props;
+
+    await act(async () => nextPageButton.onPress());
+
+    const previousPageButton = tree.root.findByProps({ testID: 'previousPageButton' }).props;
+
+    expect(previousPageButton.disabled).toBeFalsy();
+  });
+
+  // it('correctly changes the sort criterion', async () => {
+  //   const nextPageButton = tree.root.findByProps({ testID: 'nextPageButton' }).props;
+
+  //   await act(async () => nextPageButton.onPress());
+
+  //   const previousPageButton = tree.root.findByProps({ testID: 'previousPageButton' }).props;
+
+  //   expect(previousPageButton.disabled).toBeFalsy();
+  // });
 });
+
+const fetchMocks = (): void => {
+  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=1', {
+    body: mockIssues,
+    headers: { 'content-type': 'application/json' },
+  });
+
+  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=2', {
+    body: mockIssues,
+    headers: { 'content-type': 'application/json' },
+  });
+
+  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=1', {
+    body: mockIssues,
+    headers: { 'content-type': 'application/json' },
+  });
+
+  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=2', {
+    body: mockIssues,
+    headers: { 'content-type': 'application/json' },
+  });
+};
