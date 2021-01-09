@@ -9,9 +9,17 @@ import fetchMock from 'fetch-mock';
 import isDarkColor from 'is-dark-color';
 import { NativeSyntheticEvent, TextInputFocusEventData, ActionSheetIOS } from 'react-native';
 import { Color } from '../../components';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 jest.mock('is-dark-color');
 isDarkColor.mockReturnValue(true);
+
+jest.spyOn(AsyncStorage, 'getItem').mockImplementation(
+  () =>
+    new Promise((resolve) => {
+      resolve(JSON.stringify(mockIssues));
+    })
+);
 
 const createFreshTree = () =>
   create(
@@ -87,6 +95,12 @@ describe('Issues Screen', () => {
     const previousPageButton = tree.root.findByProps({ testID: 'previousPageButton' }).props;
 
     expect(previousPageButton.disabled).toBeFalsy();
+
+    await act(async () => previousPageButton.onPress());
+
+    const previousPageButtonAfter = tree.root.findByProps({ testID: 'previousPageButton' }).props;
+
+    expect(previousPageButtonAfter.disabled).toBeTruthy();
   });
 
   it('correctly changes the sort criterion', async () => {
@@ -103,6 +117,24 @@ describe('Issues Screen', () => {
     const textsInsideSortButton = sortButtonAfter.children[1].props.children;
 
     expect(textsInsideSortButton.some((text: string) => text.toLowerCase().includes('update'))).toEqual(true);
+  });
+
+  it('changes style correctly @ onScroll', async () => {
+    const flatList = tree.root.findByProps({ testID: 'flatList' }).props;
+
+    await act(async () =>
+      flatList.onScroll({
+        nativeEvent: {
+          contentOffset: {
+            y: 20,
+          },
+        },
+      })
+    );
+
+    const scrollWrapper = tree.root.findByProps({ testID: 'scrollWrapper' }).props;
+
+    expect(scrollWrapper.style[1].shadowColor).toEqual(Color.steel);
   });
 });
 

@@ -123,7 +123,7 @@ export default StyleSheet.create({
   },
   scrolled: {
     elevation: 4,
-    shadowColor: '#414d5b',
+    shadowColor: Color.steel,
     shadowOffset: {
       width: 2,
       height: 4,

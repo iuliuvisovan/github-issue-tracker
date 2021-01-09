@@ -45,7 +45,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.actions, isScrolled ? styles.scrolled : {}]}>
+      <View testID="scrollWrapper" style={[styles.actions, isScrolled ? styles.scrolled : {}]}>
         <RepoPicker />
         <View style={styles.spacedRow}>
           <Feather size={20} name="sliders" color={Color.border} style={styles.filterIcon} />
@@ -82,6 +82,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
           data={issues}
           ref={flatListRef}
           onScroll={(event) => setIsScrolled(event.nativeEvent.contentOffset.y >= 16)}
+          testID="flatList"
           keyExtractor={(item) => item.id + ''}
           contentContainerStyle={styles.issuesContainer}
           renderItem={({ item }) => (

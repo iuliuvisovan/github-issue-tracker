@@ -303,6 +303,7 @@ exports[`Issues Screen renders correctly 1`] = `
                             Object {},
                           ]
                         }
+                        testID="scrollWrapper"
                       >
                         <View
                           style={
