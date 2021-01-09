@@ -7,7 +7,7 @@ import store from '../../redux';
 import mockIssues from '../../mocks/issues';
 import fetchMock from 'fetch-mock';
 import isDarkColor from 'is-dark-color';
-import { NativeSyntheticEvent, TextInputFocusEventData, TextInputProps } from 'react-native';
+import { NativeSyntheticEvent, TextInputFocusEventData, ActionSheetIOS } from 'react-native';
 import { Color } from '../../components';
 
 jest.mock('is-dark-color');
@@ -89,35 +89,37 @@ describe('Issues Screen', () => {
     expect(previousPageButton.disabled).toBeFalsy();
   });
 
-  // it('correctly changes the sort criterion', async () => {
-  //   const nextPageButton = tree.root.findByProps({ testID: 'nextPageButton' }).props;
+  it('correctly changes the sort criterion', async () => {
+    const mockedShowActionSheetWithOptions = jest.spyOn(ActionSheetIOS, 'showActionSheetWithOptions');
+    mockedShowActionSheetWithOptions.mockImplementation((_, callback) => {
+      callback(2);
+    });
+    const sortButton = tree.root.findByProps({ testID: 'changeSortCriterionButton' }).props;
 
-  //   await act(async () => nextPageButton.onPress());
+    await act(async () => sortButton.onPress());
 
-  //   const previousPageButton = tree.root.findByProps({ testID: 'previousPageButton' }).props;
+    const sortButtonAfter = tree.root.findByProps({ testID: 'changeSortCriterionButton' }).props;
 
-  //   expect(previousPageButton.disabled).toBeFalsy();
-  // });
+    const textsInsideSortButton = sortButtonAfter.children[1].props.children;
+
+    expect(textsInsideSortButton.some((text: string) => text.toLowerCase().includes('update'))).toEqual(true);
+  });
 });
 
 const fetchMocks = (): void => {
-  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=1', {
-    body: mockIssues,
-    headers: { 'content-type': 'application/json' },
-  });
+  const urls = [
+    'https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=1',
+    'https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=2',
+    'https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=1',
+    'https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=2',
+    'https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=updated&page=1',
+    'https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=updated&page=2',
+  ];
 
-  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=2', {
-    body: mockIssues,
-    headers: { 'content-type': 'application/json' },
-  });
-
-  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=1', {
-    body: mockIssues,
-    headers: { 'content-type': 'application/json' },
-  });
-
-  fetchMock.get('https://api.github.com/repos/facebook/react-native/issues?state=closed&sort=created&page=2', {
-    body: mockIssues,
-    headers: { 'content-type': 'application/json' },
+  urls.forEach((url) => {
+    fetchMock.get(url, {
+      body: mockIssues,
+      headers: { 'content-type': 'application/json' },
+    });
   });
 };

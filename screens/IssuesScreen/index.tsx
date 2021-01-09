@@ -12,8 +12,6 @@ import useCurrentPage from './useCurrentPage';
 
 import useIssues from '../../hooks/useIssues';
 import useBookmarks from '../../hooks/useBookmarks';
-import { useDispatch } from 'react-redux';
-import * as issueActions from '../../redux/actions/issues';
 
 export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
@@ -32,14 +30,6 @@ export default function IssuesScreen(props: IssuesScreenProps) {
     const pickedCriterion = await pickSortCriterion(sortCriteria);
     setSortCriterion(pickedCriterion);
   };
-
-  // const dispatch = useDispatch();
-
-  // // useEffect(() => {
-  // //   setTimeout(() => {
-  // //     dispatch(issueActions.setPage(2));
-  // //   }, 1000);
-  // // }, [dispatch]);
 
   useEffect(() => {
     getIssues();
@@ -99,7 +89,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
         </View>
         <View style={styles.spacedRow}>
           <Feather size={20} name="arrow-up" color={Color.border} style={styles.filterIcon} />
-          <TouchableOpacity onPress={changeSortCriterion} style={styles.sortButton}>
+          <TouchableOpacity testID="changeSortCriterionButton" onPress={changeSortCriterion} style={styles.sortButton}>
             <FontAwesome size={17} name="caret-down" color={Color.blue} style={styles.caretIcon} />
             <Text style={{ color: Color.blue }}>Sort By {sortCriteria.find((x) => x.isActive)?.label}</Text>
           </TouchableOpacity>

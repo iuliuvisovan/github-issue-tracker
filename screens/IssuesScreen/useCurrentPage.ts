@@ -22,16 +22,18 @@ export default function usePage(): useCurrentPageReturnValue {
 
   const pickSortCriterion = (sortCriteria: IssueSortCriteria[]): Promise<string> => {
     return new Promise((resolve) => {
+      const onPick = (buttonIndex: number) => {
+        if (buttonIndex > 0) {
+          resolve(sortCriteria[buttonIndex - 1].id);
+        }
+      };
+
       ActionSheetIOS.showActionSheetWithOptions(
         {
           options: ['Cancel', ...sortCriteria.map((x) => x.label)],
           cancelButtonIndex: 0,
         },
-        (buttonIndex) => {
-          if (buttonIndex > 0) {
-            resolve(sortCriteria[buttonIndex - 1].id);
-          }
-        }
+        onPick
       );
     });
   };

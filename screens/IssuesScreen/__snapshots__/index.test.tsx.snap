@@ -509,6 +509,7 @@ exports[`Issues Screen renders correctly 1`] = `
                                 "paddingTop": 2,
                               }
                             }
+                            testID="changeSortCriterionButton"
                           >
                             <Text />
                             <Text
