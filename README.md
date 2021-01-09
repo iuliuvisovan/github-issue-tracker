@@ -9,7 +9,7 @@ Supports filters, sorting, pagination and bookmarks!
 <br />
 
 
-### :sparkles: Highlights 
+### :sparkles:  Highlights 
 
 - Cleanly separated view / state architecture
 
@@ -20,7 +20,7 @@ Supports filters, sorting, pagination and bookmarks!
 <br />
 
 
-### :page_with_curl: Tech Stack
+### :page_with_curl:  Tech Stack
 
 - [React Native 0.63](https://reactnative.dev/ " React Native 0.63") (with hooks)
 
@@ -34,7 +34,7 @@ Supports filters, sorting, pagination and bookmarks!
 
 <br />
 
-### :open_file_folder: Installation
+### :open_file_folder:  Installation
 
 1. **Clone the repository**
 
@@ -57,7 +57,7 @@ Supports filters, sorting, pagination and bookmarks!
 	
 <br />
 
-### :iphone: Running
+### :iphone:  Running
 
 - **On an iOS simulator** (MacOS + XCode installation needed):
 
@@ -73,7 +73,7 @@ Supports filters, sorting, pagination and bookmarks!
 
 <br />
 
-### 🧪 Testing
+### 🧪  Testing
 
 This app features testing using Jest and React Native Test Renderer.
 
