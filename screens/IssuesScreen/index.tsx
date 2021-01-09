@@ -13,6 +13,7 @@ import useCurrentPage from './useCurrentPage';
 
 import useIssues from '../../hooks/useIssues';
 import useBookmarks from '../../hooks/useBookmarks';
+import { catch } from 'fetch-mock';
 
 export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
@@ -28,8 +29,10 @@ export default function IssuesScreen(props: IssuesScreenProps) {
   const { setIsPickerOpen, setIsScrolled, pickSortCriterion } = currentPageManager.actions;
 
   const changeSortCriterion = async () => {
-    const pickedCriterion = await pickSortCriterion(sortCriteria);
-    setSortCriterion(pickedCriterion);
+    try {
+      const pickedCriterion = await pickSortCriterion(sortCriteria);
+      setSortCriterion(pickedCriterion);
+    } catch { }
   };
 
   useEffect(() => {

@@ -1,17 +1,7 @@
 import { IssueAction, IssueActionType, IssueState } from '../../../types/issues';
 import issuesReducer from './index';
 import mockIssues, { mockFilters, mockSortCriteria } from '../../../mocks/issues';
-
-export const initialState: IssueState = {
-  issues: [],
-  loading: false,
-  error: undefined,
-  organizationId: 'facebook',
-  repoId: 'react-native',
-  filters: mockFilters,
-  sortCriteria: mockSortCriteria,
-  currentPage: 0,
-};
+import { initialState } from '../../../redux/reducers/issues';
 
 describe('Issues Reducer', () => {
   it('handles GET_ISSUES_PENDING', () => {

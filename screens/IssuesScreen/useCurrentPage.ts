@@ -21,10 +21,12 @@ export default function usePage(): useCurrentPageReturnValue {
   const flatListRef = useRef<FlatList<Issue>>(null);
 
   const pickSortCriterion = (sortCriteria: IssueSortCriteria[]): Promise<string> => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const onPick = (buttonIndex: number) => {
         if (buttonIndex > 0) {
           resolve(sortCriteria[buttonIndex - 1].id);
+        } else {
+          reject();
         }
       };
 

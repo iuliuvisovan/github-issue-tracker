@@ -27,7 +27,7 @@ export default function RepoPicker() {
   const cancel = () => {
     setIsPickerOpen(false);
     setRepoId(commitedRepoId);
-    setRepoId(commitedOrganizationId);
+    setOrganizationId(commitedOrganizationId);
   };
 
   const githubIcon = <AntDesign size={20} color={Color.blue} name="github" style={{ marginRight: 6 }} />;
@@ -40,8 +40,8 @@ export default function RepoPicker() {
         <TextInput name="Repository" value={repoId} onChangeText={setRepoId} />
       </View>
       <View style={styles.buttonsWrapper}>
-        <Button type="secondary" testID="cancelButton" text="Cancel" onPress={cancel} style={{ width: 130 }} />
-        <Button type="quaternary" text="View issues" leftIcon={githubIcon} onPress={viewIssues} />
+        <Button type="secondary" text="Cancel" testID="cancelButton" onPress={cancel} style={{ width: 130 }} />
+        <Button type="quaternary" text="View issues" testID="viewIssuesButton" leftIcon={githubIcon} onPress={viewIssues} />
       </View>
     </View>
   ) : (

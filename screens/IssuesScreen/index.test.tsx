@@ -43,18 +43,6 @@ describe('Issues Screen', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('toggles filter correctly', async () => {
-    const openFilterBefore = tree.root.findByProps({ testID: 'open' }).props;
-
-    await act(async () => openFilterBefore.onPress());
-
-    const openFilterAfter = tree.root.findByProps({ testID: 'open' }).props;
-    const closedFilterAfter = tree.root.findByProps({ testID: 'closed' }).props;
-
-    expect(openFilterAfter.style[1].backgroundColor).not.toBeDefined();
-    expect(closedFilterAfter.style[1].backgroundColor).toEqual(Color.white);
-  });
-
   it('opens and closes the RepoPicker correctly', async () => {
     const editButton = tree.root.findByProps({ testID: 'expandPickerButton' }).props;
     await act(async () => editButton.onPress());
@@ -67,6 +55,30 @@ describe('Issues Screen', () => {
     expect(() => {
       tree.root.findByProps({ testID: 'organizationInput' });
     }).toThrow();
+  });
+
+  it('opens the RepoPicker, gets issues, and closes succesfully', async () => {
+    const editButton = tree.root.findByProps({ testID: 'expandPickerButton' }).props;
+    await act(async () => editButton.onPress());
+
+    const viewIssuesButton = tree.root.findByProps({ testID: 'viewIssuesButton' }).props;
+    await act(async () => viewIssuesButton.onPress());
+
+    expect(() => {
+      tree.root.findByProps({ testID: 'organizationInput' });
+    }).toThrow();
+  });
+
+  it('toggles filter correctly', async () => {
+    const openFilterBefore = tree.root.findByProps({ testID: 'open' }).props;
+
+    await act(async () => openFilterBefore.onPress());
+
+    const openFilterAfter = tree.root.findByProps({ testID: 'open' }).props;
+    const closedFilterAfter = tree.root.findByProps({ testID: 'closed' }).props;
+
+    expect(openFilterAfter.style[1].backgroundColor).not.toBeDefined();
+    expect(closedFilterAfter.style[1].backgroundColor).toEqual(Color.white);
   });
 
   it('correctly highlights inputs at onFocus & onBlur', async () => {
@@ -117,6 +129,18 @@ describe('Issues Screen', () => {
     const textsInsideSortButton = sortButtonAfter.children[1].props.children;
 
     expect(textsInsideSortButton.some((text: string) => text.toLowerCase().includes('update'))).toEqual(true);
+  });
+
+  it("doesn't crash when canceling sort criterion picking", async () => {
+    const mockedShowActionSheetWithOptions = jest.spyOn(ActionSheetIOS, 'showActionSheetWithOptions');
+    mockedShowActionSheetWithOptions.mockImplementation((_, callback) => {
+      callback(-1);
+    });
+    const sortButton = tree.root.findByProps({ testID: 'changeSortCriterionButton' }).props;
+
+    await act(async () => sortButton.onPress());
+
+    expect(true).toEqual(true);
   });
 
   it('changes style correctly @ onScroll', async () => {
