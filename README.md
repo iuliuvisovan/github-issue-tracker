@@ -22,15 +22,15 @@ Supports filters, sorting, pagination and bookmarks!
 
 ### :page_with_curl: Tech Stack
 
-- [React Native 0.63](https://reactnative.dev/ " React Native 0.63") *(with hooks)*
+- [React Native 0.63](https://reactnative.dev/ " React Native 0.63") (with hooks)
 
 - [Expo SDK 40.0 ](https://expo.io/ "Expo SDK 40")
 
 - [TypeScript 4.0.0](https://www.typescriptlang.org/ "TypeScript 4.0.0")
 
-- [Redux 4.0.5](https://redux.js.org/introduction/installation "Redux 4.0.5") *(with react-redux & redux-thunk)*
+- [Redux 4.0.5](https://redux.js.org/introduction/installation "Redux 4.0.5") (with react-redux & redux-thunk)
 
-- [ Jest 26.6.0](https://jestjs.io/ " Jest 26.6.0")* (and react-test-renderer)*
+- [ Jest 26.6.0](https://jestjs.io/ " Jest 26.6.0") (with react-test-renderer)
 
 <br />
 
