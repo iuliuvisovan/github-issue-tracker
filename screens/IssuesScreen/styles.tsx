@@ -52,21 +52,6 @@ export default StyleSheet.create({
     backgroundColor: Color.white,
     borderColor: Color.blue,
   },
-  editRepoButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 30,
-    width: 30,
-    paddingTop: 0,
-    paddingLeft: 1,
-
-    borderRadius: 16,
-    marginLeft: 12,
-    borderWidth: 1,
-
-    backgroundColor: Color.white,
-    borderColor: Color.blue,
-  },
   container: {
     flex: 1,
     backgroundColor: Color.pageBackground,
@@ -85,11 +70,6 @@ export default StyleSheet.create({
     width: '100%',
     backgroundColor: Color.border + '88',
   },
-  repositoryInputs: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   card: {
     backgroundColor: Color.white,
     paddingHorizontal: 16,
@@ -105,11 +85,7 @@ export default StyleSheet.create({
     shadowRadius: 3,
     shadowOpacity: 0.1,
   },
-  filterIcon: {
-    marginLeft: 8,
-    marginTop: 2,
-    marginRight: 8,
-  },
+
   caretIcon: {
     marginRight: 8,
     marginLeft: -2,
@@ -118,18 +94,6 @@ export default StyleSheet.create({
   collapsedRepoPicker: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  repoText: {
-    marginTop: 6,
-    marginLeft: 8,
-    color: Color.steel,
-    fontSize: 16,
-  },
-  buttonsWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
   },
   error: {
     color: Color.red,
@@ -167,5 +131,10 @@ export default StyleSheet.create({
     shadowRadius: 3,
     shadowOpacity: 0.1,
     zIndex: 10,
+  },
+  filterIcon: {
+    marginLeft: 8,
+    marginTop: 2,
+    marginRight: 8,
   },
 });

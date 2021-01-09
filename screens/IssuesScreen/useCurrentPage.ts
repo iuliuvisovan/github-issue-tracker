@@ -11,11 +11,11 @@ export default function usePage(): useCurrentPageReturnValue {
 
   const dispatch = useDispatch();
 
-  const setOrganizationId = (id: string) => {
-    dispatch(issueActions.setOrganizationId(id));
+  const commitOrganizationId = (id: string) => {
+    dispatch(issueActions.commitOrganizationId(id));
   };
-  const setRepoId = (id: string) => {
-    dispatch(issueActions.setRepoId(id));
+  const commitRepoId = (id: string) => {
+    dispatch(issueActions.commitRepoId(id));
   };
 
   const flatListRef = useRef<FlatList<Issue>>(null);
@@ -51,8 +51,8 @@ export default function usePage(): useCurrentPageReturnValue {
       error,
     },
     actions: {
-      setOrganizationId,
-      setRepoId,
+      commitOrganizationId,
+      commitRepoId,
       pickSortCriterion,
       setIsPickerOpen: (value: boolean) => {
         LayoutAnimation.easeInEaseOut();

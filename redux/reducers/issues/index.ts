@@ -48,13 +48,13 @@ export default (state: IssueState = initialState, action: IssueAction): IssueSta
         error: undefined,
       };
 
-    case IssueActionType.SET_ORGANIZATION_SLUG:
+    case IssueActionType.COMMIT_ORGANIZATION_ID:
       return {
         ...state,
         organizationId: action.payload as string,
       };
 
-    case IssueActionType.SET_REPO_SLUG:
+    case IssueActionType.COMMIT_REPO_ID:
       return {
         ...state,
         repoId: action.payload as string,

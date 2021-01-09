@@ -28,12 +28,12 @@ export const getIssues = () => async (dispatch: Dispatch<IssueAction>) => {
   }
 };
 
-export const setOrganizationId = (organizationId: string) => (dispatch: Dispatch<IssueAction>) => {
-  dispatch({ type: IssueActionType.SET_ORGANIZATION_SLUG, payload: organizationId });
+export const commitOrganizationId = (organizationId: string) => (dispatch: Dispatch<IssueAction>) => {
+  dispatch({ type: IssueActionType.COMMIT_ORGANIZATION_ID, payload: organizationId });
 };
 
-export const setRepoId = (repoId: string) => (dispatch: Dispatch<IssueAction>) => {
-  dispatch({ type: IssueActionType.SET_REPO_SLUG, payload: repoId });
+export const commitRepoId = (repoId: string) => (dispatch: Dispatch<IssueAction>) => {
+  dispatch({ type: IssueActionType.COMMIT_REPO_ID, payload: repoId });
 };
 
 export const setPage = (pageNumber: number) => (dispatch: Dispatch<IssueAction>) => {

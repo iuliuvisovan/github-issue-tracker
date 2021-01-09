@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
 import { ActivityIndicator, LayoutAnimation, View, FlatList, TouchableOpacity } from 'react-native';
 
 import { Button, Color, TextInput, Text } from '../../components';
 import Issue from './Issue';
+import RepoPicker from './RepoPicker';
 import styles from './styles';
 import { IssuesScreenProps } from '../../types/navigation';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,14 +17,14 @@ import useBookmarks from '../../hooks/useBookmarks';
 export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
   const { issues, loading: loadingIssues, filters, sortCriteria, currentPage, error } = issuesManager.data;
-  const { getIssues, toggleFilter, setSortCriterion, setPage, setOrganizationId, setRepoId } = issuesManager.actions;
+  const { getIssues, toggleFilter, setSortCriterion, setPage } = issuesManager.actions;
 
   const bookmarksManager = useBookmarks();
   const { bookmarks, loading: loadingBookmarks } = bookmarksManager.data;
   const { getBookmarks } = bookmarksManager.actions;
 
   const currentPageManager = useCurrentPage();
-  const { organizationId, repoId, isPickerOpen, isScrolled, flatListRef } = currentPageManager.data;
+  const { isPickerOpen, isScrolled, flatListRef } = currentPageManager.data;
   const { setIsPickerOpen, setIsScrolled, pickSortCriterion } = currentPageManager.actions;
 
   const changeSortCriterion = async () => {
@@ -45,33 +46,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
   return (
     <View style={styles.container}>
       <View style={[styles.actions, isScrolled ? styles.scrolled : {}]}>
-        {isPickerOpen ? (
-          <View style={styles.card}>
-            <View style={styles.repositoryInputs}>
-              <TextInput name="Organization" testID="organizationInput" value={organizationId} onChangeText={setOrganizationId} />
-              <Text style={{ marginTop: 26, fontSize: 20, marginLeft: 2, color: Color.border }}>/</Text>
-              <TextInput name="Repository" value={repoId} onChangeText={setRepoId} />
-            </View>
-            <View style={styles.buttonsWrapper}>
-              <Button type="secondary" testID="cancelButton" text="Cancel" onPress={() => setIsPickerOpen(false)} style={{ width: 130 }} />
-              <Button
-                type="quaternary"
-                text="View issues"
-                leftIcon={<AntDesign size={20} color={Color.blue} name="github" style={{ marginRight: 6 }} />}
-                onPress={getIssues}
-              />
-            </View>
-          </View>
-        ) : (
-          <View style={[styles.spacedRow, { marginTop: 0 }]}>
-            <Feather size={20} name="git-branch" color={Color.border} style={styles.filterIcon} />
-            <Text style={styles.repoText}>{`${organizationId} / ${repoId}`}</Text>
-            <TouchableOpacity testID="expandPickerButton" onPress={() => setIsPickerOpen(true)} style={styles.editRepoButton}>
-              <Feather size={14} name="edit-2" color={Color.blue} />
-            </TouchableOpacity>
-          </View>
-        )}
-
+        <RepoPicker />
         <View style={styles.spacedRow}>
           <Feather size={20} name="sliders" color={Color.border} style={styles.filterIcon} />
           {filters.map(({ id, label, isActive }) => (

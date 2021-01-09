@@ -40,7 +40,7 @@ describe('Issues Reducer', () => {
 
   it('handles SET_ORGANIZATION_SLUG', () => {
     const action: IssueAction = {
-      type: IssueActionType.SET_ORGANIZATION_SLUG,
+      type: IssueActionType.COMMIT_ORGANIZATION_ID,
       payload: 'expo',
     };
 
@@ -50,7 +50,7 @@ describe('Issues Reducer', () => {
   });
   it('handles SET_REPO_SLUG', () => {
     const action: IssueAction = {
-      type: IssueActionType.SET_REPO_SLUG,
+      type: IssueActionType.COMMIT_REPO_ID,
       payload: 'expo',
     };
 

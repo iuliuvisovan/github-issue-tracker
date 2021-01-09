@@ -85,8 +85,8 @@ export enum IssueActionType {
   GET_ISSUES_PENDING = 'GET_ISSUES_PENDING',
   GET_ISSUES_SUCCESS = 'GET_ISSUES_SUCCESS',
   GET_ISSUES_ERROR = 'GET_ISSUES_ERROR',
-  SET_ORGANIZATION_SLUG = 'SET_ORGANIZATION_SLUG',
-  SET_REPO_SLUG = 'SET_REPO_SLUG',
+  COMMIT_ORGANIZATION_ID = 'COMMIT_ORGANIZATION_ID',
+  COMMIT_REPO_ID = 'COMMIT_REPO_ID',
   TOGGLE_FILTER = 'TOGGLE_FILTER',
   SET_SORT_CRITERION = 'SET_SORT_CRITERION',
   SET_PAGE = 'SET_PAGE',
@@ -102,8 +102,8 @@ export interface CurrentPageHookReturnValue {
     error?: Error;
   };
   actions: {
-    setOrganizationId: (id: string) => void;
-    setRepoId: (id: string) => void;
+    commitOrganizationId: (id: string) => void;
+    commitRepoId: (id: string) => void;
     pickSortCriterion: (sortCriteria: IssueSortCriteria[]) => Promise<string>;
     setIsPickerOpen: (value: boolean) => void;
     setIsScrolled: (value: boolean) => void;

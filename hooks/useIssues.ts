@@ -30,9 +30,6 @@ export default function useIssues() {
     getIssues();
   };
 
-  const setOrganizationId = (id: string) => dispatch(issueActions.setOrganizationId(id));
-  const setRepoId = (id: string) => dispatch(issueActions.setRepoId(id));
-
   return {
     data: {
       issues,
@@ -47,8 +44,6 @@ export default function useIssues() {
       toggleFilter,
       setSortCriterion,
       setPage,
-      setOrganizationId,
-      setRepoId,
     },
   };
 }
