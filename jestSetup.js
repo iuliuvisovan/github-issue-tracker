@@ -1,19 +1,5 @@
 import 'react-native-gesture-handler/jestSetup';
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
-import mockIssues from './mocks/issues';
-
-mockAsyncStorage.getItem = jest.fn((key, callback) => {
-  if (key === 'bookmarks') {
-    const json = JSON.stringify(mockIssues);
-
-    return json;
-  } else {
-    callback(null);
-  }
-  // do something here to retrieve data
-});
-
-export default mockAsyncStorage;
 
 jest.useFakeTimers();
 

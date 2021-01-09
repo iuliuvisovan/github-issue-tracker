@@ -45,6 +45,8 @@ export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<Boo
   dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_PENDING });
 
   try {
+    dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_SUCCESS, payload: issueId });
+
     const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
     if (bookmarksJson) {
@@ -53,8 +55,6 @@ export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<Boo
 
       await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }
-
-    dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_SUCCESS, payload: issueId });
   } catch (error) {
     dispatch({ type: BookmarkActionType.REMOVE_BOOKMARK_ERROR, payload: error });
   }
