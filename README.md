@@ -9,7 +9,7 @@ Supports filters, sorting, pagination and bookmarks!
 ------------
 
 
-### Highlights
+### Highlights :bowtie:
 
 - Cleanly separated view / state architecture
 
@@ -22,15 +22,15 @@ Supports filters, sorting, pagination and bookmarks!
 
 ### Tech Stack
 
-- [React Native 0.63](https://reactnative.dev/ " React Native 0.63")
+- [React Native 0.63](https://reactnative.dev/ " React Native 0.63") *(with hooks)*
 
 - [Expo SDK 40.0 ](https://expo.io/ "Expo SDK 40")
 
 - [TypeScript 4.0.0](https://www.typescriptlang.org/ "TypeScript 4.0.0")
 
-- [Redux 4.0.5](https://redux.js.org/introduction/installation "Redux 4.0.5")
+- [Redux 4.0.5](https://redux.js.org/introduction/installation "Redux 4.0.5") *(with react-redux & redux-thunk)*
 
-- [ Jest 26.6.0](https://jestjs.io/ " Jest 26.6.0")
+- [ Jest 26.6.0](https://jestjs.io/ " Jest 26.6.0")* (and react-test-renderer)*
 
 
 ------------
@@ -38,22 +38,22 @@ Supports filters, sorting, pagination and bookmarks!
 
 ### Installation
 
-1. Clone the repository
+1. **Clone the repository**
 
  `git clone https://github.com/iuliuvisovan/github-issue-tracker.git`
  
-1. Move to project folder
+1. **Move to project folder**
 
  `cd github-issue-tracker`
  
-1. *(if missing)* Install Yarn
+1. (if missing) **Install Yarn**
 
  `npm install -g yarn`
-1. Install dependencies
+1. **Install dependencies**
 
 	`yarn`
 
-1. *(if missing)* Install Expo CLI
+1. (if missing) **Install Expo CLI**
 
 	`npm install -g expo-cli`
 	
@@ -61,32 +61,32 @@ Supports filters, sorting, pagination and bookmarks!
 
 ### Running
 
-- On an iOS simulator (MacOS + XCode installation needed):
+- **On an iOS simulator** (MacOS + XCode installation needed):
 
 	`yarn ios`
 	
-- On an Android Emulator:
+- **On an Android Emulator**:
 
 	`yarn android`
 	
-- On your own phone (requires the [Expo Client ](https://apps.apple.com/us/app/expo-client/id982107779 "Expo Client ")app to be installed):
+- **On your own phone** (via the [Expo Android/iOS app](https://apps.apple.com/us/app/expo-client/id982107779 "Expo Client ")):
 
-	 `yarn start`, then wait for a QR code to show up in console. Scan it with your iOS/Android Camera app. It will prompt you to open it with the Expo Client app.
+	 `yarn start`, then wait for a QR code to show up in console. Scan it with your iOS/Android **Camera** app. It will prompt you to open it with the **Expo Client** app.
 
 
 ### Testing
 
-This app features 100% test coverage using Jest and React Native Test Renderer.
+This app features **100% test coverage** using Jest and React Native Test Renderer.
 
-- Running the tests:
+- **Running the tests**:
 
 `yarn test`
 
-- Running the tests while also updating the snapshots:
+- **Running the tests** & also updating the snapshots:
 
 `yarn test -u`
 
-After running the tests, full coverage information is available in the `coverage` folder.
+After running the tests, full coverage information is available in the `./coverage` folder.
 
 
 
