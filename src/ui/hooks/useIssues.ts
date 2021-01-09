@@ -1,16 +1,17 @@
 import { LayoutAnimation } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { ApplicationState } from '../../data/redux';
 import * as issueActions from '../../data/redux/actions/issues';
+import { ApplicationState } from '../../data/redux';
+import { useIssuesReturnValue } from '../../data/types/issues';
 
-export default function useIssues() {
+export default function useIssues(): useIssuesReturnValue {
   const { issues, loading, filters, sortCriteria, currentPage, error } = useSelector((state: ApplicationState) => state.issuesReducer);
 
   const dispatch = useDispatch();
 
-  function getIssues() {
+  const getIssues = () => {
     dispatch(issueActions.getIssues());
-  }
+  };
 
   const toggleFilter = (filterId: string) => {
     LayoutAnimation.easeInEaseOut();

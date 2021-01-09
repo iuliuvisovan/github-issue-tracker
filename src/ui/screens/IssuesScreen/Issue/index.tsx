@@ -1,10 +1,12 @@
 import React from 'react';
 import isDarkColor from 'is-dark-color';
 import { View, TouchableOpacity } from 'react-native';
+
 import { Color, Text } from '../../../components';
-import { IssueItemProps } from '../../../../data/types/issues';
-import styles from './styles';
 import Header from './Header';
+import styles from './styles';
+
+import { IssueItemProps } from '../../../../data/types/issues';
 
 export default function Issue(props: IssueItemProps) {
   const { issue } = props;

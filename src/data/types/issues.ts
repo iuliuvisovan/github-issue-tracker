@@ -60,7 +60,7 @@ export interface IssueState {
   organizationId: string;
   repoId: string;
   filters: IssueFilter[];
-  sortCriteria: IssueSortCriteria[];
+  sortCriteria: IssueSortCriterion[];
   currentPage: number;
 }
 
@@ -75,7 +75,7 @@ export interface IssueFilter {
   isActive: boolean;
 }
 
-export interface IssueSortCriteria {
+export interface IssueSortCriterion {
   id: string;
   label: string;
   isActive: boolean;
@@ -92,20 +92,19 @@ export enum IssueActionType {
   SET_PAGE = 'SET_PAGE',
 }
 
-export interface CurrentPageHookReturnValue {
+export interface useIssuesReturnValue {
   data: {
-    organizationId: string;
-    repoId: string;
-    isPickerOpen: boolean;
-    isScrolled: boolean;
-    flatListRef: RefObject<FlatList<Issue>>;
+    issues: Issue[];
+    loading: boolean;
+    filters: IssueFilter[];
+    sortCriteria: IssueSortCriterion[];
+    currentPage: number;
     error?: Error;
   };
   actions: {
-    commitOrganizationId: (id: string) => void;
-    commitRepoId: (id: string) => void;
-    pickSortCriterion: (sortCriteria: IssueSortCriteria[]) => Promise<string>;
-    setIsPickerOpen: (value: boolean) => void;
-    setIsScrolled: (value: boolean) => void;
+    getIssues: () => void;
+    toggleFilter: (filterId: string) => void;
+    setSortCriterion: (sortCriterionId: string) => void;
+    setPage: (pageNumber: number) => void;
   };
 }

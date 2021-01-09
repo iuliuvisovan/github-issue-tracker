@@ -118,7 +118,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                   }
                 }
               >
-                MockedScreen
+                MockScreen
               </Text>
             </View>
           </View>
@@ -470,8 +470,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                     ]
                                   }
                                 >
-                                   
-                                  • 
+                                   • 
                                   a few seconds ago
                                 </Text>
                                 <Text
@@ -491,30 +490,26 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                 >
                                    • 
                                 </Text>
-                                <View
-                                  style={Object {}}
+                                <Text
+                                  allowFontScaling={false}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#aab2ba",
+                                        "fontSize": 16,
+                                      },
+                                      undefined,
+                                      Object {
+                                        "fontFamily": "anticon",
+                                        "fontStyle": "normal",
+                                        "fontWeight": "normal",
+                                      },
+                                      Object {},
+                                    ]
+                                  }
                                 >
-                                  <Text
-                                    allowFontScaling={false}
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#aab2ba",
-                                          "fontSize": 16,
-                                        },
-                                        undefined,
-                                        Object {
-                                          "fontFamily": "anticon",
-                                          "fontStyle": "normal",
-                                          "fontWeight": "normal",
-                                        },
-                                        Object {},
-                                      ]
-                                    }
-                                  >
-                                    
-                                  </Text>
-                                </View>
+                                  
+                                </Text>
                               </View>
                               <View
                                 style={
@@ -713,8 +708,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                     ]
                                   }
                                 >
-                                   
-                                  • 
+                                   • 
                                   a few seconds ago
                                 </Text>
                                 <Text
@@ -734,30 +728,26 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                 >
                                    • 
                                 </Text>
-                                <View
-                                  style={Object {}}
+                                <Text
+                                  allowFontScaling={false}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#aab2ba",
+                                        "fontSize": 16,
+                                      },
+                                      undefined,
+                                      Object {
+                                        "fontFamily": "anticon",
+                                        "fontStyle": "normal",
+                                        "fontWeight": "normal",
+                                      },
+                                      Object {},
+                                    ]
+                                  }
                                 >
-                                  <Text
-                                    allowFontScaling={false}
-                                    style={
-                                      Array [
-                                        Object {
-                                          "color": "#aab2ba",
-                                          "fontSize": 16,
-                                        },
-                                        undefined,
-                                        Object {
-                                          "fontFamily": "anticon",
-                                          "fontStyle": "normal",
-                                          "fontWeight": "normal",
-                                        },
-                                        Object {},
-                                      ]
-                                    }
-                                  >
-                                    
-                                  </Text>
-                                </View>
+                                  
+                                </Text>
                               </View>
                               <View
                                 style={

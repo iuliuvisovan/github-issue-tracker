@@ -1,16 +1,17 @@
 import React from 'react';
-import IssuesScreen from './index';
-import MockedNavigation from '../../../data/mocks/navigation';
 import { create, act } from 'react-test-renderer';
 import { Provider as ReduxProvider } from 'react-redux';
-import store from '../../../data/redux';
-import mockIssues from '../../../data/mocks/issues';
-import mockComments from '../../../data/mocks/comments';
 import fetchMock from 'fetch-mock';
 import isDarkColor from 'is-dark-color';
 import { NativeSyntheticEvent, TextInputFocusEventData, ActionSheetIOS } from 'react-native';
-import { Color } from '../../components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { Color } from '../../components';
+import store from '../../../data/redux';
+import MockNavigation from '../../../data/mocks/navigation';
+import mockIssues from '../../../data/mocks/issues';
+import mockComments from '../../../data/mocks/comments';
+import IssuesScreen from './index';
 
 jest.mock('is-dark-color');
 isDarkColor.mockReturnValue(true);
@@ -25,7 +26,7 @@ jest.spyOn(AsyncStorage, 'getItem').mockImplementation(
 const createFreshTree = () =>
   create(
     <ReduxProvider store={store}>
-      <MockedNavigation component={IssuesScreen} />
+      <MockNavigation component={IssuesScreen} />
     </ReduxProvider>
   );
 
@@ -172,7 +173,7 @@ describe('Issues Screen', () => {
   });
 });
 
-const fetchMocks = (): void => {
+const fetchMocks = () => {
   const urls = [
     'https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=1',
     'https://api.github.com/repos/facebook/react-native/issues?state=all&sort=created&page=2',

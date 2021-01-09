@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
-
+import React, { useEffect } from 'react';
 import { ActivityIndicator, LayoutAnimation, View, FlatList, TouchableOpacity } from 'react-native';
-
-import { Button, Color, TextInput, Text } from '../../components';
-import Issue from './Issue';
-import RepoPicker from './RepoPicker';
-import styles from './styles';
-import { IssuesScreenProps } from '../../../data/types/navigation';
 import { LinearGradient } from 'expo-linear-gradient';
-import useCurrentPage from './useCurrentPage';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 
-import useIssues from '../../hooks/useIssues';
+import { Button, Color, Text } from '../../components';
+import useCurrentPage from '../../hooks/useIssuesPage';
 import useBookmarks from '../../hooks/useBookmarks';
-import { catch } from 'fetch-mock';
+import useIssues from '../../hooks/useIssues';
+import RepoPicker from './RepoPicker';
+import Issue from './Issue';
+import styles from './styles';
+
+import { IssuesScreenProps } from '../../../data/types/navigation';
 
 export default function IssuesScreen(props: IssuesScreenProps) {
   const issuesManager = useIssues();
@@ -32,7 +30,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
     try {
       const pickedCriterion = await pickSortCriterion(sortCriteria);
       setSortCriterion(pickedCriterion);
-    } catch { }
+    } catch {}
   };
 
   useEffect(() => {

@@ -4,13 +4,6 @@ import Color from '../color';
 import Text from '../text';
 import styles from './styles';
 
-export interface ButtonProps {
-  text?: String;
-  type?: 'secondary' | 'tertiary' | 'quaternary';
-  leftIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
-}
-
 export default function styledButton(props: TouchableOpacityProps & ButtonProps) {
   const { style, type = 'default', text, leftIcon, rightIcon, disabled } = props;
 
@@ -30,6 +23,13 @@ export default function styledButton(props: TouchableOpacityProps & ButtonProps)
       {rightIcon}
     </TouchableOpacity>
   );
+}
+
+export interface ButtonProps {
+  text?: String;
+  type?: 'secondary' | 'tertiary' | 'quaternary';
+  leftIcon?: JSX.Element;
+  rightIcon?: JSX.Element;
 }
 
 interface ButtonStyle {

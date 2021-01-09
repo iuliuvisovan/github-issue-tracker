@@ -10,7 +10,7 @@ import { CommentActionType } from '../../../types/comments';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('Comment actions', () => {
+describe('Comment Actions', () => {
   afterEach(() => {
     fetchMock.restore();
   });

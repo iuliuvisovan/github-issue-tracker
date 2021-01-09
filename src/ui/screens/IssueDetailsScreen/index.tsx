@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView, LayoutAnimation } from 'react-native';
 import { WebView } from 'react-native-webview';
 import isDarkColor from 'is-dark-color';
 
@@ -28,20 +28,22 @@ export default function IssuesDetailsScreen(props: IssueDetailsScreenProps) {
   }, []);
 
   const addAsBookmark = () => {
+    LayoutAnimation.easeInEaseOut();
     dispatch(bookmarkActions.addBookmark(issue));
   };
 
   const removeAsBookmark = () => {
+    LayoutAnimation.easeInEaseOut();
     dispatch(bookmarkActions.removeBookmark(issue.id));
   };
 
   const isBookmarked = bookmarks.some((x) => x.id === issue.id);
+  const bookmarkIcon = <AntDesign size={20} color={Color.blue} name={isBookmarked ? 'star' : 'staro'} style={{ marginRight: 6 }} />;
 
   return (
     <ScrollView>
       <View style={styles.card}>
         <Header issue={{ ...issue, isBookmarked }} />
-
         <Text style={styles.title}>{issue.title}</Text>
         <View style={styles.separator}></View>
         {/* <Text style={styles.body}>{issue.body.slice(0, 12050)}</Text> */}
@@ -61,9 +63,7 @@ export default function IssuesDetailsScreen(props: IssueDetailsScreenProps) {
         text={isBookmarked ? 'Remove Bookmark' : 'Bookmark'}
         style={styles.bookmarkButton}
         testID="addAsBookmarkButton"
-        leftIcon={
-          <AntDesign size={20} color={Color.blue} name={isBookmarked ? 'star' : 'staro'} style={{ marginRight: 6 }} />
-        }
+        leftIcon={bookmarkIcon}
         onPress={isBookmarked ? removeAsBookmark : addAsBookmark}
       />
       {comments.length ? (
@@ -89,6 +89,7 @@ const getHtmlFromBody = (rawBody: string): string => {
     .replace(/##([^\r]+)/g, '<h3>$1</h3>')
     .replace(/`([^`]+)`/g, '<code>$1</code>')
     .replace(/`([^`]+)`/g, '<code>$1</code>');
+    
   const html = `<html style="overflow: hidden">
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">

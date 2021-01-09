@@ -1,17 +1,16 @@
-import { Ionicons } from '@expo/vector-icons';
+import React, { useEffect } from 'react';
 import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 import * as SplashScreen from 'expo-splash-screen';
-import * as React from 'react';
 
 export default function useCachedResources() {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHideAsync();
 
-        // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
           muli: require('../assets/fonts/Muli.ttf'),
@@ -19,7 +18,6 @@ export default function useCachedResources() {
           'muli-extra-bold': require('../assets/fonts/Muli-ExtraBold.ttf'),
         });
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
         console.warn(e);
       } finally {
         setLoadingComplete(true);

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-
 import { ActivityIndicator, View, FlatList } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 import { Color, Text } from '../../components';
-import Issue from '../IssuesScreen/Issue';
-import styles from './styles';
-import { BookmarksScreenProps } from '../../../data/types/navigation';
 import useBookmarks from '../../hooks/useBookmarks';
-import { Feather } from '@expo/vector-icons';
+import styles from './styles';
+
+import Issue from '../IssuesScreen/Issue';
+import { BookmarksScreenProps } from '../../../data/types/navigation';
 
 export default function BookmarksScreen(props: BookmarksScreenProps) {
   const bookmarksManager = useBookmarks();

@@ -1,11 +1,12 @@
-import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import * as React from "react";
+import * as React from 'react';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { RootStackParamList } from "../../data/types/navigation";
-import BottomTabNavigator from "./BottomTabNavigator";
-import IssuesDetailsScreen from "../screens/IssueDetailsScreen";
-import { Color } from "../components";
+import { Color } from '../components';
+import BottomTabNavigator from './BottomTabNavigator';
+import IssuesDetailsScreen from '../screens/IssueDetailsScreen';
+
+import { RootStackParamList } from '../../data/types/navigation';
 
 export default function Navigation() {
   return (
@@ -24,9 +25,9 @@ function RootNavigator() {
       <Stack.Screen
         name="IssueDetails"
         options={{
-          title: "Issue Details",
-          headerBackTitle: "Back",
-          headerTitleStyle: { fontFamily: "muli-extra-bold", color: Color.black },
+          title: 'Issue Details',
+          headerBackTitle: 'Back',
+          headerTitleStyle: { fontFamily: 'muli-extra-bold', color: Color.black },
         }}
         component={IssuesDetailsScreen}
       />

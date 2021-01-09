@@ -79,6 +79,4 @@ export default StyleSheet.create({
     color: Color.white,
     fontFamily: 'muli-extra-bold',
   },
-  star: {
-  },
 });

@@ -78,48 +78,10 @@ export default StyleSheet.create({
     color: '#fff',
     marginHorizontal: 2,
   },
-  primaryEmptyButton: {
-    backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: '#fff',
-    elevation: 0,
-    flexDirection: 'row',
-  },
-  primaryEmptyText: {
-    color: '#fff',
-    marginHorizontal: 2,
-  },
   defaultText: {
     color: '#00aaff',
     fontSize: 12,
     fontFamily: 'muli-extra-bold',
     letterSpacing: 0.8,
-  },
-  icon: {
-    width: 13,
-    height: 13,
-    tintColor: '#00aaff',
-  },
-  bullet: {
-    width: 18,
-    height: 18,
-    backgroundColor: '#00aaff',
-    borderRadius: 18 / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 8,
-  },
-  bulletText: {
-    color: '#fff',
-    fontFamily: 'muli-extra-bold',
-    fontSize: 12,
-  },
-  noSpacing: {
-    alignSelf: 'flex-start',
-    paddingHorizontal: 0,
-  },
-  autoWidth: {
-    width: 'auto',
-    paddingHorizontal: 16,
   },
 });

@@ -23,6 +23,6 @@ export type BookmarksStackParamList = {
 
 export type IssueDetailsScreenProps = StackScreenProps<RootStackParamList, 'IssueDetails'>;
 
-export type IssuesScreenProps = StackScreenProps<IssuesStackParamList>;
+export type IssuesScreenProps = StackScreenProps<RootStackParamList>;
 
 export type BookmarksScreenProps = StackScreenProps<RootStackParamList>;

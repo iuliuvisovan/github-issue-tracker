@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ApplicationState } from '../../../data/redux';
+import { ApplicationState } from '../../data/redux';
 import { ActionSheetIOS, FlatList, LayoutAnimation } from 'react-native';
 import { useRef, useState } from 'react';
-import { Issue, IssueSortCriteria, CurrentPageHookReturnValue as useCurrentPageReturnValue } from '../../../data/types/issues';
-import * as issueActions from '../../../data/redux/actions/issues';
+import { Issue, IssueSortCriterion } from '../../data/types/issues';
+import * as issueActions from '../../data/redux/actions/issues';
 
 export default function usePage(): useCurrentPageReturnValue {
   const issuesReducer = useSelector((state: ApplicationState) => state.issuesReducer);
@@ -20,7 +20,7 @@ export default function usePage(): useCurrentPageReturnValue {
 
   const flatListRef = useRef<FlatList<Issue>>(null);
 
-  const pickSortCriterion = (sortCriteria: IssueSortCriteria[]): Promise<string> => {
+  const pickSortCriterion = (sortCriteria: IssueSortCriterion[]): Promise<string> => {
     return new Promise((resolve, reject) => {
       const onPick = (buttonIndex: number) => {
         if (buttonIndex > 0) {
@@ -62,5 +62,23 @@ export default function usePage(): useCurrentPageReturnValue {
       },
       setIsScrolled,
     },
+  };
+}
+
+export interface useCurrentPageReturnValue {
+  data: {
+    organizationId: string;
+    repoId: string;
+    isPickerOpen: boolean;
+    isScrolled: boolean;
+    flatListRef: RefObject<FlatList<Issue>>;
+    error?: Error;
+  };
+  actions: {
+    commitOrganizationId: (id: string) => void;
+    commitRepoId: (id: string) => void;
+    pickSortCriterion: (sortCriteria: IssueSortCriterion[]) => Promise<string>;
+    setIsPickerOpen: (value: boolean) => void;
+    setIsScrolled: (value: boolean) => void;
   };
 }

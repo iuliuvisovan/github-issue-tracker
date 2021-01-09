@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { Color, Text } from '../components';
 import IssuesScreen from '../screens/IssuesScreen';
-import IssuesDetailsScreen from '../screens/IssueDetailsScreen';
 import BookmarksScreen from '../screens/BookmarksScreen';
 import { BottomTabParamList, IssuesStackParamList, BookmarksStackParamList } from '../../data/types/navigation';
 

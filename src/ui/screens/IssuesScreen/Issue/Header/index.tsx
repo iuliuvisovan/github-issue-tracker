@@ -1,10 +1,12 @@
 import React from 'react';
 import moment from 'moment';
 import { View, Image } from 'react-native';
-import { Color, Text } from '../../../../components';
-import { IssueHeaderProps } from '../../../../../data/types/issues';
-import styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
+
+import { Color, Text } from '../../../../components';
+import styles from './styles';
+
+import { IssueHeaderProps } from '../../../../../data/types/issues';
 
 export default function Header(props: IssueHeaderProps) {
   const { issue } = props;
@@ -14,16 +16,11 @@ export default function Header(props: IssueHeaderProps) {
       <View style={styles.user}>
         <Image style={styles.profileImage} source={{ uri: issue.user.avatar_url }} />
         <Text style={styles.username}>{issue.user.login}</Text>
-        <Text style={styles.timeAgoText}>
-          {' '}
-          • {moment.duration(moment().diff(moment(issue.created_at))).humanize() + ' ago'}
-        </Text>
+        <Text style={styles.timeAgoText}> • {moment.duration(moment().diff(moment(issue.created_at))).humanize() + ' ago'}</Text>
         {issue.isBookmarked && (
           <>
             <Text style={styles.timeAgoText}> • </Text>
-            <View style={styles.star}>
-              <AntDesign size={16} color={Color.border} name="star" />
-            </View>
+            <AntDesign size={16} color={Color.border} name="star" />
           </>
         )}
       </View>

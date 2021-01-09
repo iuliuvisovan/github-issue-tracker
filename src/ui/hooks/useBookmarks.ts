@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ApplicationState } from '../../data/redux';
 import * as bokmarkActions from '../../data/redux/actions/bookmarks';
+import { ApplicationState } from '../../data/redux';
 import { useBookmarksReturnValue } from '../../data/types/bookmarks';
 
 export default function useBookmarks(): useBookmarksReturnValue {

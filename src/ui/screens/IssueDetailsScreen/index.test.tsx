@@ -1,13 +1,14 @@
 import React from 'react';
-import IssuesScreen from './index';
-import MockedNavigation from '../../../data/mocks/navigation';
-import { create, act } from 'react-test-renderer';
+import fetchMock from 'fetch-mock';
 import { Provider as ReduxProvider } from 'react-redux';
-import store from '../../../data/redux';
+import { create, act } from 'react-test-renderer';
 import isDarkColor from 'is-dark-color';
+
+import store from '../../../data/redux';
+import MockNavigation from '../../../data/mocks/navigation';
 import mockIssues from '../../../data/mocks/issues';
 import mockComments from '../../../data/mocks/comments';
-import fetchMock from 'fetch-mock';
+import IssuesScreen from './index';
 
 jest.mock('is-dark-color');
 isDarkColor.mockReturnValue(true);
@@ -15,7 +16,7 @@ isDarkColor.mockReturnValue(true);
 const createFreshTree = () =>
   create(
     <ReduxProvider store={store}>
-      <MockedNavigation component={IssuesScreen} params={{ issue: mockIssues[0] }} />
+      <MockNavigation component={IssuesScreen} params={{ issue: mockIssues[0] }} />
     </ReduxProvider>
   );
 
@@ -63,7 +64,7 @@ describe('Issue Details Screen', () => {
   });
 });
 
-const fetchMocks = (): void => {
+const fetchMocks = () => {
   const urls = ['https://api.github.com/commentsUrl'];
 
   urls.forEach((url) => {

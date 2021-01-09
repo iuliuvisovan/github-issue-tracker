@@ -1,8 +1,10 @@
 import React from 'react';
-import moment from 'moment';
 import { View, Image } from 'react-native';
+import moment from 'moment';
+
 import { Text } from '../../../components';
 import styles from './styles';
+
 import { CommentProps } from '../../../../data/types/comments';
 
 export default function Comment(props: CommentProps) {

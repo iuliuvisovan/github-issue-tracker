@@ -4,15 +4,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import IssueDetailsScreen from '../../ui/screens/IssueDetailsScreen';
 
 const Stack = createStackNavigator();
-const MockedNavigation = ({ component, params = {} }: { component: FunctionComponent<any>; params?: object }) => {
+const MockNavigation = ({ component, params = {} }: { component: FunctionComponent<any>; params?: object }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="MockedScreen" component={component} initialParams={params} />
+        <Stack.Screen name="MockScreen" component={component} initialParams={params} />
         <Stack.Screen name="IssueDetails" component={IssueDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default MockedNavigation;
+export default MockNavigation;

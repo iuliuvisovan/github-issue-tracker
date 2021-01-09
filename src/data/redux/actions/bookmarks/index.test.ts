@@ -6,11 +6,12 @@ import { addBookmark, getBookmarks, removeBookmark } from './index';
 import mockIssues from '../../../mocks/issues';
 
 import { BookmarkActionType } from '../../../types/bookmarks';
+import { Issue } from '../../../types/issues';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('Bookmark actions', () => {
+describe('Bookmark Actions', () => {
   it('creates GET_BOOKMARKS_SUCCESS when bookmark fetching has succeeded', () => {
     mockNonEmptyStorage();
 
@@ -29,7 +30,7 @@ describe('Bookmark actions', () => {
 
     const expectedActions = [
       { type: BookmarkActionType.GET_BOOKMARKS_PENDING },
-      { type: BookmarkActionType.GET_BOOKMARKS_SUCCESS, payload: [] },
+      { type: BookmarkActionType.GET_BOOKMARKS_SUCCESS, payload: [] as Issue[] },
     ];
     const store = mockStore({ bookmarks: [], loading: false });
 
@@ -168,7 +169,7 @@ describe('Bookmark actions', () => {
   });
 });
 
-const mockNonEmptyStorage = (): void => {
+const mockNonEmptyStorage = () => {
   jest.spyOn(AsyncStorage, 'getItem').mockImplementation(
     () =>
       new Promise((resolve) => {
@@ -176,7 +177,7 @@ const mockNonEmptyStorage = (): void => {
       })
   );
 };
-const mockEmptyStorage = (): void => {
+const mockEmptyStorage = () => {
   jest.spyOn(AsyncStorage, 'getItem').mockImplementation(
     () =>
       new Promise((resolve) => {

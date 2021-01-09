@@ -1,9 +1,9 @@
 import { Color } from '../../../components';
-import { Dimensions, StyleSheet } from 'react-native';
-import IssueStyle from '../../IssuesScreen/Issue/styles';
+import { StyleSheet } from 'react-native';
+import issueStyles from '../../IssuesScreen/Issue/styles';
 
 export default StyleSheet.create({
-  ...IssueStyle,
+  ...issueStyles,
   label: {
     color: Color.steel,
     fontSize: 12,

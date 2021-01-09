@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { Button, Color, Text, TextInput } from '../../../components';
-import styles from './styles';
-import useCurrentPage from '../useCurrentPage';
-import useIssues from '../../../hooks/useIssues';
 import { AntDesign, Feather } from '@expo/vector-icons';
+
+import { Button, Color, Text, TextInput } from '../../../components';
+import useIssues from '../../../hooks/useIssues';
+import useCurrentPage from '../../../hooks/useIssuesPage';
+import styles from './styles';
 
 export default function RepoPicker() {
   const currentPageManager = useCurrentPage();

@@ -118,7 +118,7 @@ exports[`Issues Screen renders correctly 1`] = `
                   }
                 }
               >
-                MockedScreen
+                MockScreen
               </Text>
             </View>
           </View>

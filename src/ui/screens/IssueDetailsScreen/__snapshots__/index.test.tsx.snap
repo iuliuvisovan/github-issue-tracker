@@ -118,7 +118,7 @@ exports[`Issue Details Screen renders correctly 1`] = `
                   }
                 }
               >
-                MockedScreen
+                MockScreen
               </Text>
             </View>
           </View>
@@ -366,8 +366,7 @@ exports[`Issue Details Screen renders correctly 1`] = `
                                 ]
                               }
                             >
-                               
-                              • 
+                               • 
                               a few seconds ago
                             </Text>
                           </View>
