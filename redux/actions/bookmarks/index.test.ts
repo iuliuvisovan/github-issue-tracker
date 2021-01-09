@@ -5,7 +5,6 @@ import { BookmarkActionType } from '../../../types/bookmarks';
 
 import mockIssues from '../../../mocks/issues';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Issue } from '../../../types/issues';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

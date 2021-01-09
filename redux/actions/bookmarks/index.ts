@@ -9,6 +9,8 @@ export const getBookmarks = () => async (dispatch: Dispatch<BookmarkAction>) => 
   try {
     const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
+    console.log('bookmarksJson', bookmarksJson);
+
     let bookmarks = [];
     if (bookmarksJson) {
       bookmarks = JSON.parse(bookmarksJson);

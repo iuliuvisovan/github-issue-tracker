@@ -24,7 +24,7 @@ export default function IssuesScreen(props: IssuesScreenProps) {
   const { getBookmarks } = bookmarksManager.actions;
 
   const currentPageManager = useCurrentPage();
-  const { isPickerOpen, isScrolled, flatListRef } = currentPageManager.data;
+  const { isScrolled, flatListRef } = currentPageManager.data;
   const { setIsPickerOpen, setIsScrolled, pickSortCriterion } = currentPageManager.actions;
 
   const changeSortCriterion = async () => {
