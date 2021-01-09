@@ -3,7 +3,7 @@ import * as issuesApi from '../../../api/issues';
 import { IssueActionType, IssueAction } from '../../../types/issues';
 import { ApplicationState } from '../..';
 
-export const getIssues = (test: number = 1) => async (dispatch: Dispatch<IssueAction>, getState: () => ApplicationState) => {
+export const getIssues = () => async (dispatch: Dispatch<IssueAction>, getState: () => ApplicationState) => {
   dispatch({ type: IssueActionType.GET_ISSUES_PENDING });
 
   const { organizationId, repoId, filters, sortCriteria, currentPage } = getState().issuesReducer;
