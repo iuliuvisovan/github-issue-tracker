@@ -4,7 +4,7 @@
     "slug": "github-issue-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./src/ui/assets/images/icon.png",
     "scheme": "github-issue-tracker",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -20,12 +20,9 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./src/ui/assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
-    }
   }
 }
