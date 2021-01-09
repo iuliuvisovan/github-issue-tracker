@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IApplicationState } from '../../redux';
+import { ApplicationState } from '../../redux';
 import { ActionSheetIOS, FlatList, LayoutAnimation } from 'react-native';
 import { useRef, useState } from 'react';
 import { Issue, IssueSortCriteria, CurrentPageHookReturnValue as useCurrentPageReturnValue } from '../../types/issues';
 import * as issueActions from '../../redux/actions/issues';
 
 export default function usePage(): useCurrentPageReturnValue {
-  const issuesReducer = useSelector((state: IApplicationState) => state.issuesReducer);
+  const issuesReducer = useSelector((state: ApplicationState) => state.issuesReducer);
   const { error, organizationId, repoId } = issuesReducer;
 
   const dispatch = useDispatch();

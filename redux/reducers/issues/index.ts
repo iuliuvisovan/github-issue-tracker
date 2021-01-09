@@ -23,7 +23,7 @@ const defaultSortCriteria = [
   },
 ];
 
-const initialState: IssueState = {
+export const initialState: IssueState = {
   issues: [],
   loading: false,
   organizationId: 'facebook',

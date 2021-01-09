@@ -1,10 +1,10 @@
 import { LayoutAnimation } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { IApplicationState } from '../redux';
+import { ApplicationState } from '../redux';
 import * as issueActions from '../redux/actions/issues';
 
 export default function useIssues() {
-  const { issues, loading, filters, sortCriteria, currentPage, error } = useSelector((state: IApplicationState) => state.issuesReducer);
+  const { issues, loading, filters, sortCriteria, currentPage, error } = useSelector((state: ApplicationState) => state.issuesReducer);
 
   const dispatch = useDispatch();
 

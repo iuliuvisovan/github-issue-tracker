@@ -2,7 +2,7 @@ import { IssueAction, IssueActionType, IssueState } from '../../../types/issues'
 import issuesReducer from './index';
 import mockIssues, { mockFilters, mockSortCriteria } from '../../../mocks/issues';
 
-const initialState: IssueState = {
+export const initialState: IssueState = {
   issues: [],
   loading: false,
   error: undefined,

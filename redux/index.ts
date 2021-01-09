@@ -6,6 +6,6 @@ import bookmarksReducer from './reducers/bookmarks';
 
 const rootReducer = combineReducers({ issuesReducer, commentsReducer, bookmarksReducer });
 
-export type IApplicationState = ReturnType<typeof rootReducer>;
+export type ApplicationState = ReturnType<typeof rootReducer>;
 
 export default createStore(rootReducer, applyMiddleware(thunk));

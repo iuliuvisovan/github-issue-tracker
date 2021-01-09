@@ -9,7 +9,7 @@ import { IssueDetailsScreenProps } from '../../types/navigation';
 
 import styles from './styles';
 import { AntDesign, Feather } from '@expo/vector-icons';
-import { IApplicationState } from '../../redux';
+import { ApplicationState } from '../../redux';
 import { useDispatch, useSelector } from 'react-redux';
 import * as commentActions from '../../redux/actions/comments';
 import * as bookmarkActions from '../../redux/actions/bookmarks';
@@ -19,8 +19,8 @@ import Header from '../IssuesScreen/Issue/Header';
 export default function IssuesDetailsScreen(props: IssueDetailsScreenProps) {
   const { issue } = props.route.params;
 
-  const { bookmarks: bookmarks } = useSelector((state: IApplicationState) => state.bookmarksReducer);
-  const { comments: comments } = useSelector((state: IApplicationState) => state.commentsReducer);
+  const { bookmarks: bookmarks } = useSelector((state: ApplicationState) => state.bookmarksReducer);
+  const { comments: comments } = useSelector((state: ApplicationState) => state.commentsReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
