@@ -1,5 +1,7 @@
 import { Dispatch } from 'redux';
-import * as issuesApi from '../../../api/issues';
+
+import * as issueEndpoints from '../../../api/issues';
+
 import { IssueActionType, IssueAction } from '../../../types/issues';
 import { ApplicationState } from '../..';
 
@@ -10,12 +12,12 @@ export const getIssues = () => async (dispatch: Dispatch<IssueAction>, getState:
 
   let filterCriterion = filters.find((x) => x.isActive)?.id;
 
-  if (filters.every((x) => x.isActive) || !filterCriterion) {
+  if (!filterCriterion || filters.every((x) => x.isActive)) {
     filterCriterion = 'all';
   }
 
   try {
-    const issues = await issuesApi.get({
+    const issues = await issueEndpoints.get({
       organizationId,
       repoId,
       filter: filterCriterion,

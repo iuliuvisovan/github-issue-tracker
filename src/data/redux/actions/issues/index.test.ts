@@ -1,12 +1,14 @@
-import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { commitOrganizationId, commitRepoId, getIssues } from './index';
-import { IssueActionType } from '../../../types/issues';
-import { ApplicationState } from '../..';
-
+import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
+
+import { commitOrganizationId, commitRepoId, getIssues } from './index';
 import { initialState } from '../../reducers/issues';
 import mockIssues from '../../../mocks/issues';
+
+import { ApplicationState } from '../..';
+import { IssueActionType } from '../../../types/issues';
+
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 

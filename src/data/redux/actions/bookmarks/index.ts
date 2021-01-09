@@ -1,17 +1,18 @@
 import { Dispatch } from 'redux';
-import { BookmarkActionType, BookmarkAction } from '../../../types/bookmarks';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { BookmarkActionType, BookmarkAction } from '../../../types/bookmarks';
 import { Issue } from '../../../types/issues';
 
 export const getBookmarks = () => async (dispatch: Dispatch<BookmarkAction>) => {
   dispatch({ type: BookmarkActionType.GET_BOOKMARKS_PENDING });
 
   try {
-    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
+    let bookmarks: Issue[] = [];
 
-    let bookmarks = [];
+    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
     if (bookmarksJson) {
-      bookmarks = JSON.parse(bookmarksJson);
+      bookmarks = JSON.parse(bookmarksJson) as Issue[];
     }
 
     dispatch({ type: BookmarkActionType.GET_BOOKMARKS_SUCCESS, payload: bookmarks });
@@ -26,9 +27,9 @@ export const addBookmark = (issue: Issue) => async (dispatch: Dispatch<BookmarkA
   try {
     dispatch({ type: BookmarkActionType.ADD_BOOKMARK_SUCCESS, payload: issue });
 
-    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
-
     let bookmarks: Issue[] = [];
+
+    const bookmarksJson = await AsyncStorage.getItem('bookmarks');
     if (bookmarksJson) {
       bookmarks = JSON.parse(bookmarksJson) as Issue[];
     }
@@ -50,8 +51,7 @@ export const removeBookmark = (issueId: number) => async (dispatch: Dispatch<Boo
     const bookmarksJson = await AsyncStorage.getItem('bookmarks');
 
     if (bookmarksJson) {
-      let bookmarks = JSON.parse(bookmarksJson) as Issue[];
-      bookmarks = bookmarks.filter((x) => x.id !== issueId);
+      const bookmarks = (JSON.parse(bookmarksJson) as Issue[]).filter((x) => x.id !== issueId);
 
       await AsyncStorage.setItem('bookmarks', JSON.stringify(bookmarks));
     }

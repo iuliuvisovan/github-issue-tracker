@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+
 import issuesReducer from './reducers/issues';
 import commentsReducer from './reducers/comments';
 import bookmarksReducer from './reducers/bookmarks';

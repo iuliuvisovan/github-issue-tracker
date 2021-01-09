@@ -1,6 +1,7 @@
-import { CommentAction, CommentActionType, CommentState } from '../../../types/comments';
 import commentsReducer from './index';
 import mockComments from '../../../mocks/comments';
+
+import { CommentAction, CommentActionType, CommentState } from '../../../types/comments';
 
 const initialState: CommentState = {
   comments: [],

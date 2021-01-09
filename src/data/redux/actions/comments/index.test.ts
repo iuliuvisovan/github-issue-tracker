@@ -1,10 +1,12 @@
-import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
+import fetchMock from 'fetch-mock';
+
 import { getComments } from './index';
+import mockComments from '../../../mocks/comments';
+
 import { CommentActionType } from '../../../types/comments';
 
-import fetchMock from 'fetch-mock';
-import mockComments from '../../../mocks/comments';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 

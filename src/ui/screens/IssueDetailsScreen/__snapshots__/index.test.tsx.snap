@@ -790,7 +790,7 @@ exports[`Issue Details Screen renders correctly 1`] = `
                             <Image
                               source={
                                 Object {
-                                  "uri": "mock_url",
+                                  "uri": "mock_url_two",
                                 }
                               }
                               style={
@@ -819,7 +819,7 @@ exports[`Issue Details Screen renders correctly 1`] = `
                                 ]
                               }
                             >
-                              mock_login
+                              mock_login_two
                             </Text>
                             <Text
                               style={

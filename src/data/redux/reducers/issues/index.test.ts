@@ -1,7 +1,8 @@
-import { IssueAction, IssueActionType, IssueState } from '../../../types/issues';
 import issuesReducer from './index';
 import mockIssues, { mockFilters, mockSortCriteria } from '../../../mocks/issues';
-import { initialState } from '.';
+import { initialState } from './index';
+
+import { IssueAction, IssueActionType } from '../../../types/issues';
 
 describe('Issues Reducer', () => {
   it('handles GET_ISSUES_PENDING', () => {

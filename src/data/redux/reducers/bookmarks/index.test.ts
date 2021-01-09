@@ -1,6 +1,7 @@
-import { BookmarkAction, BookmarkActionType, BookmarkState } from '../../../types/bookmarks';
 import bookmarksReducer from './index';
 import mockIssues from '../../../mocks/issues';
+
+import { BookmarkAction, BookmarkActionType, BookmarkState } from '../../../types/bookmarks';
 
 const initialState: BookmarkState = {
   bookmarks: [],

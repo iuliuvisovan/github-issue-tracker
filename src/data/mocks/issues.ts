@@ -17,7 +17,7 @@ export default [
       },
     ],
     state: 'open',
-    isBookmarked: true,
+    isBookmarked: false,
     user: mockUsers[0],
     comments_url: 'https://api.github.com/commentsUrl',
   } as Issue,

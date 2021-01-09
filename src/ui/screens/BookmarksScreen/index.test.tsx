@@ -1,6 +1,6 @@
 import React from 'react';
 import IssuesScreen from './index';
-import MockedNavigator from '../../../data/mocks/navigation';
+import MockedNavigation from '../../../data/mocks/navigation';
 import { create, act } from 'react-test-renderer';
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '../../../data/redux';
@@ -23,7 +23,7 @@ describe('Bookmarks Screen', () => {
     const createFreshTree = () =>
       create(
         <ReduxProvider store={store}>
-          <MockedNavigator component={IssuesScreen} />
+          <MockedNavigation component={IssuesScreen} />
         </ReduxProvider>
       );
 

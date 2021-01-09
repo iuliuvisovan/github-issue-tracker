@@ -306,7 +306,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                               "body": "mock body",
                               "comments_url": "https://api.github.com/commentsUrl",
                               "id": 1,
-                              "isBookmarked": true,
+                              "isBookmarked": false,
                               "labels": Array [
                                 Object {
                                   "color": "#000",
@@ -345,11 +345,11 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                               "state": "closed",
                               "title": "Mock",
                               "user": Object {
-                                "avatar_url": "mock_url",
-                                "html_url": "mock_url",
+                                "avatar_url": "mock_url_two",
+                                "html_url": "mock_url_two",
                                 "id": 2,
-                                "login": "mock_login",
-                                "url": "mock_url",
+                                "login": "mock_login_two",
+                                "url": "mock_url_two",
                               },
                             },
                           ]
@@ -667,7 +667,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                 <Image
                                   source={
                                     Object {
-                                      "uri": "mock_url",
+                                      "uri": "mock_url_two",
                                     }
                                   }
                                   style={
@@ -696,7 +696,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                                     ]
                                   }
                                 >
-                                  mock_login
+                                  mock_login_two
                                 </Text>
                                 <Text
                                   style={
