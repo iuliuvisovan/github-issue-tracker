@@ -304,6 +304,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                           Array [
                             Object {
                               "body": "mock body",
+                              "comments_url": "https://api.github.com/commentsUrl",
                               "id": 1,
                               "isBookmarked": true,
                               "labels": Array [
@@ -328,6 +329,7 @@ exports[`Bookmarks Screen renders correctly 1`] = `
                             },
                             Object {
                               "body": "mock body",
+                              "comments_url": "https://api.github.com/commentsUrl",
                               "id": 2,
                               "isBookmarked": true,
                               "labels": Array [

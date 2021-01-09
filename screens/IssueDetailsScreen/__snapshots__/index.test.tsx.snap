@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot 1`] = `
+exports[`Issue Details Screen renders correctly 1`] = `
 <View
   style={
     Object {
@@ -577,6 +577,7 @@ exports[`snapshot 1`] = `
                               "width": "auto",
                             }
                           }
+                          testID="addAsBookmarkButton"
                         >
                           <Text
                             allowFontScaling={false}
@@ -627,38 +628,114 @@ exports[`snapshot 1`] = `
                             BOOKMARK
                           </Text>
                         </View>
-                        <View
+                        <Text
                           style={
-                            Object {
-                              "alignItems": "center",
-                              "alignSelf": "center",
-                              "justifyContent": "center",
-                              "marginTop": 48,
-                            }
+                            Array [
+                              Object {
+                                "color": "#14181c",
+                                "fontFamily": "muli",
+                                "lineHeight": 16,
+                              },
+                              Object {
+                                "color": "#414d5b",
+                                "fontFamily": "muli-extra-bold",
+                                "fontSize": 13,
+                                "letterSpacing": 0.9,
+                                "margin": 16,
+                                "marginTop": 6,
+                              },
+                            ]
                           }
                         >
-                          <Text
-                            allowFontScaling={false}
+                          COMMENTS
+                        </Text>
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#fff",
+                                "borderRadius": 8,
+                                "elevation": 4,
+                                "marginBottom": 16,
+                                "paddingHorizontal": 16,
+                                "paddingVertical": 16,
+                                "shadowColor": "#414d5b",
+                                "shadowOffset": Object {
+                                  "height": 2,
+                                  "width": 2,
+                                },
+                                "shadowOpacity": 0.1,
+                                "shadowRadius": 3,
+                              },
+                              Object {
+                                "marginHorizontal": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <View
                             style={
-                              Array [
-                                Object {
-                                  "color": "#aab2ba",
-                                  "fontSize": 40,
-                                },
-                                Object {
-                                  "marginRight": 4,
-                                },
-                                Object {
-                                  "fontFamily": "feather",
-                                  "fontStyle": "normal",
-                                  "fontWeight": "normal",
-                                },
-                                Object {},
-                              ]
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "marginBottom": 16,
+                                "marginTop": -2,
+                              }
                             }
                           >
-                            
-                          </Text>
+                            <Image
+                              source={
+                                Object {
+                                  "uri": "mock_url",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "borderRadius": 10,
+                                  "height": 20,
+                                  "marginRight": 8,
+                                  "marginTop": 1,
+                                  "width": 20,
+                                }
+                              }
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#414d5b",
+                                    "fontFamily": "muli-semi-bold",
+                                    "fontSize": 12,
+                                  },
+                                ]
+                              }
+                            >
+                              mock_login
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#aab2ba",
+                                    "fontSize": 12,
+                                  },
+                                ]
+                              }
+                            >
+                               • 
+                              a few seconds ago
+                            </Text>
+                          </View>
                           <Text
                             style={
                               Array [
@@ -668,13 +745,116 @@ exports[`snapshot 1`] = `
                                   "lineHeight": 16,
                                 },
                                 Object {
-                                  "color": "#aab2ba",
-                                  "marginTop": 8,
+                                  "maxWidth": 734,
                                 },
                               ]
                             }
                           >
-                            No comments to show.
+                            mock body
+                          </Text>
+                        </View>
+                        <View
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#fff",
+                                "borderRadius": 8,
+                                "elevation": 4,
+                                "marginBottom": 16,
+                                "paddingHorizontal": 16,
+                                "paddingVertical": 16,
+                                "shadowColor": "#414d5b",
+                                "shadowOffset": Object {
+                                  "height": 2,
+                                  "width": 2,
+                                },
+                                "shadowOpacity": 0.1,
+                                "shadowRadius": 3,
+                              },
+                              Object {
+                                "marginHorizontal": 8,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              Object {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "marginBottom": 16,
+                                "marginTop": -2,
+                              }
+                            }
+                          >
+                            <Image
+                              source={
+                                Object {
+                                  "uri": "mock_url",
+                                }
+                              }
+                              style={
+                                Object {
+                                  "borderRadius": 10,
+                                  "height": 20,
+                                  "marginRight": 8,
+                                  "marginTop": 1,
+                                  "width": 20,
+                                }
+                              }
+                            />
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#414d5b",
+                                    "fontFamily": "muli-semi-bold",
+                                    "fontSize": 12,
+                                  },
+                                ]
+                              }
+                            >
+                              mock_login
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#14181c",
+                                    "fontFamily": "muli",
+                                    "lineHeight": 16,
+                                  },
+                                  Object {
+                                    "color": "#aab2ba",
+                                    "fontSize": 12,
+                                  },
+                                ]
+                              }
+                            >
+                               • 
+                              a few seconds ago
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#14181c",
+                                  "fontFamily": "muli",
+                                  "lineHeight": 16,
+                                },
+                                Object {
+                                  "maxWidth": 734,
+                                },
+                              ]
+                            }
+                          >
+                            mock body 2
                           </Text>
                         </View>
                       </View>

@@ -60,6 +60,7 @@ export default function IssuesDetailsScreen(props: IssueDetailsScreenProps) {
       <Button
         text={isBookmarked ? 'Remove Bookmark' : 'Bookmark'}
         style={styles.bookmarkButton}
+        testID="addAsBookmarkButton"
         leftIcon={
           <AntDesign size={20} color={Color.blue} name={isBookmarked ? 'star' : 'staro'} style={{ marginRight: 6 }} />
         }

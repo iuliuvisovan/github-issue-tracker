@@ -19,6 +19,7 @@ export default [
     state: 'open',
     isBookmarked: true,
     user: mockUsers[0],
+    comments_url: 'https://api.github.com/commentsUrl',
   } as Issue,
   {
     id: 2,
@@ -37,6 +38,7 @@ export default [
     state: 'open',
     isBookmarked: true,
     user: mockUsers[1],
+    comments_url: 'https://api.github.com/commentsUrl',
   } as Issue,
 ];
 
