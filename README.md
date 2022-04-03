@@ -1,5 +1,9 @@
 ![Repo Cover image](https://i.imgur.com/MW5MqrD.png "Repo Cover image")
 
+https://www.meniuqr.ro/
+
+https://www.touchfreemenu.ro/
+
 ## GitHub Issue Tracker
 
 Ready-to-use tracker for GitHub issues written in React Native. 
